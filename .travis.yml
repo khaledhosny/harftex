@@ -42,5 +42,6 @@ deploy:
   file: ${PACKAGE}
   skip_cleanup: true
   on:
+    tags: true
     repo: khaledhosny/harftex
     branch: harftex
