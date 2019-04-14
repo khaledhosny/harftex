@@ -445,6 +445,7 @@ static void parse_options(int ac, char **av)
                  "metapost  : John Hobby, Taco Hoekwater, Luigi Scarso, Hans Hagen and friends\n"
                  "pplib     : Paweł Jackowski\n"
                  "fontforge : George Williams (partial)\n"
+                 "harfbuzz  : Behdad Esfahbod and others\n"
                  "luajit    : Mike Pall (used in LuajitTeX)\n");
             /* *INDENT-ON* */
             puts(versions);

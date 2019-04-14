@@ -18824,6 +18824,7 @@ test "x$enable_web2c:$enable_harftex" = xyes:yes && {
   need_libpng=yes
   need_zziplib=yes
   need_lua53=yes
+  need_harfbuzz=yes
 }
 # Check whether --enable-mp was given.
 if test "${enable_mp+set}" = set; then :

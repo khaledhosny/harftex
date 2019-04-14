@@ -697,6 +697,22 @@ am__objects_3 = luatexdir/luaffi/libluaffi_a-call.$(OBJEXT) \
 	luatexdir/luaffi/libluaffi_a-parser.$(OBJEXT)
 nodist_libluaffi_a_OBJECTS = $(am__objects_3)
 libluaffi_a_OBJECTS = $(nodist_libluaffi_a_OBJECTS)
+libluaharfbuzz_a_AR = $(AR) $(ARFLAGS)
+libluaharfbuzz_a_LIBADD =
+am_libluaharfbuzz_a_OBJECTS = harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.$(OBJEXT) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.$(OBJEXT)
+libluaharfbuzz_a_OBJECTS = $(am_libluaharfbuzz_a_OBJECTS)
 libluajitmisc_a_AR = $(AR) $(ARFLAGS)
 libluajitmisc_a_LIBADD =
 am__objects_4 =  \
@@ -1371,9 +1387,9 @@ am__DEPENDENCIES_7 = libmplibcore.a $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_2) libmputil.a libunilib.a libmd5.a \
 	$(am__DEPENDENCIES_1)
-harftex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(harftex_LDFLAGS) $(LDFLAGS) -o $@
+harftex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(harftex_CXXFLAGS) \
+	$(CXXFLAGS) $(harftex_LDFLAGS) $(LDFLAGS) -o $@
 nodist_initex_OBJECTS = initex-callexe.$(OBJEXT)
 initex_OBJECTS = $(nodist_initex_OBJECTS)
 initex_DEPENDENCIES =
@@ -1716,7 +1732,8 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	./$(DEPDIR)/euptex-euptex-pool.Po \
 	./$(DEPDIR)/euptex-euptex0.Po ./$(DEPDIR)/euptex-euptexini.Po \
 	./$(DEPDIR)/gftodvi.Po ./$(DEPDIR)/gftopk.Po \
-	./$(DEPDIR)/gftype.Po ./$(DEPDIR)/initex-callexe.Po \
+	./$(DEPDIR)/gftype.Po ./$(DEPDIR)/harftex-dummy.Po \
+	./$(DEPDIR)/initex-callexe.Po \
 	./$(DEPDIR)/libmflua_a-mflua-pool.Po \
 	./$(DEPDIR)/libmflua_a-mflua0.Po \
 	./$(DEPDIR)/libmflua_a-mfluaini.Po \
@@ -1840,6 +1857,19 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	harftexdir/lua/$(DEPDIR)/libharftex_a-luatoken.Po \
 	harftexdir/lua/$(DEPDIR)/libharftex_a-mplibstuff.Po \
 	harftexdir/lua/$(DEPDIR)/libharftex_a-texluac.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Po \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Po \
 	harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfaction.Po \
 	harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfannot.Po \
 	harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfcolorstack.Po \
@@ -2425,7 +2455,7 @@ am__v_OBJCXXLD_0 = @echo "  OBJCXXLD" $@;
 am__v_OBJCXXLD_1 = 
 SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
 	$(nodist_libharftex_a_SOURCES) $(libkanji_a_SOURCES) \
-	$(nodist_libluaffi_a_SOURCES) \
+	$(nodist_libluaffi_a_SOURCES) $(libluaharfbuzz_a_SOURCES) \
 	$(nodist_libluajitmisc_a_SOURCES) \
 	$(nodist_libluajitpplib_a_SOURCES) \
 	$(nodist_libluajitsocket_a_SOURCES) \
@@ -2460,23 +2490,24 @@ SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
 	$(dist_euptex_SOURCES) $(nodist_euptex_SOURCES) \
 	$(gftodvi_SOURCES) $(nodist_gftodvi_SOURCES) \
 	$(nodist_gftopk_SOURCES) $(nodist_gftype_SOURCES) \
-	$(nodist_harftex_SOURCES) $(nodist_initex_SOURCES) \
-	$(nodist_luajittex_SOURCES) $(nodist_luatex_SOURCES) \
-	$(md5main_SOURCES) $(dist_mf_SOURCES) $(dist_mf_nowin_SOURCES) \
-	$(dist_mflua_SOURCES) $(nodist_mflua_nowin_SOURCES) \
-	$(dist_mfluajit_SOURCES) $(nodist_mfluajit_nowin_SOURCES) \
-	$(nodist_mft_SOURCES) $(nodist_mpost_SOURCES) \
-	$(nodist_odvicopy_SOURCES) $(nodist_odvitype_SOURCES) \
-	$(nodist_otangle_SOURCES) $(nodist_patgen_SOURCES) \
-	$(pbibtex_SOURCES) $(nodist_pbibtex_SOURCES) \
-	$(dist_pdftex_SOURCES) $(nodist_pdftex_SOURCES) \
-	$(nodist_EXTRA_pdftex_SOURCES) $(pdftosrc_SOURCES) \
-	$(nodist_EXTRA_pdftosrc_SOURCES) $(pdvitype_SOURCES) \
-	$(nodist_pdvitype_SOURCES) $(nodist_pktogf_SOURCES) \
-	$(nodist_pktype_SOURCES) $(nodist_pltotf_SOURCES) \
-	$(nodist_pmpost_SOURCES) $(nodist_pooltype_SOURCES) \
-	$(ppltotf_SOURCES) $(nodist_ppltotf_SOURCES) \
-	$(dist_ptex_SOURCES) $(nodist_ptex_SOURCES) $(ptftopl_SOURCES) \
+	$(nodist_harftex_SOURCES) $(nodist_EXTRA_harftex_SOURCES) \
+	$(nodist_initex_SOURCES) $(nodist_luajittex_SOURCES) \
+	$(nodist_luatex_SOURCES) $(md5main_SOURCES) $(dist_mf_SOURCES) \
+	$(dist_mf_nowin_SOURCES) $(dist_mflua_SOURCES) \
+	$(nodist_mflua_nowin_SOURCES) $(dist_mfluajit_SOURCES) \
+	$(nodist_mfluajit_nowin_SOURCES) $(nodist_mft_SOURCES) \
+	$(nodist_mpost_SOURCES) $(nodist_odvicopy_SOURCES) \
+	$(nodist_odvitype_SOURCES) $(nodist_otangle_SOURCES) \
+	$(nodist_patgen_SOURCES) $(pbibtex_SOURCES) \
+	$(nodist_pbibtex_SOURCES) $(dist_pdftex_SOURCES) \
+	$(nodist_pdftex_SOURCES) $(nodist_EXTRA_pdftex_SOURCES) \
+	$(pdftosrc_SOURCES) $(nodist_EXTRA_pdftosrc_SOURCES) \
+	$(pdvitype_SOURCES) $(nodist_pdvitype_SOURCES) \
+	$(nodist_pktogf_SOURCES) $(nodist_pktype_SOURCES) \
+	$(nodist_pltotf_SOURCES) $(nodist_pmpost_SOURCES) \
+	$(nodist_pooltype_SOURCES) $(ppltotf_SOURCES) \
+	$(nodist_ppltotf_SOURCES) $(dist_ptex_SOURCES) \
+	$(nodist_ptex_SOURCES) $(ptftopl_SOURCES) \
 	$(nodist_ptftopl_SOURCES) $(synctex_SOURCES) \
 	$(nodist_tangle_SOURCES) $(nodist_tangleboot_SOURCES) \
 	$(dist_tex_SOURCES) $(nodist_tex_SOURCES) \
@@ -2494,19 +2525,20 @@ SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
 	$(dist_xetex_SOURCES) $(nodist_xetex_SOURCES) \
 	$(nodist_EXTRA_xetex_SOURCES)
 DIST_SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
-	$(libkanji_a_SOURCES) $(dist_libluajittex_a_SOURCES) \
-	$(dist_libluatex_a_SOURCES) $(libmd5_a_SOURCES) \
-	$(dist_libmflua_a_SOURCES) $(dist_libmfluajit_a_SOURCES) \
-	$(libmputil_a_SOURCES) $(am__libpdftex_a_SOURCES_DIST) \
-	$(EXTRA_libpdftex_a_SOURCES) $(libukanji_a_SOURCES) \
-	$(libunilib_a_SOURCES) $(am__libxetex_a_SOURCES_DIST) \
-	$(libsynctex_la_SOURCES) $(dist_aleph_SOURCES) \
-	$(am__dist_eptex_SOURCES_DIST) $(am__dist_etex_SOURCES_DIST) \
-	$(am__dist_euptex_SOURCES_DIST) $(gftodvi_SOURCES) \
-	$(md5main_SOURCES) $(dist_mf_SOURCES) $(dist_mf_nowin_SOURCES) \
-	$(dist_mflua_SOURCES) $(dist_mfluajit_SOURCES) \
-	$(pbibtex_SOURCES) $(am__dist_pdftex_SOURCES_DIST) \
-	$(pdftosrc_SOURCES) $(pdvitype_SOURCES) $(ppltotf_SOURCES) \
+	$(libkanji_a_SOURCES) $(libluaharfbuzz_a_SOURCES) \
+	$(dist_libluajittex_a_SOURCES) $(dist_libluatex_a_SOURCES) \
+	$(libmd5_a_SOURCES) $(dist_libmflua_a_SOURCES) \
+	$(dist_libmfluajit_a_SOURCES) $(libmputil_a_SOURCES) \
+	$(am__libpdftex_a_SOURCES_DIST) $(EXTRA_libpdftex_a_SOURCES) \
+	$(libukanji_a_SOURCES) $(libunilib_a_SOURCES) \
+	$(am__libxetex_a_SOURCES_DIST) $(libsynctex_la_SOURCES) \
+	$(dist_aleph_SOURCES) $(am__dist_eptex_SOURCES_DIST) \
+	$(am__dist_etex_SOURCES_DIST) $(am__dist_euptex_SOURCES_DIST) \
+	$(gftodvi_SOURCES) $(md5main_SOURCES) $(dist_mf_SOURCES) \
+	$(dist_mf_nowin_SOURCES) $(dist_mflua_SOURCES) \
+	$(dist_mfluajit_SOURCES) $(pbibtex_SOURCES) \
+	$(am__dist_pdftex_SOURCES_DIST) $(pdftosrc_SOURCES) \
+	$(pdvitype_SOURCES) $(ppltotf_SOURCES) \
 	$(am__dist_ptex_SOURCES_DIST) $(ptftopl_SOURCES) \
 	$(synctex_SOURCES) $(am__dist_tex_SOURCES_DIST) \
 	$(ttf2afm_SOURCES) $(EXTRA_ttf2afm_SOURCES) \
@@ -2758,6 +2790,7 @@ am__DIST_COMMON = $(dist_man_MANS) $(srcdir)/../../am/bin_links.am \
 	$(srcdir)/euptexdir/am/euptex.am \
 	$(srcdir)/harftexdir/am/harftex.am \
 	$(srcdir)/harftexdir/am/libharftex.am \
+	$(srcdir)/harftexdir/am/luaharfbuzz.am \
 	$(srcdir)/libmd5/am/md5.am $(srcdir)/luatexdir/am/libluatex.am \
 	$(srcdir)/luatexdir/am/libunilib.am \
 	$(srcdir)/luatexdir/am/luaffi.am \
@@ -3090,7 +3123,8 @@ EXTRA_LIBRARIES = libmf.a libmflua.a libmfluajit.a libmputil.a \
 	libkanji.a libukanji.a libpdftex.a libluasocket.a \
 	libluajitsocket.a libluamisc.a libluajitmisc.a libunilib.a \
 	libff.a libluatex.a libluajittex.a libluaffi.a libluapplib.a \
-	libluajitpplib.a libharftex.a libxetex.a libsynctex.a libmd5.a
+	libluajitpplib.a libharftex.a libluaharfbuzz.a libxetex.a \
+	libsynctex.a libmd5.a
 EXTRA_LTLIBRARIES = libsynctex.la
 lib_LIBRARIES = $(am__append_115)
 lib_LTLIBRARIES = $(am__append_114)
@@ -3372,7 +3406,39 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	luatexdir/tests/luaimage.tex tests/1-4.jpg tests/B.pdf \
 	tests/basic.tex tests/lily-ledger-broken.png \
 	$(dist_libharftex_sources) harftexdir/ChangeLog \
-	harftexdir/NEWS harftexdir/font/subfont.txt $(harftex_sources) \
+	harftexdir/NEWS harftexdir/font/subfont.txt \
+	harftexdir/luaharfbuzz/docs/examples/core_types.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/custom_callbacks.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/harfbuzz_setup.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/ot_font_loader.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/package_path_searcher.lua.html \
+	harftexdir/luaharfbuzz/docs/index.html \
+	harftexdir/luaharfbuzz/docs/ldoc.css \
+	harftexdir/luaharfbuzz/examples/core_types.lua \
+	harftexdir/luaharfbuzz/fixtures/amiri-regular_123.json \
+	harftexdir/luaharfbuzz/fixtures/amiri-regular_123_numr.json \
+	harftexdir/luaharfbuzz/fixtures/AppleGothic_korean_issue_22.json \
+	harftexdir/luaharfbuzz/fixtures/notonastaliq_U06CC_U06C1.json \
+	harftexdir/luaharfbuzz/fonts/amiri-regular.ttf \
+	harftexdir/luaharfbuzz/fonts/notonastaliq.ttf \
+	harftexdir/luaharfbuzz/fonts/Rajdhani-Regular.ttf \
+	harftexdir/luaharfbuzz/scripts/generate_harfbuzz_api_list.sh \
+	harftexdir/luaharfbuzz/scripts/generate_hb_shape_json.sh \
+	harftexdir/luaharfbuzz/spec/buffer_spec.lua \
+	harftexdir/luaharfbuzz/spec/harfbuzz_spec.lua \
+	harftexdir/luaharfbuzz/spec/shaping_spec.lua \
+	harftexdir/luaharfbuzz/src/harfbuzz.lua \
+	harftexdir/luaharfbuzz/src/harfbuzz.luadoc \
+	harftexdir/luaharfbuzz/status/done.txt \
+	harftexdir/luaharfbuzz/status/full_api.txt \
+	harftexdir/luaharfbuzz/config.ld \
+	harftexdir/luaharfbuzz/LICENSE \
+	harftexdir/luaharfbuzz/luaharfbuzz-1.0.0-1.rockspec \
+	harftexdir/luaharfbuzz/luaharfbuzz-scm-1.rockspec \
+	harftexdir/luaharfbuzz/Makefile \
+	harftexdir/luaharfbuzz/README.md \
+	harftexdir/luaharfbuzz/README-win.md \
+	harftexdir/luaharfbuzz/THANKS $(harftex_sources) \
 	$(harftex_tests) harftexdir/tests/luaimage.tex tests/1-4.jpg \
 	tests/B.pdf tests/basic.tex tests/lily-ledger-broken.png \
 	$(xetex_web_srcs) $(xetex_ch_srcs) xetexdir/xetex.defines \
@@ -4952,7 +5018,7 @@ luatex_tests = luatexdir/luatex.test luatexdir/luaimage.test
 #luatex53_tests = luatexdir/luatex.test luatexdir/luaimage.test
 #luatexdir/luatex53.log luatexdir/luaimage53.log: luatex53$(EXEEXT)
 luajittex_tests = luatexdir/luajittex.test luatexdir/luajitimage.test
-libharftex_a_DEPENDENCIES = libff.a libluamisc.a
+libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
 libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) \
 	$(LIBPNG_INCLUDES) -I$(srcdir)/libmd5 -DpdfTeX \
 	-I$(srcdir)/harftexdir -I$(srcdir)/luatexdir \
@@ -5078,9 +5144,28 @@ dist_libharftex_sources = harftexdir/harftexcallbackids.h \
 	harftexdir/utils/unistring.c harftexdir/utils/utils.c \
 	synctexdir/synctex-common.h synctexdir/synctex-luatex.h \
 	synctexdir/synctex.c synctexdir/synctex.h
+libluaharfbuzz_a_DEPENDENCIES = $(HARFBUZZ_DEPEND) $(GRAPHITE2_DEPEND) $(ICU_DEPEND)
+libluaharfbuzz_a_CPPFLAGS = $(AM_CPPFLAGS) $(LUA_INCLUDES) $(ICU_INCLUDES) $(HARFBUZZ_INCLUDES) $(GRAPHITE2_INCLUDES)
+libluaharfbuzz_a_CFLAGS = # $(WARNING_CFLAGS)
+libluaharfbuzz_a_SOURCES = \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/face.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/font.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/language.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.h \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/script.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
+
 
 # Force Automake to use CXXLD for linking
-#nodist_EXTRA_harftex_SOURCES = dummy.cxx
+nodist_EXTRA_harftex_SOURCES = dummy.cxx
 harftex_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES)
 harftex_postflags = -I$(srcdir)/libmd5 -DpdfTeX -I$(srcdir)/harftexdir \
 	-I$(srcdir)/mplibdir -Dextra_version_info=`date +-%Y%m%d%H` \
@@ -5091,7 +5176,10 @@ harftex_LDFLAGS = -export-dynamic
 harftex_postldadd = libmplibcore.a $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) \
 	$(ZLIB_LIBS) $(LDADD) libmputil.a libunilib.a libmd5.a \
 	$(lua_socketlibs)
-harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a libluaffi.a libluapplib.a $(LUA_LIBS) $(harftex_postldadd)
+harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a \
+	libluaffi.a libluapplib.a libluaharfbuzz.a $(LUA_LIBS) \
+	$(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(ICU_LIBS) \
+	$(ICU_LIBS_EXTRA) $(luatex_postldadd)
 harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libmd5.a
 harftex_DEPENDENCIES = $(harftex_depend) libharftex.a
 nodist_harftex_SOURCES = $(harftex_sources)
@@ -5389,7 +5477,7 @@ all: ff-config.h
 .SUFFIXES: .c .cc .cin .cpp .cxx .h .hin .lo .log .mm .o .obj .p .pin .pl .pl$(EXEEXT) .test .test$(EXEEXT) .trs
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/luaharfbuzz.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -5411,7 +5499,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__empty):
+$(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/luaharfbuzz.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -6185,6 +6273,56 @@ libluaffi.a: $(libluaffi_a_OBJECTS) $(libluaffi_a_DEPENDENCIES) $(EXTRA_libluaff
 	$(AM_V_at)-rm -f libluaffi.a
 	$(AM_V_AR)$(libluaffi_a_AR) libluaffi.a $(libluaffi_a_OBJECTS) $(libluaffi_a_LIBADD)
 	$(AM_V_at)$(RANLIB) libluaffi.a
+harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp):
+	@$(MKDIR_P) harftexdir/luaharfbuzz/src/luaharfbuzz
+	@: > harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)
+	@: > harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.$(OBJEXT):  \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp) \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+
+libluaharfbuzz.a: $(libluaharfbuzz_a_OBJECTS) $(libluaharfbuzz_a_DEPENDENCIES) $(EXTRA_libluaharfbuzz_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libluaharfbuzz.a
+	$(AM_V_AR)$(libluaharfbuzz_a_AR) libluaharfbuzz.a $(libluaharfbuzz_a_OBJECTS) $(libluaharfbuzz_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libluaharfbuzz.a
 luatexdir/luafilesystem/src/$(am__dirstamp):
 	@$(MKDIR_P) luatexdir/luafilesystem/src
 	@: > luatexdir/luafilesystem/src/$(am__dirstamp)
@@ -7744,7 +7882,7 @@ mplibdir/harftex-lmplib.$(OBJEXT): mplibdir/$(am__dirstamp) \
 
 harftex$(EXEEXT): $(harftex_OBJECTS) $(harftex_DEPENDENCIES) $(EXTRA_harftex_DEPENDENCIES) 
 	@rm -f harftex$(EXEEXT)
-	$(AM_V_CCLD)$(harftex_LINK) $(harftex_OBJECTS) $(harftex_LDADD) $(LIBS)
+	$(AM_V_CXXLD)$(harftex_LINK) $(harftex_OBJECTS) $(harftex_LDADD) $(LIBS)
 
 initex$(EXEEXT): $(initex_OBJECTS) $(initex_DEPENDENCIES) $(EXTRA_initex_DEPENDENCIES) 
 	@rm -f initex$(EXEEXT)
@@ -8012,6 +8150,7 @@ mostlyclean-compile:
 	-rm -f harftexdir/image/*.$(OBJEXT)
 	-rm -f harftexdir/lang/*.$(OBJEXT)
 	-rm -f harftexdir/lua/*.$(OBJEXT)
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/*.$(OBJEXT)
 	-rm -f harftexdir/pdf/*.$(OBJEXT)
 	-rm -f harftexdir/tex/*.$(OBJEXT)
 	-rm -f harftexdir/utils/*.$(OBJEXT)
@@ -8090,6 +8229,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gftodvi.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gftopk.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gftype.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/harftex-dummy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/initex-callexe.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmflua_a-mflua-pool.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmflua_a-mflua0.Po@am__quote@ # am--include-marker
@@ -8247,6 +8387,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-luatoken.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-mplibstuff.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-texluac.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfaction.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfannot.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfcolorstack.Po@am__quote@ # am--include-marker
@@ -11131,6 +11284,188 @@ luatexdir/luaffi/libluaffi_a-parser.obj: luatexdir/luaffi/parser.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='luatexdir/luaffi/parser.c' object='luatexdir/luaffi/libluaffi_a-parser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaffi_a_CPPFLAGS) $(CPPFLAGS) $(libluaffi_a_CFLAGS) $(CFLAGS) -c -o luatexdir/luaffi/libluaffi_a-parser.obj `if test -f 'luatexdir/luaffi/parser.c'; then $(CYGPATH_W) 'luatexdir/luaffi/parser.c'; else $(CYGPATH_W) '$(srcdir)/luatexdir/luaffi/parser.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.o: harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-blob.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.o: harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-buffer.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.o: harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-class_utils.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.o: harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-direction.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.o: harftexdir/luaharfbuzz/src/luaharfbuzz/face.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/face.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/face.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/face.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/face.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/face.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/face.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/face.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/face.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/face.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/face.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-face.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/face.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/face.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/face.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.o: harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-feature.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.o: harftexdir/luaharfbuzz/src/luaharfbuzz/font.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/font.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/font.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/font.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/font.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/font.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/font.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/font.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/font.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/font.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/font.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-font.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/font.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/font.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/font.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.o: harftexdir/luaharfbuzz/src/luaharfbuzz/language.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/language.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/language.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/language.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/language.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/language.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/language.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/language.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/language.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/language.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/language.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-language.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/language.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/language.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/language.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.o: harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-luaharfbuzz.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.o: harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-ot.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.o: harftexdir/luaharfbuzz/src/luaharfbuzz/script.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/script.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/script.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/script.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/script.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/script.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/script.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/script.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/script.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/script.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/script.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-script.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/script.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/script.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/script.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.o: harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-tag.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c'; fi`
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.o: harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.o -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.o `test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c' || echo '$(srcdir)/'`harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
+
+harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.obj: harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -MT harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.obj -MD -MP -MF harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Tpo -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Tpo harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c' object='harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluaharfbuzz_a_CPPFLAGS) $(CPPFLAGS) $(libluaharfbuzz_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luaharfbuzz/src/luaharfbuzz/libluaharfbuzz_a-unicode.obj `if test -f 'harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c'; then $(CYGPATH_W) 'harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c'; fi`
 
 luatexdir/luafilesystem/src/libluajitmisc_a-lfs.o: luatexdir/luafilesystem/src/lfs.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libluajitmisc_a_CPPFLAGS) $(CPPFLAGS) $(libluajitmisc_a_CFLAGS) $(CFLAGS) -MT luatexdir/luafilesystem/src/libluajitmisc_a-lfs.o -MD -MP -MF luatexdir/luafilesystem/src/$(DEPDIR)/libluajitmisc_a-lfs.Tpo -c -o luatexdir/luafilesystem/src/libluajitmisc_a-lfs.o `test -f 'luatexdir/luafilesystem/src/lfs.c' || echo '$(srcdir)/'`luatexdir/luafilesystem/src/lfs.c
@@ -18352,6 +18687,20 @@ xetexdir/libxetex_a-XeTeXFontMgr_FC.obj: xetexdir/XeTeXFontMgr_FC.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libxetex_a_CPPFLAGS) $(CPPFLAGS) $(libxetex_a_CXXFLAGS) $(CXXFLAGS) -c -o xetexdir/libxetex_a-XeTeXFontMgr_FC.obj `if test -f 'xetexdir/XeTeXFontMgr_FC.cpp'; then $(CYGPATH_W) 'xetexdir/XeTeXFontMgr_FC.cpp'; else $(CYGPATH_W) '$(srcdir)/xetexdir/XeTeXFontMgr_FC.cpp'; fi`
 
+harftex-dummy.o: dummy.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(harftex_CPPFLAGS) $(CPPFLAGS) $(harftex_CXXFLAGS) $(CXXFLAGS) -MT harftex-dummy.o -MD -MP -MF $(DEPDIR)/harftex-dummy.Tpo -c -o harftex-dummy.o `test -f 'dummy.cxx' || echo '$(srcdir)/'`dummy.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/harftex-dummy.Tpo $(DEPDIR)/harftex-dummy.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='dummy.cxx' object='harftex-dummy.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(harftex_CPPFLAGS) $(CPPFLAGS) $(harftex_CXXFLAGS) $(CXXFLAGS) -c -o harftex-dummy.o `test -f 'dummy.cxx' || echo '$(srcdir)/'`dummy.cxx
+
+harftex-dummy.obj: dummy.cxx
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(harftex_CPPFLAGS) $(CPPFLAGS) $(harftex_CXXFLAGS) $(CXXFLAGS) -MT harftex-dummy.obj -MD -MP -MF $(DEPDIR)/harftex-dummy.Tpo -c -o harftex-dummy.obj `if test -f 'dummy.cxx'; then $(CYGPATH_W) 'dummy.cxx'; else $(CYGPATH_W) '$(srcdir)/dummy.cxx'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/harftex-dummy.Tpo $(DEPDIR)/harftex-dummy.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='dummy.cxx' object='harftex-dummy.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(harftex_CPPFLAGS) $(CPPFLAGS) $(harftex_CXXFLAGS) $(CXXFLAGS) -c -o harftex-dummy.obj `if test -f 'dummy.cxx'; then $(CYGPATH_W) 'dummy.cxx'; else $(CYGPATH_W) '$(srcdir)/dummy.cxx'; fi`
+
 pdftex-dummy.o: dummy.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(pdftex_CPPFLAGS) $(CPPFLAGS) $(pdftex_CXXFLAGS) $(CXXFLAGS) -MT pdftex-dummy.o -MD -MP -MF $(DEPDIR)/pdftex-dummy.Tpo -c -o pdftex-dummy.o `test -f 'dummy.cxx' || echo '$(srcdir)/'`dummy.cxx
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/pdftex-dummy.Tpo $(DEPDIR)/pdftex-dummy.Po
@@ -19164,6 +19513,8 @@ distclean-generic:
 	-rm -f harftexdir/lang/$(am__dirstamp)
 	-rm -f harftexdir/lua/$(DEPDIR)/$(am__dirstamp)
 	-rm -f harftexdir/lua/$(am__dirstamp)
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(am__dirstamp)
 	-rm -f harftexdir/pdf/$(DEPDIR)/$(am__dirstamp)
 	-rm -f harftexdir/pdf/$(am__dirstamp)
 	-rm -f harftexdir/tex/$(DEPDIR)/$(am__dirstamp)
@@ -19287,6 +19638,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/gftodvi.Po
 	-rm -f ./$(DEPDIR)/gftopk.Po
 	-rm -f ./$(DEPDIR)/gftype.Po
+	-rm -f ./$(DEPDIR)/harftex-dummy.Po
 	-rm -f ./$(DEPDIR)/initex-callexe.Po
 	-rm -f ./$(DEPDIR)/libmflua_a-mflua-pool.Po
 	-rm -f ./$(DEPDIR)/libmflua_a-mflua0.Po
@@ -19444,6 +19796,19 @@ distclean: distclean-recursive
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-luatoken.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-mplibstuff.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-texluac.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Po
 	-rm -f harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfaction.Po
 	-rm -f harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfannot.Po
 	-rm -f harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfcolorstack.Po
@@ -20060,6 +20425,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/gftodvi.Po
 	-rm -f ./$(DEPDIR)/gftopk.Po
 	-rm -f ./$(DEPDIR)/gftype.Po
+	-rm -f ./$(DEPDIR)/harftex-dummy.Po
 	-rm -f ./$(DEPDIR)/initex-callexe.Po
 	-rm -f ./$(DEPDIR)/libmflua_a-mflua-pool.Po
 	-rm -f ./$(DEPDIR)/libmflua_a-mflua0.Po
@@ -20217,6 +20583,19 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-luatoken.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-mplibstuff.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-texluac.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-buffer.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-class_utils.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-direction.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-face.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-feature.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-font.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-language.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-luaharfbuzz.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-ot.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-script.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-tag.Po
+	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-unicode.Po
 	-rm -f harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfaction.Po
 	-rm -f harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfannot.Po
 	-rm -f harftexdir/pdf/$(DEPDIR)/libharftex_a-pdfcolorstack.Po
@@ -21697,7 +22076,9 @@ $(luajittex_OBJECTS): libluajittex.a
 luatexdir/luatex.log luatexdir/luaimage.log: luatex$(EXEEXT)
 luatexdir/luajittex.log luatexdir/luajitimage.log: luajittex$(EXEEXT)
 
-$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a
+$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
+
+$(libluaharfbuzz_a_OBJECTS): $(LUA_DEPEND)
 
 $(harftex_OBJECTS): libharftex.a
 

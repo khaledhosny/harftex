@@ -19,7 +19,7 @@ endif HARFTEX
 EXTRA_PROGRAMS += harftex
 
 # Force Automake to use CXXLD for linking
-#nodist_EXTRA_harftex_SOURCES = dummy.cxx
+nodist_EXTRA_harftex_SOURCES = dummy.cxx
 
 harftex_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES)
 harftex_postflags = -I$(srcdir)/libmd5 -DpdfTeX -I$(srcdir)/harftexdir -I$(srcdir)/mplibdir
@@ -37,7 +37,8 @@ harftex_postldadd += $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) $(ZLIB_LIBS)
 harftex_postldadd += $(LDADD) libmputil.a libunilib.a libmd5.a $(lua_socketlibs)
 
 
-harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a libluaffi.a libluapplib.a $(LUA_LIBS) $(harftex_postldadd)
+harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a libluaffi.a libluapplib.a libluaharfbuzz.a
+harftex_LDADD += $(LUA_LIBS) $(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(ICU_LIBS) $(ICU_LIBS_EXTRA) $(luatex_postldadd)
 
 harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libmd5.a
 harftex_DEPENDENCIES = $(harftex_depend) libharftex.a

@@ -8,7 +8,7 @@
 ##
 EXTRA_LIBRARIES += libharftex.a
 
-libharftex_a_DEPENDENCIES = libff.a libluamisc.a
+libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
 
 libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES)
 libharftex_a_preflags += -I$(srcdir)/libmd5
@@ -33,7 +33,7 @@ nodist_libharftex_a_SOURCES = \
 	$(nodist_libharftex_sources)
 
 ## mplib "stub" backends are in mplibstuff.c
-$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a
+$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
 
 
 nodist_libharftex_sources =

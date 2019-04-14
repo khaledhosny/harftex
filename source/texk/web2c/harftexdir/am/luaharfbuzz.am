@@ -1,0 +1,71 @@
+## texk/web2c/harftexdir/am/luaharfbuzz.am: Makefile fragment for luaharfbuzz.
+##
+## Copyright (C) 2019 HarfTeX team
+## You may freely use, modify and/or distribute this file.
+
+## luafontforge
+##
+EXTRA_LIBRARIES += libluaharfbuzz.a
+
+libluaharfbuzz_a_DEPENDENCIES = $(HARFBUZZ_DEPEND) $(GRAPHITE2_DEPEND) $(ICU_DEPEND)
+
+$(libluaharfbuzz_a_OBJECTS): $(LUA_DEPEND)
+
+libluaharfbuzz_a_CPPFLAGS = $(AM_CPPFLAGS) $(LUA_INCLUDES) $(ICU_INCLUDES) $(HARFBUZZ_INCLUDES) $(GRAPHITE2_INCLUDES)
+
+libluaharfbuzz_a_CFLAGS = # $(WARNING_CFLAGS)
+
+libluaharfbuzz_a_SOURCES = \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/buffer.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/class_utils.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/direction.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/face.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/feature.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/font.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/language.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/luaharfbuzz.h \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/ot.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/script.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c \
+	harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
+
+
+
+## Not used
+##
+EXTRA_DIST += \
+	harftexdir/luaharfbuzz/docs/examples/core_types.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/custom_callbacks.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/harfbuzz_setup.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/ot_font_loader.lua.html \
+	harftexdir/luaharfbuzz/docs/examples/package_path_searcher.lua.html \
+	harftexdir/luaharfbuzz/docs/index.html \
+	harftexdir/luaharfbuzz/docs/ldoc.css \
+	harftexdir/luaharfbuzz/examples/core_types.lua \
+	harftexdir/luaharfbuzz/fixtures/amiri-regular_123.json \
+	harftexdir/luaharfbuzz/fixtures/amiri-regular_123_numr.json \
+	harftexdir/luaharfbuzz/fixtures/AppleGothic_korean_issue_22.json \
+	harftexdir/luaharfbuzz/fixtures/notonastaliq_U06CC_U06C1.json \
+	harftexdir/luaharfbuzz/fonts/amiri-regular.ttf \
+	harftexdir/luaharfbuzz/fonts/notonastaliq.ttf \
+	harftexdir/luaharfbuzz/fonts/Rajdhani-Regular.ttf \
+	harftexdir/luaharfbuzz/scripts/generate_harfbuzz_api_list.sh \
+	harftexdir/luaharfbuzz/scripts/generate_hb_shape_json.sh \
+	harftexdir/luaharfbuzz/spec/buffer_spec.lua \
+	harftexdir/luaharfbuzz/spec/harfbuzz_spec.lua \
+	harftexdir/luaharfbuzz/spec/shaping_spec.lua \
+	harftexdir/luaharfbuzz/src/harfbuzz.lua \
+	harftexdir/luaharfbuzz/src/harfbuzz.luadoc \
+	harftexdir/luaharfbuzz/status/done.txt \
+	harftexdir/luaharfbuzz/status/full_api.txt \
+	harftexdir/luaharfbuzz/config.ld \
+	harftexdir/luaharfbuzz/LICENSE \
+	harftexdir/luaharfbuzz/luaharfbuzz-1.0.0-1.rockspec \
+	harftexdir/luaharfbuzz/luaharfbuzz-scm-1.rockspec \
+	harftexdir/luaharfbuzz/Makefile \
+	harftexdir/luaharfbuzz/README.md \
+	harftexdir/luaharfbuzz/README-win.md \
+	harftexdir/luaharfbuzz/THANKS
+
