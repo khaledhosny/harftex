@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/khaledhosny/harftex.svg?branch=harftex)](https://travis-ci.org/khaledhosny/harftex)
+
 HarfTeX
 =======
 
@@ -7,15 +9,8 @@ small changes to LuaTeX.
 Building
 --------
 
-To generate the build scripts after freshly cloning the repository (requires
-autoconf, automake and possibly other autotools packages):
-
-    $ cd source
-    $ ./reautoconf
-    $ cd -
-
-Then run the build script from the top level directory (see the comment at the
-op of the script for a list of the options it take):
+Run the build script from the top level directory (see the comment at the op of
+the script for a list of the options it take):
 
     $ ./build.sh
 
