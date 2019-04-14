@@ -287,24 +287,6 @@ static void set_glyph_unicode(char *s, glyph_unicode_entry * gp)
     }
 }
 
-/*
-static void set_cid_glyph_unicode(long index, glyph_unicode_entry * gp, internal_font_number f)
-{
-    char *s;
-    if (font_tounicode(f)) {
-        if ((s = get_charinfo_tounicode(char_info(f, (int) index))) != NULL) {
-            gp->code = UNI_EXTRA_STRING;
-            gp->unicode_seq = xstrdup(s);
-        } else {
-            // No fall back as we're providing them ourselves.
-        }
-    } else {
-        // Fall back
-        gp->code = index;
-    }
-}
-*/
-
 int write_tounicode(PDF pdf, char **glyph_names, char *name)
 {
     char buf[SMALL_BUF_SIZE], *p;
@@ -527,7 +509,7 @@ int write_cid_tounicode(PDF pdf, fo_entry * fo, internal_font_number f)
                         */
                         if (font_tounicode(k)) {
                             tu = 1; /*tex no fallback to index */
-                            if ((s = get_charinfo_tounicode(char_info(k, (int) i))) != NULL) {
+                            if ((s = char_tounicode(k, i)) != NULL) {
                                 gtab[j].code = UNI_EXTRA_STRING;
                                 gtab[j].unicode_seq = xstrdup(s);
                             }
@@ -538,7 +520,7 @@ int write_cid_tounicode(PDF pdf, fo_entry * fo, internal_font_number f)
                         */
                         if (k != f && gtab[j].code == UNI_UNDEF && font_tounicode(f)) {
                             tu = 1; /*tex no fallback to index */
-                            if ((s = get_charinfo_tounicode(char_info(f, (int) i))) != NULL) {
+                            if ((s = char_tounicode(f, i)) != NULL) {
                                 gtab[j].code = UNI_EXTRA_STRING;
                                 gtab[j].unicode_seq = xstrdup(s);
                             }

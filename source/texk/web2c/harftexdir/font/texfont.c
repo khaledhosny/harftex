@@ -927,6 +927,17 @@ extinfo *get_charinfo_hor_variants(charinfo * ci)
 }
 
 
+char *char_tounicode(internal_font_number f, int c)
+{
+    charinfo *ci = char_info(f, c);
+    if (ci->tounicode == NULL) {
+        int callback_id = callback_defined(get_char_tounicode_callback);
+        if (callback_id)
+            run_callback(callback_id, "dd->R", f, c, &ci->tounicode);
+    }
+    return ci->tounicode;
+}
+
 scaled char_width(internal_font_number f, int c)
 {
     charinfo *ci = char_info(f, c);

@@ -84,6 +84,7 @@ static const char *const callbacknames[] = {
     "page_objnum_provider",
     "make_extensible",
     "process_pdf_image_content",
+    "get_char_tounicode",
     NULL
 };
 
