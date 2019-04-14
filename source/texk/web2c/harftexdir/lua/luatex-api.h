@@ -48,14 +48,8 @@ extern void fix_o_mode(void);
 #  include "lua.h"
 #  include "lauxlib.h"
 #  include "lualib.h"
-#ifdef LuajitTeX
-#  include "luajit.h"
-#  define MyName "LuajitTeX"
-#  define my_name "luajittex"
-#else
-#  define MyName "LuaTeX"
-#  define my_name "luatex"
-#endif
+#  define MyName "HarfTeX"
+#  define my_name "harftex"
 
 #ifdef __cplusplus
 extern "C" {
