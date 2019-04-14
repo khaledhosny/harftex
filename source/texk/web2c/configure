@@ -774,6 +774,8 @@ PMP_FALSE
 PMP_TRUE
 MP_FALSE
 MP_TRUE
+HARFTEX_FALSE
+HARFTEX_TRUE
 LUAJITTEX_FALSE
 LUAJITTEX_TRUE
 LUATEX53_FALSE
@@ -1009,6 +1011,7 @@ enable_pdftex_synctex
 enable_luatex
 enable_luatex53
 enable_luajittex
+enable_harftex
 enable_mp
 enable_pmp
 enable_upmp
@@ -1740,6 +1743,7 @@ Optional Features:
   --disable-luatex        do not compile and install LuaTeX
   --disable-luatex53      do not compile and install LuaTeX53
   --disable-luajittex     do not compile and install LuaJITTeX
+  --disable-harftex       do not compile and install HarfTeX
   --disable-mp            do not compile and install MetaPost
   --disable-pmp           do not compile and install pMetaPost
   --disable-upmp          do not compile and install upMetaPost
@@ -18805,6 +18809,22 @@ test "x$enable_web2c:$enable_luajittex" = xyes:yes && {
   need_zziplib=yes
   need_luajit=yes
 }
+# Check whether --enable-harftex was given.
+if test "${enable_harftex+set}" = set; then :
+  enableval=$enable_harftex;
+fi
+case $enable_harftex in #(
+  yes | no) :
+     ;; #(
+  *) :
+    enable_harftex=yes ;;
+esac
+
+test "x$enable_web2c:$enable_harftex" = xyes:yes && {
+  need_libpng=yes
+  need_zziplib=yes
+  need_lua53=yes
+}
 # Check whether --enable-mp was given.
 if test "${enable_mp+set}" = set; then :
   enableval=$enable_mp;
@@ -21353,6 +21373,13 @@ fi
 else
   LUAJITTEX_TRUE='#'
   LUAJITTEX_FALSE=
+fi
+ if test "x$enable_harftex" = xyes; then
+  HARFTEX_TRUE=
+  HARFTEX_FALSE='#'
+else
+  HARFTEX_TRUE='#'
+  HARFTEX_FALSE=
 fi
  if test "x$enable_mp" = xyes; then
   MP_TRUE=
@@ -26520,6 +26547,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${LUAJITTEX_TRUE}" && test -z "${LUAJITTEX_FALSE}"; then
   as_fn_error $? "conditional \"LUAJITTEX\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HARFTEX_TRUE}" && test -z "${HARFTEX_FALSE}"; then
+  as_fn_error $? "conditional \"HARFTEX\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${MP_TRUE}" && test -z "${MP_FALSE}"; then

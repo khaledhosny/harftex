@@ -1,15 +1,7 @@
-language: generic
+language: c++
 
-
-sudo: required
-services: docker
-
-# Avoid timestamping issues
-before_script:
-  - find . -name \*.info -exec touch '{}' \;
-  - touch ./source/texk/web2c/web2c/web2c-lexer.c
-  - touch ./source/texk/web2c/web2c/web2c-parser.c
-  - touch ./source/texk/web2c/web2c/web2c-parser.h
+git:
+  depth: 10
 
 env:
   global:
@@ -18,65 +10,31 @@ env:
 matrix:
   include:
     - os: linux
-      env: package=luatex-bin-x86_64.tar.gz
-      script: |
-        docker run \
-        -e JOBS_IF_PARALLEL="${JOBS_IF_PARALLEL}" \
-        -v ${TRAVIS_BUILD_DIR}:/luatex -w /luatex \
-        -it debian:jessie sh -c \
-        "apt-get update; apt-get install -y --no-install-recommends bash gcc g++ make; ./build.sh --parallel --jit"
-    - os: linux
-      env: package=luatex-bin-i386.tar.gz
-      script: |
-        docker run \
-        -e JOBS_IF_PARALLEL="${JOBS_IF_PARALLEL}" \
-        -v ${TRAVIS_BUILD_DIR}:/luatex -w /luatex \
-        -it i386/debian:jessie sh -c \
-        "apt-get update; apt-get install -y --no-install-recommends bash gcc g++ make; ./build.sh --parallel --jit"
-    - os: linux
-      env: package=luatex-bin-arm32v7.tar.gz
-      install:
-        - sudo apt-get install -y binfmt-support qemu-user-static
-        - update-binfmts --display
-        - sudo update-binfmts --enable qemu-arm
-      script: |
-        docker run \
-        -e JOBS_IF_PARALLEL="${JOBS_IF_PARALLEL}" \
-        -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static \
-        -v ${TRAVIS_BUILD_DIR}:/luatex -w /luatex \
-        -it arm32v7/debian:jessie sh -c \
-        "apt-get update; apt-get install -y --no-install-recommends bash gcc g++ make; ./build.sh --parallel --jit"
-    - os: linux
-      env: package=luatex-bin-x86_64-musl.tar.gz
-      script: |
-        docker run \
-        -e JOBS_IF_PARALLEL="${JOBS_IF_PARALLEL}" \
-        -v ${TRAVIS_BUILD_DIR}:/luatex -w /luatex \
-        -it alpine:3.1 sh -c \
-        "apk update; apk add --no-progress bash gcc g++ make; ./build.sh --parallel --jit"
     - os: osx
-      env: package=luatex-bin-x86_64-osx.tar.gz
-      script: ./build.sh --parallel --jit
 
-  # ARM build tends to run out of time.
-  allow_failures:
-    - env: package=luatex-bin-arm32v7.tar.gz
+# Avoid timestamping issues
+before_script:
+  - find . -name \*.info -exec touch '{}' \;
+  - touch ./source/texk/web2c/web2c/web2c-lexer.c
+  - touch ./source/texk/web2c/web2c/web2c-parser.c
+  - touch ./source/texk/web2c/web2c/web2c-parser.h
+
+script:
+  - ./build.sh --parallel
 
 before_deploy:
-  - if [ -n "$package" ]; then tar czvf ${package} -C build/texk/web2c luajittex luatex ; fi
-  - export LUATEX_VERSION=`grep luatex_version_string source/texk/web2c/luatexdir/luatex.c | cut -d '"' -f 2`
-  - export LUATEX_SVN_REVISION=`grep -Eo "[0-9]+" source/texk/web2c/luatexdir/luatex_svnversion.h`
+  - tar czvf harftex-bin-x86_64-${TRAVIS_OS_NAME}.tar.gz -C build/texk/web2c harftex
+  - export VERSION=`grep luatex_version_string source/texk/web2c/harftexdir/luatex.c | cut -d '"' -f 2`
   - git config --local user.name "Travis CI"
   - git config --local user.email "https://travis-ci.org/"
-  - git tag -f "${LUATEX_VERSION}-svn${LUATEX_SVN_REVISION}"
+  - git tag -f "${VERSION}-git"$(git rev-parse --short ${TRAVIS_COMMIT})
 
 deploy:
   provider: releases
-  api_key: $GH_TOKEN
-  file: $package
+  api_key:
+    secure: Bbr/7B8wjDyVrzFq4dBUJbfKawfctNGNkB7OZcKtCFLETnnHZi9nk8fYDlqmQQP30lZOLFWAkgnAbd8ZK81Bgr65Wq5ziHRvYG2hc4BsDk+2yArntkG+q+h2b4KiVgYeu9ThLYCVUHtT4zgD4BEEf9V0gmMK5UiWushdXPRnCkz1EgFlYD52b+u/qN5BBIWuWTTKoHdR3aJMc7H1s1lXz3UI63ZiUeH8BkxOOZI1llg0nh3o+Rnzpp7E+fO0TsdXFWKwKJLHhetShBF+V8LiA+BmR2GIfEbVg8H/471Hey4pWDosOq1+EUGmFfqewZnOoOriou7f16Rc/vRqU1TVoPbZzOgi4LWjgweCoGZqEbe3y6RxIevFSf3UcCQD6qFnvQQEicXvxlLa7zUm9SHHthbeL+4jwK4t0cDPCC4xbwYJYXbQEPtYKyUwG71jpx9YCatesOwgqqztnmpIYeUDesobC1xtwZCqbAAL8P4jC4UtM0RZ92XsRPpgBVTaHBq2aMF6R//E8pxQ9pHp+HAaFaQ2EcMLxX/hVk5eeY7IRObmJcwK+qDqTi83WyyKn6SwyPemwse89b5TG4AXIYDDHQq8L+WqA9vozW82cwpN/HO9BdERP/f2L620MiRLE4DEoKNnnVnDdUpu7P+MKxujJtG6uf0yt3WLKhlMjUomWHU=
+  file: harftex-bin-x86_64-${TRAVIS_OS_NAME}.tar.gz
   skip_cleanup: true
   on:
-    branch: trunk
-    overwrite: true
-    tags: false
-    condition: $package != ""
+    repo: khaledhosny/harftex
+    branch: harftex

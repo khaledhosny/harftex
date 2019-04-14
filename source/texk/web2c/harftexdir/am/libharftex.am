@@ -1,0 +1,303 @@
+## texk/web2c/harftexdir/am/libharftex.am: Makefile fragment for libharftex.
+##
+## Copyright (C) 2019 HarfTeX team
+## Copyright (C) 2009-2015 Peter Breitenlohner <tex-live@tug.org>
+## You may freely use, modify and/or distribute this file.
+
+## libharftex
+##
+EXTRA_LIBRARIES += libharftex.a
+
+libharftex_a_DEPENDENCIES = libff.a libluamisc.a
+
+libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES)
+libharftex_a_preflags += -I$(srcdir)/libmd5
+libharftex_a_preflags += -DpdfTeX -I$(srcdir)/harftexdir
+libharftex_a_preflags += -I$(srcdir)/luatexdir
+libharftex_a_preflags += -I$(srcdir)/luatexdir/unilib
+libharftex_a_preflags += -I$(srcdir)/luatexdir/luapplib/util
+libharftex_a_preflags += -I$(srcdir)/luatexdir/luafontloader/fontforge/inc
+libharftex_a_preflags += -DLUA_FF_LIB=1 -I$(srcdir)/luatexdir/luafontloader/fontforge/fontforge
+libharftex_a_preflags += -DSYNCTEX_ENGINE_H='<synctex-luatex.h>' -I$(srcdir)/synctexdir
+
+libharftex_a_CPPFLAGS = $(libharftex_a_preflags) $(LUA_INCLUDES)
+
+libharftex_a_CXXFLAGS = $(WARNING_CXXFLAGS)
+
+dist_libharftex_a_SOURCES = \
+	harftexdir/lua/lstrlibext.c \
+	harftexdir/lua/helpers.c \
+	harftexdir/lua/texluac.c
+nodist_libharftex_a_SOURCES = \
+	$(dist_libharftex_sources) \
+	$(nodist_libharftex_sources)
+
+## mplib "stub" backends are in mplibstuff.c
+$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a
+
+
+nodist_libharftex_sources =
+
+## from harftexdir
+##
+dist_libharftex_sources = \
+	harftexdir/harftexcallbackids.h \
+	harftexdir/harftex.h \
+	harftexdir/harftex-common.h \
+	harftexdir/ptexlib.h
+
+## from luatexdir/luafontloader/src
+##
+dist_libharftex_sources += \
+        luatexdir/luafontloader/src/ffdummies.c \
+        luatexdir/luafontloader/src/ffdummies.h \
+        luatexdir/luafontloader/src/luafflib.c
+
+## from harftexdir/dvi
+##
+dist_libharftex_sources += \
+	harftexdir/dvi/dvigen.h \
+	harftexdir/dvi/dvigen.c
+
+## from harftexdir/font
+##
+dist_libharftex_sources += \
+	harftexdir/font/luatexfont.h \
+	harftexdir/font/mapfile.h \
+	harftexdir/font/sfnt.h \
+	harftexdir/font/texfont.h \
+	harftexdir/font/tt_glyf.h \
+	harftexdir/font/tt_table.h \
+	harftexdir/font/writecff.h \
+	harftexdir/font/writettf.h \
+	harftexdir/font/dofont.c \
+	harftexdir/font/luafont.c \
+	harftexdir/font/mapfile.c \
+	harftexdir/font/pkin.c \
+	harftexdir/font/sfnt.c \
+	harftexdir/font/texfont.c \
+	harftexdir/font/tfmofm.c \
+	harftexdir/font/tounicode.c \
+	harftexdir/font/tt_glyf.c \
+	harftexdir/font/tt_table.c \
+	harftexdir/font/vfovf.c \
+	harftexdir/font/vfpacket.c \
+	harftexdir/font/writecff.c \
+	harftexdir/font/writeenc.c \
+	harftexdir/font/writefont.c \
+	harftexdir/font/writet1.c \
+	harftexdir/font/writet3.c \
+	harftexdir/font/writettf.c \
+	harftexdir/font/writetype0.c \
+	harftexdir/font/writetype2.c
+
+
+## from harftexdir/image
+##
+dist_libharftex_sources += \
+	harftexdir/image/epdf.h \
+	harftexdir/image/image.h \
+	harftexdir/image/pdftoepdf.h \
+	harftexdir/image/writeimg.h \
+	harftexdir/image/writejbig2.h \
+	harftexdir/image/writejpg.h \
+	harftexdir/image/writejp2.h \
+	harftexdir/image/writepng.h \
+	harftexdir/image/pdftoepdf.c \
+	harftexdir/image/writeimg.c \
+	harftexdir/image/writejbig2.c \
+	harftexdir/image/writejp2.c \
+	harftexdir/image/writejpg.c \
+	harftexdir/image/writepng.c
+
+## from harftexdir/lang
+##
+dist_libharftex_sources += \
+	harftexdir/lang/hnjalloc.h \
+	harftexdir/lang/hyphen.h \
+	harftexdir/lang/texlang.h \
+	harftexdir/lang/hnjalloc.c \
+	harftexdir/lang/hyphen.c \
+	harftexdir/lang/texlang.c
+
+## from harftexdir/lua
+##
+dist_libharftex_sources += \
+	harftexdir/lua/lcallbacklib.c \
+	harftexdir/lua/lfontlib.c \
+	harftexdir/lua/limglib.c \
+	harftexdir/lua/lpdfelib.c \
+	harftexdir/lua/lpdfscannerlib.c \
+	harftexdir/lua/lkpselib.c \
+	harftexdir/lua/llanglib.c \
+	harftexdir/lua/llualib.c \
+	harftexdir/lua/lnodelib.c \
+	harftexdir/lua/liolibext.c \
+	harftexdir/lua/loslibext.c \
+	harftexdir/lua/lpdflib.c \
+	harftexdir/lua/lstatslib.c \
+	harftexdir/lua/ltexiolib.c \
+	harftexdir/lua/ltexlib.c \
+	harftexdir/lua/lnewtokenlib.c \
+	harftexdir/lua/luatex-api.h \
+	harftexdir/lua/luatex-core.c \
+	harftexdir/lua/helpers.c \
+	harftexdir/lua/luainit.c \
+	harftexdir/lua/luanode.c \
+	harftexdir/lua/luastuff.c \
+	harftexdir/lua/luatoken.c \
+	harftexdir/lua/mplibstuff.c
+
+
+
+## from harftexdir/pdf
+##
+dist_libharftex_sources += \
+	harftexdir/pdf/pdfpagetree.h \
+	harftexdir/pdf/pdfaction.h \
+	harftexdir/pdf/pdfannot.h \
+	harftexdir/pdf/pdfcolorstack.h \
+	harftexdir/pdf/pdfdest.h \
+	harftexdir/pdf/pdffont.h \
+	harftexdir/pdf/pdfgen.h \
+	harftexdir/pdf/pdfglyph.h \
+	harftexdir/pdf/pdfimage.h \
+	harftexdir/pdf/pdflink.h \
+	harftexdir/pdf/pdflistout.h \
+	harftexdir/pdf/pdfliteral.h \
+	harftexdir/pdf/pdfobj.h \
+	harftexdir/pdf/pdfoutline.h \
+	harftexdir/pdf/pdfpage.h \
+	harftexdir/pdf/pdfrule.h \
+	harftexdir/pdf/pdfsaverestore.h \
+	harftexdir/pdf/pdfsetmatrix.h \
+	harftexdir/pdf/pdfshipout.h \
+	harftexdir/pdf/pdftables.h \
+	harftexdir/pdf/pdfthread.h \
+	harftexdir/pdf/pdftypes.h \
+	harftexdir/pdf/pdfxform.h \
+	harftexdir/pdf/pdfaction.c \
+	harftexdir/pdf/pdfannot.c \
+	harftexdir/pdf/pdfcolorstack.c \
+	harftexdir/pdf/pdfdest.c \
+	harftexdir/pdf/pdffont.c \
+	harftexdir/pdf/pdfgen.c \
+	harftexdir/pdf/pdfglyph.c \
+	harftexdir/pdf/pdfimage.c \
+	harftexdir/pdf/pdflink.c \
+	harftexdir/pdf/pdflistout.c \
+	harftexdir/pdf/pdfliteral.c \
+	harftexdir/pdf/pdfobj.c \
+	harftexdir/pdf/pdfoutline.c \
+	harftexdir/pdf/pdfpage.c \
+	harftexdir/pdf/pdfpagetree.c \
+	harftexdir/pdf/pdfrule.c \
+	harftexdir/pdf/pdfsaverestore.c \
+	harftexdir/pdf/pdfsetmatrix.c \
+	harftexdir/pdf/pdfshipout.c \
+	harftexdir/pdf/pdftables.c \
+	harftexdir/pdf/pdfthread.c \
+	harftexdir/pdf/pdfxform.c
+
+## from harftexdir/tex
+##
+dist_libharftex_sources += \
+	harftexdir/tex/align.h \
+	harftexdir/tex/arithmetic.h \
+	harftexdir/tex/backend.h \
+	harftexdir/tex/backend.c \
+	harftexdir/tex/buildpage.h \
+	harftexdir/tex/commands.h \
+	harftexdir/tex/conditional.h \
+	harftexdir/tex/directions.h \
+	harftexdir/tex/dumpdata.h \
+	harftexdir/tex/equivalents.h \
+	harftexdir/tex/errors.h \
+	harftexdir/tex/expand.h \
+	harftexdir/tex/extensions.h \
+	harftexdir/tex/filename.h \
+	harftexdir/tex/inputstack.h \
+	harftexdir/tex/linebreak.h \
+	harftexdir/tex/mainbody.h \
+	harftexdir/tex/maincontrol.h \
+	harftexdir/tex/mathcodes.h \
+	harftexdir/tex/memoryword.h \
+	harftexdir/tex/mlist.h \
+	harftexdir/tex/nesting.h \
+	harftexdir/tex/packaging.h \
+	harftexdir/tex/postlinebreak.h \
+	harftexdir/tex/primitive.h \
+	harftexdir/tex/printing.h \
+	harftexdir/tex/scanning.h \
+	harftexdir/tex/stringpool.h \
+	harftexdir/tex/texdeffont.h \
+	harftexdir/tex/texfileio.h \
+	harftexdir/tex/texmath.h \
+	harftexdir/tex/texnodes.h \
+	harftexdir/tex/textcodes.h \
+	harftexdir/tex/textoken.h \
+	harftexdir/tex/align.c \
+	harftexdir/tex/arithmetic.c \
+	harftexdir/tex/buildpage.c \
+	harftexdir/tex/commands.c \
+	harftexdir/tex/conditional.c \
+	harftexdir/tex/directions.c \
+	harftexdir/tex/dumpdata.c \
+	harftexdir/tex/equivalents.c \
+	harftexdir/tex/errors.c \
+	harftexdir/tex/expand.c \
+	harftexdir/tex/extensions.c \
+	harftexdir/tex/filename.c \
+	harftexdir/tex/inputstack.c \
+	harftexdir/tex/linebreak.c \
+	harftexdir/tex/mainbody.c \
+	harftexdir/tex/maincontrol.c \
+	harftexdir/tex/mathcodes.c \
+	harftexdir/tex/memoryword.c \
+	harftexdir/tex/mlist.c \
+	harftexdir/tex/nesting.c \
+	harftexdir/tex/packaging.c \
+	harftexdir/tex/postlinebreak.c \
+	harftexdir/tex/primitive.c \
+	harftexdir/tex/printing.c \
+	harftexdir/tex/scanning.c \
+	harftexdir/tex/stringpool.c \
+	harftexdir/tex/texdeffont.c \
+	harftexdir/tex/texfileio.c \
+	harftexdir/tex/texmath.c \
+	harftexdir/tex/texnodes.c \
+	harftexdir/tex/textcodes.c \
+	harftexdir/tex/textoken.c
+
+
+## from harftexdir/utils
+##
+dist_libharftex_sources += \
+	harftexdir/utils/avl.c \
+	harftexdir/utils/avl.h \
+	harftexdir/utils/avlstuff.h \
+	harftexdir/utils/managed-sa.h \
+	harftexdir/utils/utils.h \
+	harftexdir/utils/unistring.h \
+	harftexdir/utils/avlstuff.c \
+	harftexdir/utils/managed-sa.c \
+	harftexdir/utils/unistring.c \
+	harftexdir/utils/utils.c
+
+## from ../synctexdir
+##
+dist_libharftex_sources += \
+	synctexdir/synctex-common.h \
+	synctexdir/synctex-luatex.h \
+	synctexdir/synctex.c \
+	synctexdir/synctex.h
+
+EXTRA_DIST += \
+	$(dist_libharftex_sources)
+
+DISTCLEANFILES += $(nodist_libharftex_sources)
+
+EXTRA_DIST += \
+	harftexdir/ChangeLog \
+	harftexdir/NEWS \
+	harftexdir/font/subfont.txt

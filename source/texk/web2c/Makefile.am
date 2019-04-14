@@ -240,6 +240,10 @@ include $(srcdir)/luatexdir/am/luaffi.am
 include $(srcdir)/luatexdir/am/luapplib.am 
 include $(srcdir)/luatexdir/am/luatex.am
 
+## HarfTeX
+include $(srcdir)/harftexdir/am/libharftex.am
+include $(srcdir)/harftexdir/am/harftex.am
+
 ## XeTeX
 include $(srcdir)/xetexdir/am/xetex.am
 

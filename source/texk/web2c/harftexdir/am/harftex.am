@@ -1,0 +1,97 @@
+## texk/web2c/harftexdir/am/harftex.am: Makefile fragment for HarfTeX.
+##
+## Copyright (C) 2019 HarfTeX team
+## Copyright (C) 2015-2018 LuaTeX team
+## Copyright (C) 2009-2015 Peter Breitenlohner <tex-live@tug.org>
+## You may freely use, modify and/or distribute this file.
+
+## HarfTeX
+##
+if HARFTEX
+bin_PROGRAMS += harftex
+if WIN32
+noinst_PROGRAMS += call_harftex
+install_exe_links += install-harftex-links
+uninstall_exe_links += uninstall-harftex-links
+endif WIN32
+endif HARFTEX
+
+EXTRA_PROGRAMS += harftex
+
+# Force Automake to use CXXLD for linking
+#nodist_EXTRA_harftex_SOURCES = dummy.cxx
+
+harftex_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES)
+harftex_postflags = -I$(srcdir)/libmd5 -DpdfTeX -I$(srcdir)/harftexdir -I$(srcdir)/mplibdir
+harftex_postflags += -Dextra_version_info=`date +-%Y%m%d%H`
+harftex_postflags += -I$(srcdir)/synctexdir -DSYNCTEX_ENGINE_H='<synctex-luatex.h>'
+
+harftex_CPPFLAGS = $(harftex_preflags) $(LUA_INCLUDES) $(harftex_postflags)
+
+harftex_CXXFLAGS = $(WARNING_CXXFLAGS)
+
+harftex_LDFLAGS = -export-dynamic
+
+harftex_postldadd = libmplibcore.a
+harftex_postldadd += $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) $(ZLIB_LIBS)
+harftex_postldadd += $(LDADD) libmputil.a libunilib.a libmd5.a $(lua_socketlibs)
+
+
+harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a libluaffi.a libluapplib.a $(LUA_LIBS) $(harftex_postldadd)
+
+harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libmd5.a
+harftex_DEPENDENCIES = $(harftex_depend) libharftex.a
+
+$(harftex_OBJECTS): libharftex.a
+
+nodist_harftex_SOURCES = $(harftex_sources)
+
+
+harftex_sources = \
+	harftexdir/luatex_svnversion.h \
+	harftexdir/luatex.c \
+	harftexdir/luatex.h \
+	mplibdir/lmplib.c
+
+EXTRA_DIST += \
+	$(harftex_sources)
+
+call_harftex_CPPFLAGS = -DEXEPROG=\"harftex.exe\"
+nodist_call_harftex_SOURCES = callexe.c
+call_harftex_LDADD =
+
+.PHONY: install-harftex-links uninstall-harftex-links
+
+if WIN32
+if MINGW32
+install-harftex-links: .libs/harftex$(EXEEXT)
+	$(INSTALL_PROGRAM) .libs/harftex$(EXEEXT) $(DESTDIR)$(bindir)/texlua$(EXEEXT)
+	$(INSTALL_PROGRAM) .libs/harftex$(EXEEXT) $(DESTDIR)$(bindir)/texluac$(EXEEXT)
+uninstall-harftex-links:
+	rm -f $(DESTDIR)$(bindir)/texlua$(EXEEXT)
+	rm -f $(DESTDIR)$(bindir)/texluac$(EXEEXT)
+else !MINGW32
+install-harftex-links: call_harftex$(EXEEXT)
+	$(INSTALL_PROGRAM) call_harftex$(EXEEXT) $(DESTDIR)$(bindir)/texlua$(EXEEXT)
+	$(INSTALL_PROGRAM) call_harftex$(EXEEXT) $(DESTDIR)$(bindir)/texluac$(EXEEXT)
+uninstall-harftex-links:
+	rm -f $(DESTDIR)$(bindir)/texlua$(EXEEXT)
+	rm -f $(DESTDIR)$(bindir)/texluac$(EXEEXT)
+endif !MINGW32
+endif WIN32
+
+# HarfTeX
+#
+harftex_tests = harftexdir/luatex.test harftexdir/luaimage.test
+harftexdir/luatex.log harftexdir/luaimage.log: harftex$(EXEEXT)
+
+EXTRA_DIST += $(harftex_tests)
+
+if HARFTEX
+TESTS += $(harftex_tests)
+endif HARFTEX
+
+## luaimage.test
+EXTRA_DIST += harftexdir/tests/luaimage.tex \
+	tests/1-4.jpg tests/B.pdf tests/basic.tex tests/lily-ledger-broken.png
+DISTCLEANFILES += luaimage.*

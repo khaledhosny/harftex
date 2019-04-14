@@ -38,6 +38,7 @@ m4_define([kpse_tex_progs], [dnl
 [[luatex],    [yes], [],    [LuaTeX],     [libpng zziplib lua52]],
 [[luatex53],  [yes], [],    [LuaTeX53],   [libpng zziplib lua53]],
 [[luajittex], [yes], [],    [LuaJITTeX],  [libpng zziplib luajit]],
+[[harftex],   [yes], [],    [HarfTeX],    [libpng zziplib lua53]],
 [[mp],        [yes], [],    [MetaPost],   [mpfr cairo libpng]],
 [[pmp],       [yes], [],    [pMetaPost],  [mpfr cairo libpng ptexenc]],
 [[upmp],      [yes], [],    [upMetaPost], [mpfr cairo libpng ptexenc]],
