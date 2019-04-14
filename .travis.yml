@@ -1,5 +1,7 @@
 language: c++
 
+cache: ccache
+
 git:
   depth: 10
 
@@ -12,6 +14,13 @@ matrix:
   include:
     - os: linux
     - os: osx
+      install:
+        - export PATH="/usr/local/opt/ccache/libexec:$PATH"
+
+addons:
+  homebrew:
+    packages:
+      - ccache
 
 # Avoid timestamping issues
 before_script:
