@@ -247,8 +247,6 @@ extern char *luanames[];
 extern int ff_get_ttc_index(char *ffname, char *psname);        /* luafontloader/src/luafflib.c */
 extern int ff_createcff(char *, unsigned char **, int *);       /* luafontloader/src/luafflib.c */
 
-extern char *FindResourceTtfFont(char *filename, char *fontname);       /* luafontloader/fontforge/fontforge/macbinary.c */
-
 extern char charsetstr[];       /* from mpdir/psout.w */
 
 #ifndef WIN32
