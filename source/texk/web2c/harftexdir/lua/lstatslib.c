@@ -20,7 +20,6 @@
 
 #include "ptexlib.h"
 #include "lua/luatex-api.h"
-#include "luatex_svnversion.h"
 
 typedef struct statistic {
     const char *name;
@@ -265,7 +264,7 @@ static lua_Number kpse_used_state(void)
 
 static lua_Number get_development_id(void)
 {
-    return (lua_Number) luatex_svn_revision ;
+    return (lua_Number) 0;
 }
 
 static lua_Number get_dvi_gone(void)

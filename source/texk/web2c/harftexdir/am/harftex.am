@@ -49,7 +49,6 @@ nodist_harftex_SOURCES = $(harftex_sources)
 
 
 harftex_sources = \
-	harftexdir/luatex_svnversion.h \
 	harftexdir/luatex.c \
 	harftexdir/luatex.h \
 	mplibdir/lmplib.c

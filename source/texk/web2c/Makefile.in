@@ -5184,7 +5184,6 @@ harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libm
 harftex_DEPENDENCIES = $(harftex_depend) libharftex.a
 nodist_harftex_SOURCES = $(harftex_sources)
 harftex_sources = \
-	harftexdir/luatex_svnversion.h \
 	harftexdir/luatex.c \
 	harftexdir/luatex.h \
 	mplibdir/lmplib.c

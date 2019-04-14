@@ -42,7 +42,6 @@ LuaTeX; if not, see <http://www.gnu.org/licenses/>.
 #include "md5.h"
 
 #include "lua/luatex-api.h"
-#include "luatex_svnversion.h"
 
 #include "png.h"
 #include "mplib.h"
@@ -264,14 +263,12 @@ void initversionstring(char **versions)
         "Compiled with libpng %s; using %s\n"
         "Compiled with %s\n" /* Lua or LuaJIT */
         "Compiled with mplib version %s\n"
-        "Compiled with zlib %s; using %s\n"
-        "\nDevelopment id: %s\n";
+        "Compiled with zlib %s; using %s\n";
     size_t len = strlen(fmt)
                + strlen(PNG_LIBPNG_VER_STRING) + strlen(png_libpng_ver)
                + strlen(LUA_VER_STRING)
                + strlen(mp_metapost_version())
                + strlen(ZLIB_VERSION) + strlen(zlib_version)
-               + strlen(STR(luatex_svn_revision))
                + 1;
 
     /*tex
@@ -282,7 +279,7 @@ void initversionstring(char **versions)
     sprintf(*versions, fmt,
                     PNG_LIBPNG_VER_STRING, png_libpng_ver, LUA_VER_STRING,
                     mp_metapost_version(),
-                    ZLIB_VERSION, zlib_version,STR(luatex_svn_revision));
+                    ZLIB_VERSION, zlib_version);
 
 #undef STR2
 #undef STR
