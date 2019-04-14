@@ -10,7 +10,7 @@ EXTRA_LIBRARIES += libharftex.a
 
 libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
 
-libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES)
+libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES) $(HARFBUZZ_INCLUDES)
 libharftex_a_preflags += -I$(srcdir)/libmd5
 libharftex_a_preflags += -DpdfTeX -I$(srcdir)/harftexdir
 libharftex_a_preflags += -I$(srcdir)/luatexdir

@@ -5020,8 +5020,8 @@ luatex_tests = luatexdir/luatex.test luatexdir/luaimage.test
 luajittex_tests = luatexdir/luajittex.test luatexdir/luajitimage.test
 libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
 libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) \
-	$(LIBPNG_INCLUDES) -I$(srcdir)/libmd5 -DpdfTeX \
-	-I$(srcdir)/harftexdir -I$(srcdir)/luatexdir \
+	$(LIBPNG_INCLUDES) $(HARFBUZZ_INCLUDES) -I$(srcdir)/libmd5 \
+	-DpdfTeX -I$(srcdir)/harftexdir -I$(srcdir)/luatexdir \
 	-I$(srcdir)/luatexdir/unilib \
 	-I$(srcdir)/luatexdir/luapplib/util \
 	-I$(srcdir)/luatexdir/luafontloader/fontforge/inc \
