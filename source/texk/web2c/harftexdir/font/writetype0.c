@@ -74,8 +74,12 @@ void writetype0(PDF pdf, fd_entry * fd)
     }
     fd_cur->ff_found = true;
     sfont = sfnt_open(ttf_buffer, ttf_size);
-    if (sfont->type == SFNT_TYPE_TTC)
-        i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
+    if (sfont->type == SFNT_TYPE_TTC) {
+        if (fd->fm->index >= 0)
+            i = fd->fm->index;
+        else
+            i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
+    }
 
     if (is_subsetted(fd_cur->fm)) {
         report_start_file(filetype_subset, cur_file_name);

@@ -89,6 +89,7 @@ typedef struct {
     char *encname;              /* encoding file name */
     char *ff_name;              /* font file name */
     unsigned short type;        /* various flags */
+    int index;                  /* font index in font collection formats */
 } fm_entry;
 
 typedef struct {

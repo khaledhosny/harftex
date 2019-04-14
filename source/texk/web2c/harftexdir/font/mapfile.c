@@ -83,6 +83,7 @@ fm_entry *new_fm_entry(void)
     fm->type = 0;
     fm->slant = 0;
     fm->extend = 1000;
+    fm->index = -1;
     unset_slantset(fm);
     unset_extendset(fm);
     unset_inuse(fm);

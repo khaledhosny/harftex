@@ -460,6 +460,7 @@ int font_to_lua(lua_State * L, int f)
     if (font_encodingname(f) != NULL) {
         dump_stringfield(L,encodingname,font_encodingname(f));
     }
+    dump_intfield(L,index,font_index(f));
     dump_booleanfield(L,used,(font_used(f) ? true : false));
     dump_stringfield(L,type,font_type_strings[font_type(f)]);
     dump_stringfield(L,format,font_format_strings[font_format(f)]);
@@ -1546,6 +1547,8 @@ int font_from_lua(lua_State * L, int f)
     if (font_encodingbytes(f) == 0 && (font_format(f) == opentype_format || font_format(f) == truetype_format)) {
         set_font_encodingbytes(f, 2);
     }
+    i = lua_numeric_field_by_index(L,lua_key_index(index), -1);
+    set_font_index(f, i);
     /*tex Now fetch the base fonts, if needed. */
     count_hash_items(L, fonts, n);
     if (n > 0) {

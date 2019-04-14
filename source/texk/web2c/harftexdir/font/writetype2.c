@@ -237,7 +237,10 @@ boolean make_tt_subset(PDF pdf, fd_entry * fd, unsigned char *buff, int buflen)
     cidtogidmap = NULL;
     sfont = sfnt_open(buff, buflen);
     if (sfont->type == SFNT_TYPE_TTC) {
-        i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
+        if (fd->fm->index >= 0)
+            i = fd->fm->index;
+        else
+            i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
         error = sfnt_read_table_directory(sfont, ttc_read_offset(sfont, (int) i, fd));
     } else {
         error = sfnt_read_table_directory(sfont, 0);

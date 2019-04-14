@@ -190,6 +190,8 @@ typedef struct texfont {
 
     int _pdf_font_num;          /* maps to a PDF resource ID */
     str_number _pdf_font_attr;  /* pointer to additional attributes */
+
+    int _font_index;            /* font index in font collection formats */
 } texfont;
 
 typedef enum {
@@ -384,6 +386,9 @@ boolean cmp_font_area(int, str_number);
 
 #  define pdf_font_attr(a)               font_tables[a]->_pdf_font_attr
 #  define set_pdf_font_attr(a,b)         pdf_font_attr(a) = b
+
+#  define font_index(a)                  font_tables[a]->_font_index
+#  define set_font_index(a,b)            font_index(a) = b
 
 #  define left_boundarychar  -1
 #  define right_boundarychar -2

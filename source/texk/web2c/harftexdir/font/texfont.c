@@ -137,6 +137,7 @@ int new_font(void)
     font_mode(id) = 0;
     /*tex allocate eight values including 0 */
     set_font_params(id, 7);
+    set_font_index(id, -1);
     for (k = 0; k <= 7; k++) {
         set_font_param(id, k, 0);
     }

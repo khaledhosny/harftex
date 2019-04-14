@@ -818,6 +818,7 @@ void do_pdf_font(PDF pdf, internal_font_number f)
         set_slantset(fm);
         fm->extend = font_extend(f);
         set_extendset(fm);
+        fm->index = font_index(f);
         /*tex Flags can perhaps be done better. */
         fm->fd_flags = 4;
         set_inuse(fm);
