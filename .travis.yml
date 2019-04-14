@@ -6,6 +6,7 @@ git:
 env:
   global:
     - JOBS_IF_PARALLEL=2
+    - PACKAGE=harftex-bin-x86_64-${TRAVIS_OS_NAME}.tar.gz
 
 matrix:
   include:
@@ -23,17 +24,13 @@ script:
   - ./build.sh --parallel
 
 before_deploy:
-  - tar czvf harftex-bin-x86_64-${TRAVIS_OS_NAME}.tar.gz -C build/texk/web2c harftex
-  - export VERSION=`grep luatex_version_string source/texk/web2c/harftexdir/luatex.c | cut -d '"' -f 2`
-  - git config --local user.name "Travis CI"
-  - git config --local user.email "https://travis-ci.org/"
-  - git tag -f "${VERSION}-git"$(git rev-parse --short ${TRAVIS_COMMIT})
+  - tar czvf ${PACKAGE} -C build/texk/web2c harftex
 
 deploy:
   provider: releases
   api_key:
     secure: Bbr/7B8wjDyVrzFq4dBUJbfKawfctNGNkB7OZcKtCFLETnnHZi9nk8fYDlqmQQP30lZOLFWAkgnAbd8ZK81Bgr65Wq5ziHRvYG2hc4BsDk+2yArntkG+q+h2b4KiVgYeu9ThLYCVUHtT4zgD4BEEf9V0gmMK5UiWushdXPRnCkz1EgFlYD52b+u/qN5BBIWuWTTKoHdR3aJMc7H1s1lXz3UI63ZiUeH8BkxOOZI1llg0nh3o+Rnzpp7E+fO0TsdXFWKwKJLHhetShBF+V8LiA+BmR2GIfEbVg8H/471Hey4pWDosOq1+EUGmFfqewZnOoOriou7f16Rc/vRqU1TVoPbZzOgi4LWjgweCoGZqEbe3y6RxIevFSf3UcCQD6qFnvQQEicXvxlLa7zUm9SHHthbeL+4jwK4t0cDPCC4xbwYJYXbQEPtYKyUwG71jpx9YCatesOwgqqztnmpIYeUDesobC1xtwZCqbAAL8P4jC4UtM0RZ92XsRPpgBVTaHBq2aMF6R//E8pxQ9pHp+HAaFaQ2EcMLxX/hVk5eeY7IRObmJcwK+qDqTi83WyyKn6SwyPemwse89b5TG4AXIYDDHQq8L+WqA9vozW82cwpN/HO9BdERP/f2L620MiRLE4DEoKNnnVnDdUpu7P+MKxujJtG6uf0yt3WLKhlMjUomWHU=
-  file: harftex-bin-x86_64-${TRAVIS_OS_NAME}.tar.gz
+  file: ${PACKAGE}
   skip_cleanup: true
   on:
     repo: khaledhosny/harftex
