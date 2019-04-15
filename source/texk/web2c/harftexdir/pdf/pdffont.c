@@ -42,10 +42,16 @@ scaled_whd output_one_char(PDF pdf, halfword p)
     int ex_glyph = ex_glyph(p)/1000;
     /*tex The real width, height and depth of the character: */
     scaled_whd ci = get_charinfo_whd(f, c);
-    if (!(char_exists(f,c))) {
-        lua_glyph_not_found_callback(f,c);
-        /*tex Not here |char_warning(f,c);| */
-        return ci;
+    if (!char_supported(p)) {
+        /* Char is not supported by the font, can also mean this is a glyph
+         * index 0 (|.notdef| glyph). */
+        int ch = c;
+        if (glyph_string(p))
+            ch = str2uni(str_string(glyph_string(p)));
+        lua_glyph_not_found_callback(f, ch);
+        /* If char exists (e.g. |.notdef|) we still want to output it to PDF. */
+        if (!char_exists(f, c))
+            return ci;
     }
     ci.wd = ext_xn_over_d(ci.wd, 1000000 + ex_glyph(p), 1000000);
     switch (pdf->posstruct->dir) {

@@ -340,6 +340,29 @@ scaled_whd get_charinfo_whd(internal_font_number f, int c)
     return s;
 }
 
+/* Similar to |char_exists| but also checks if the glyph index is zero for
+ * OpenType/TrueType fonts, as this can be used to insert |.notdef| glyph for
+ * unsupported characters. Only consider nodes that have a glyph string, to
+ * keep the original behaviour otherwise. */
+int char_supported(halfword p)
+{
+    internal_font_number f = font(p);
+    int c = character(p);
+
+    if (f > font_id_maxval)
+        return 0;
+    if (proper_char_index(c)) {
+        if ((font_format(f) == opentype_format ||
+             font_format(f) == truetype_format) &&
+            glyph_string(p)) {
+            charinfo *ci = char_info(f, c);
+            if (ci->index == 0)
+                return 0;
+        }
+    }
+    return char_exists(f, c);
+}
+
 int char_exists(internal_font_number f, int c)
 {
     if (f > font_id_maxval)
