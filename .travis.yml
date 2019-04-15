@@ -8,7 +8,7 @@ git:
 env:
   global:
     - JOBS_IF_PARALLEL=2
-    - PACKAGE=harftex-bin-x86_64-${TRAVIS_OS_NAME}.tar.gz
+    - PACKAGE=harftex-bin-x86_64-${TRAVIS_OS_NAME}-${TRAVIS_TAG}.tar.gz
 
 matrix:
   include:
