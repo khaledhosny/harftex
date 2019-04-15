@@ -1915,7 +1915,7 @@ static int do_convert(lua_State * L, int cur_code)
 
         default:
             /* no backend here */
-            if (cur_code < 32) {
+            if (cur_code < dvi_feedback_code) {
                 texstr = the_convert_string(cur_code, i);
                 if (texstr) {
                     str = makecstring(texstr);
