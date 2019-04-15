@@ -26,6 +26,10 @@ extern int luatex_revision;
 extern const char *luatex_version_string;
 extern const char *engine_name;
 
+extern int harftex_version;
+extern int harftex_revision;
+extern const char *harftex_version_string;
+
 /*
 The following parameters can be changed at compile time to extend or
 reduce \TeX's capacity. They may have different values in \.{INITEX} and
@@ -220,6 +224,9 @@ is conditionally compiled in the C code.
 
 extern int get_luatexversion(void);
 extern str_number get_luatexrevision(void);
+
+extern int get_harftexversion(void);
+extern str_number get_harftexrevision(void);
 
 extern int ready_already;
 

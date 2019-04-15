@@ -295,6 +295,11 @@ int get_luatexversion(void)
     return luatex_version;
 }
 
+int get_harftexversion(void)
+{
+    return harftex_version;
+}
+
 /*tex the number of pages that have been shipped out */
 
 int total_pages = 0;
@@ -306,6 +311,11 @@ int dead_cycles = 0;
 str_number get_luatexrevision(void)
 {
     return luatex_revision;
+}
+
+str_number get_harftexrevision(void)
+{
+    return harftex_revision;
 }
 
 /*tex
@@ -503,7 +513,7 @@ void main_body(void)
     if (bad > 0) {
         goto FINAL_END;
     }
-    print_banner(luatex_version_string);
+    print_banner(harftex_version_string);
     /*tex
         Get the first line of input and prepare to start When we begin the
         following code, \TeX's tables may still contain garbage; the strings

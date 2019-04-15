@@ -3154,6 +3154,11 @@ void conv_toks(void)
             print(get_luatexrevision());
             pop_selector;
             break;
+        case harftex_revision_code:
+            push_selector;
+            print(get_harftexrevision());
+            pop_selector;
+            break;
         case etex_code:
             push_selector;
             tprint(eTeX_version_string);
@@ -3356,6 +3361,9 @@ str_number the_convert_string(halfword c, int i)
             break;
         case luatex_revision_code:
             print(get_luatexrevision());
+            break;
+        case harftex_revision_code:
+            print(get_harftexrevision());
             break;
         case etex_code:
             tprint(eTeX_version_string);

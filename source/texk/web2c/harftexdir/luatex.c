@@ -37,6 +37,10 @@ int luatex_revision = '0';
 const char *luatex_version_string = "1.10.0";
 const char *engine_name = my_name;
 
+int harftex_version = 1;
+int harftex_revision = '0';
+const char *harftex_version_string = "0.1.0";
+
 #include <kpathsea/c-ctype.h>
 #include <kpathsea/line.h>
 #include <kpathsea/readable.h>

@@ -272,6 +272,7 @@ typedef enum {
     format_name_code,           /* command code for \.{\\AlephVersion} */
     luatex_banner_code,         /* command code for \.{\\luatexbanner}: */
     luatex_revision_code,       /* command code for \.{\\luatexrevision} */
+    harftex_revision_code,      /* command code for \.{\\harftexrevision} */
     etex_code,                  /* command code for \.{\\eTeXVersion} */
     eTeX_revision_code,         /* command code for \.{\\eTeXrevision} */
     font_identifier_code,       /* command code for \.{tex.fontidentifier} (virtual) */
@@ -297,6 +298,7 @@ typedef enum {
     last_y_pos_code,                      /* code for \.{\\lastypos} */
     random_seed_code,                     /* code for \.{\\randomseed} */
     luatex_version_code,                  /* code for \.{\\luatexversion} */
+    harftex_version_code,                 /* code for \.{\\harftexversion} */
     eTeX_minor_version_code,              /* code for \.{\\eTeXminorversion} */
     eTeX_version_code,                    /* code for \.{\\eTeXversion} */
 #  define eTeX_int eTeX_version_code      /* first of \eTeX\ codes for integers */

@@ -318,6 +318,7 @@ void initialize_commands(void)
     primitive_tex("inputlineno", last_item_cmd, input_line_no_code, 0);
     primitive_tex("badness", last_item_cmd, badness_code, 0);
     primitive_luatex("luatexversion", last_item_cmd, luatex_version_code, 0);
+    primitive_luatex("harftexversion", last_item_cmd, harftex_version_code, 0);
     primitive_luatex("lastsavedboxresourceindex", last_item_cmd, last_saved_box_resource_index_code, 0);
     primitive_luatex("lastsavedimageresourceindex", last_item_cmd, last_saved_image_resource_index_code, 0);
     primitive_luatex("lastsavedimageresourcepages", last_item_cmd, last_saved_image_resource_pages_code, 0);
@@ -334,6 +335,7 @@ void initialize_commands(void)
     primitive_tex("fontname", convert_cmd, font_name_code, 0);
     primitive_luatex("fontid", convert_cmd, font_id_code, 0);
     primitive_luatex("luatexrevision", convert_cmd, luatex_revision_code, 0);
+    primitive_luatex("harftexrevision", convert_cmd, harftex_revision_code, 0);
     primitive_luatex("luatexbanner", convert_cmd, luatex_banner_code, 0);
     primitive_luatex("leftmarginkern", convert_cmd, left_margin_kern_code, 0);
     primitive_luatex("rightmarginkern", convert_cmd, right_margin_kern_code, 0);

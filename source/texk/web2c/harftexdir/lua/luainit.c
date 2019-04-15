@@ -899,9 +899,9 @@ void lua_initialize(int ac, char **av)
     const char *fmt = "This is " MyName ", Version %s" WEB2CVERSION;
     argc = ac;
     argv = av;
-    len = strlen(fmt) + strlen(luatex_version_string) ;
+    len = strlen(fmt) + strlen(harftex_version_string) ;
     banner = xmalloc(len);
-    sprintf(banner, fmt, luatex_version_string);
+    sprintf(banner, fmt, harftex_version_string);
     luatex_banner = banner;
     kpse_invocation_name = kpse_program_basename(argv[0]);
     /*tex be `luac' */

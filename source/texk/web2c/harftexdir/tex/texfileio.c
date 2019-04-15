@@ -918,7 +918,7 @@ void open_log_file(void)
     log_opened_global = true;
     if (callback_defined(start_run_callback) == 0) {
         /*tex Print the banner line, including current date and time. */
-        log_banner(luatex_version_string);
+        log_banner(harftex_version_string);
         /*tex Make sure bottom level is in memory. */
         input_stack[input_ptr] = cur_input;
         tprint_nl("**");

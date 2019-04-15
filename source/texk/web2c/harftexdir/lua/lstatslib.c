@@ -116,6 +116,11 @@ static const char *luatexrevision(void)
     return (const char *) (strrchr(luatex_version_string, '.') + 1);
 }
 
+static const char *harftexrevision(void)
+{
+    return (const char *) (strrchr(harftex_version_string, '.') + 1);
+}
+
 static const char *getenginename(void)
 {
     return engine_name;
@@ -315,6 +320,8 @@ static struct statistic stats[] = {
     {"banner", 'S', (void *) &getbanner},
     {"luatex_version", 'G', &get_luatexversion},
     {"luatex_revision", 'S', (void *) &luatexrevision},
+    {"harftex_version", 'G', &get_harftexversion},
+    {"harftex_revision", 'S', (void *) &harftexrevision},
     {"development_id", 'N', &get_development_id},
     {"luatex_hashtype", 'S', (void *) &get_luatexhashtype},
     {"luatex_hashchars", 'N',  &get_luatexhashchars},

@@ -449,6 +449,9 @@ static boolean short_scan_something_internal(int cmd, int chr, int level, boolea
                         case luatex_version_code:
                             cur_val = get_luatexversion();
                             break;
+                        case harftex_version_code:
+                            cur_val = get_harftexversion();
+                            break;
                         case last_saved_box_resource_index_code:
                             cur_val = last_saved_box_index;
                             break;

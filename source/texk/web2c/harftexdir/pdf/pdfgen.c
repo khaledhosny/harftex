@@ -2123,8 +2123,8 @@ static int pdf_print_info(PDF pdf, int luatexversion, str_number luatexrevision)
     }
     if ((pdf_suppress_optional_info & 128) == 0 && !producer_given) {
         pdf_add_name(pdf, "Producer");
-        pdf_puts(pdf, " (LuaTeX-");
-        pdf_puts(pdf, luatex_version_string);
+        pdf_puts(pdf, " (" MyName "-");
+        pdf_puts(pdf, harftex_version_string);
         pdf_out(pdf, ')');
     }
     if ((pdf_suppress_optional_info & 16) == 0 && !creator_given) {

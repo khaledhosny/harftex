@@ -2033,6 +2033,7 @@ static int do_lastitem(lua_State * L, int cur_code)
         case last_y_pos_code:
         case random_seed_code:
         case luatex_version_code:
+        case harftex_version_code:
         case eTeX_minor_version_code:
         case eTeX_version_code:
         case current_group_level_code:
