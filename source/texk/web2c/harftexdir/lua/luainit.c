@@ -424,8 +424,8 @@ static void parse_options(int ac, char **av)
                  "There is NO warranty. Redistribution of this software is covered by\n"
                  "the terms of the GNU General Public License, version 2 or (at your option)\n"
                  "any later version. For more information about these matters, see the file\n"
-                 "named COPYING and the LuaTeX source.\n\n"
-                 "LuaTeX is Copyright 2019 Taco Hoekwater and the LuaTeX Team.\n");
+                 "named COPYING and the " MyName " source.\n\n"
+                 MyName " is Copyright 2019 the " MyName" Team.\n");
             /* *INDENT-ON* */
             uexit(0);
         } else if (ARGUMENT_IS("credits")) {
@@ -433,8 +433,9 @@ static void parse_options(int ac, char **av)
             initversionstring(&versions);
             print_version_banner();
             /* *INDENT-OFF* */
-            puts("\n\nThe LuaTeX team is Hans Hagen, Hartmut Henkel, Taco Hoekwater, Luigi Scarso.\n\n"
+            puts("\n\n"
                  MyName " merges and builds upon (parts of) the code from these projects:\n\n"
+                 "luatex    : Hans Hagen, Hartmut Henkel, Taco Hoekwater, Luigi Scarso\n"
                  "tex       : Donald Knuth\n"
                  "etex      : Peter Breitenlohner, Phil Taylor and friends\n"
                  "omega     : John Plaice and Yannis Haralambous\n"
@@ -444,9 +445,7 @@ static void parse_options(int ac, char **av)
                  "lua       : Roberto Ierusalimschy, Waldemar Celes and Luiz Henrique de Figueiredo\n"
                  "metapost  : John Hobby, Taco Hoekwater, Luigi Scarso, Hans Hagen and friends\n"
                  "pplib     : Paweł Jackowski\n"
-                 "fontforge : George Williams (partial)\n"
-                 "harfbuzz  : Behdad Esfahbod and others\n"
-                 "luajit    : Mike Pall (used in LuajitTeX)\n");
+                 "fontforge : George Williams (partial)\n");
             /* *INDENT-ON* */
             puts(versions);
             uexit(0);
