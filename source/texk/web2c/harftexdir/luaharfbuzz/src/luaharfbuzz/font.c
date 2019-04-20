@@ -44,7 +44,7 @@ static int font_get_h_extents(lua_State *L) {
   hb_font_extents_t extents;
 
   if (hb_font_get_h_extents(*f, &extents)) {
-    lua_newtable(L);
+    lua_createtable(L, 0, 3);
 
     lua_pushnumber(L, extents.ascender);
     lua_setfield(L, -2, "ascender");
@@ -66,7 +66,7 @@ static int font_get_v_extents(lua_State *L) {
   hb_font_extents_t extents;
 
   if (hb_font_get_v_extents(*f, &extents)) {
-    lua_newtable(L);
+    lua_createtable(L, 0, 3);
 
     lua_pushnumber(L, extents.ascender);
     lua_setfield(L, -2, "ascender");
@@ -89,7 +89,7 @@ static int font_get_glyph_extents(lua_State *L) {
   hb_glyph_extents_t extents;
 
   if (hb_font_get_glyph_extents(*f, glyph, &extents)) {
-    lua_newtable(L);
+    lua_createtable(L, 0, 4);
 
     lua_pushnumber(L, extents.x_bearing);
     lua_setfield(L, -2, "x_bearing");

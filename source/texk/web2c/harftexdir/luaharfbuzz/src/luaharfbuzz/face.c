@@ -96,11 +96,11 @@ static int face_get_table(lua_State *L) {
 static int face_get_table_tags(lua_State *L) {
   Face *f = (Face *)luaL_checkudata(L, 1, "harfbuzz.Face");
   hb_tag_t tags[STATIC_ARRAY_SIZE];
-  unsigned int count = STATIC_ARRAY_SIZE;
+  unsigned int count = hb_face_get_table_tags(*f, 0, NULL, NULL);
 
-  if (hb_face_get_table_tags(*f, 0, NULL, NULL)) {
+  if (count) {
     unsigned int i = 0, offset = 0;
-    lua_newtable(L);
+    lua_createtable(L, count, 0);
     do {
       count = STATIC_ARRAY_SIZE;
       hb_face_get_table_tags(*f, offset, &count, tags);
@@ -128,11 +128,11 @@ static int face_ot_layout_get_script_tags(lua_State *L) {
   Tag *table = (Tag *)luaL_checkudata(L, 2, "harfbuzz.Tag");
 
   hb_tag_t tags[STATIC_ARRAY_SIZE];
-  unsigned int count = STATIC_ARRAY_SIZE;
+  unsigned int count = hb_ot_layout_table_get_script_tags(*face, *table, 0, NULL, NULL);
 
-  if (hb_ot_layout_table_get_script_tags(*face, *table, 0, NULL, NULL)) {
+  if (count) {
     unsigned int i = 0, offset = 0;
-    lua_newtable(L);
+    lua_createtable(L, count, 0);
     do {
       count = STATIC_ARRAY_SIZE;
       hb_ot_layout_table_get_script_tags(*face, *table, offset, &count, tags);
@@ -161,11 +161,11 @@ static int face_ot_layout_get_language_tags(lua_State *L) {
   unsigned int script_index = (unsigned int) luaL_checkinteger(L, 3);
 
   hb_tag_t tags[STATIC_ARRAY_SIZE];
-  unsigned int count = STATIC_ARRAY_SIZE;
+  unsigned int count = hb_ot_layout_script_get_language_tags(*face, *table, script_index, 0, NULL, NULL);
 
-  if (hb_ot_layout_script_get_language_tags(*face, *table, script_index, 0, NULL, NULL)) {
+  if (count) {
     unsigned int i = 0, offset = 0;
-    lua_newtable(L);
+    lua_createtable(L, count, 0);
     do {
       count = STATIC_ARRAY_SIZE;
       hb_ot_layout_script_get_language_tags(*face, *table, script_index, offset, &count, tags);
@@ -195,11 +195,11 @@ static int face_ot_layout_get_feature_tags(lua_State *L) {
   unsigned int language_index = (unsigned int) luaL_checkinteger(L, 4);
 
   hb_tag_t tags[STATIC_ARRAY_SIZE];
-  unsigned int count = STATIC_ARRAY_SIZE;
+  unsigned int count = hb_ot_layout_language_get_feature_tags(*face, *table, script_index, language_index, 0, NULL, NULL);
 
-  if (hb_ot_layout_language_get_feature_tags(*face, *table, script_index, language_index, 0, NULL, NULL)) {
+  if (count) {
     unsigned int i = 0, offset = 0;
-    lua_newtable(L);
+    lua_createtable(L, count, 0);
     do {
       count = STATIC_ARRAY_SIZE;
       hb_ot_layout_language_get_feature_tags(*face, *table, script_index, language_index, offset, &count, tags);
@@ -265,9 +265,8 @@ static int face_collect_unicodes(lua_State *L) {
   Face *f = (Face *)luaL_checkudata(L, 1, "harfbuzz.Face");
   hb_set_t *codes = hb_set_create();
 
-  lua_newtable(L);
-
   hb_face_collect_unicodes (*f, codes);
+  lua_createtable(L, hb_set_get_population(codes), 0);
   if (!hb_set_is_empty(codes)) {
     unsigned int i = 0;
     hb_codepoint_t c = HB_SET_VALUE_INVALID;
@@ -310,11 +309,11 @@ static int face_ot_color_palette_get_colors(lua_State *L) {
   unsigned int index = (unsigned int) luaL_optinteger(L, 2, 1) - 1;
 
   hb_color_t colors[STATIC_ARRAY_SIZE];
-  unsigned int count = STATIC_ARRAY_SIZE;
+  unsigned int count = hb_ot_color_palette_get_colors(*f, index, 0, NULL, NULL);
 
-  if (hb_ot_color_palette_get_colors(*f, index, 0, NULL, NULL)) {
+  if (count) {
     unsigned int i = 0, offset = 0;
-    lua_newtable(L); // parent table
+    lua_createtable(L, count, 0); // parent table
     do {
       count = STATIC_ARRAY_SIZE;
       hb_ot_color_palette_get_colors(*f, index, offset, &count, colors);
@@ -322,7 +321,7 @@ static int face_ot_color_palette_get_colors(lua_State *L) {
         hb_color_t color = colors[i];
 
         lua_pushnumber(L, i+1); // 1-indexed key parent table
-        lua_newtable(L);        // child table
+        lua_createtable(L, 0, 4); // child table
 
         lua_pushinteger(L, hb_color_get_red(color));
         lua_setfield(L, -2, "red");
@@ -358,11 +357,11 @@ static int face_ot_color_glyph_get_layers(lua_State *L) {
   Face *f = (Face *)luaL_checkudata(L, 1, "harfbuzz.Face");
   hb_codepoint_t gid = (hb_codepoint_t) luaL_checkinteger(L, 2);
   hb_ot_color_layer_t layers[STATIC_ARRAY_SIZE];
-  unsigned int count = STATIC_ARRAY_SIZE;
+  unsigned int count = hb_ot_color_glyph_get_layers(*f, gid, 0, NULL, NULL);
 
-  if (hb_ot_color_glyph_get_layers(*f, gid, 0, NULL, NULL)) {
+  if (count) {
     unsigned int i = 0, offset = 0;
-    lua_newtable(L); // parent table
+    lua_createtable(L, count, 0); // parent table
     do {
       count = STATIC_ARRAY_SIZE;
       hb_ot_color_glyph_get_layers(*f, gid, offset, &count, layers);
@@ -373,7 +372,7 @@ static int face_ot_color_glyph_get_layers(lua_State *L) {
           color_index++; // make it 1-indexed
 
         lua_pushnumber(L, i+1);  // 1-indexed key parent table
-        lua_newtable(L);         // child table
+        lua_createtable(L, 0, 2); // child table
 
         lua_pushinteger(L, layer.glyph);
         lua_setfield(L, -2, "glyph");
