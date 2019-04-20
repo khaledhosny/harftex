@@ -170,10 +170,6 @@ The |print_char| procedure sends one byte to the desired destination. All
 printing comes through |print_ln| or |print_char|, except for the case of
 |tprint| (see below).
 
-The checking of the line length is an inheritance from previosu engines and we
-might drop it after release 1.0. We're not too picky about the exact match of
-that length because we have utf output so length is then a bit fuzzy anyway.
-
 */
 
 #define needs_escaping(A) \
@@ -203,19 +199,10 @@ that length because we have utf output so length is then a bit fuzzy anyway.
      (             (B+2>=max_print_line))) \
   )
 
-#define fix_term_offset(A) \
-    if (needs_wrapping(A,term_offset)){ \
-        wterm_cr(); \
-        term_offset=0; \
-    }
-
-#define fix_log_offset(A) \
-    if (needs_wrapping(A,file_offset)){ \
-        wlog_cr(); \
-        file_offset=0; \
-    }
-
-void print_char(int s)
+/* When printing multi-byte UTF-8 characters, incr_offset should be true for
+ * the last byte only, to avoid wrapping the line in the middle of the
+ * character. */
+static void print_raw_char(int s, boolean incr_offset)
 {
     if (s < 0 || s > 255) {
         formatted_warning("print","weird character %i",s);
@@ -231,30 +218,30 @@ void print_char(int s)
         case no_print:
             break;
         case term_only:
-            fix_term_offset(s);
             wterm_char(s);
-            incr(term_offset);
+            if (incr_offset)
+                incr(term_offset);
             if (term_offset == max_print_line) {
                 wterm_cr();
                 term_offset = 0;
             }
             break;
         case log_only:
-            fix_log_offset(s);
             wlog(s);
-            incr(file_offset);
+            if (incr_offset)
+                incr(file_offset);
             if (file_offset == max_print_line) {
                 wlog_cr();
                 file_offset = 0;
             }
             break;
         case term_and_log:
-            fix_term_offset(s);
-            fix_log_offset(s);
             wterm_char(s);
             wlog(s);
-            incr(term_offset);
-            incr(file_offset);
+            if (incr_offset) {
+                incr(term_offset);
+                incr(file_offset);
+            }
             if (term_offset == max_print_line) {
                 wterm_cr();
                 term_offset = 0;
@@ -277,6 +264,11 @@ void print_char(int s)
     incr(tally);
 }
 
+void print_char(int s)
+{
+    print_raw_char(s, true);
+}
+
 /*tex
 
 An entire string is output by calling |print|. Note that if we are outputting the
@@ -295,6 +287,8 @@ typesetting.
 
 
 */
+
+static void lprint (lstring *ss);
 
 void print(int s)
 {
@@ -320,12 +314,12 @@ void print(int s)
             if (s <= 0x7F) {
                 print_char(s);
             } else if (s <= 0x7FF) {
-                print_char(0xC0 + (s / 0x40));
-                print_char(0x80 + (s % 0x40));
+                print_raw_char(0xC0 + (s / 0x40), false);
+                print_raw_char(0x80 + (s % 0x40), true);
             } else if (s <= 0xFFFF) {
-                print_char(0xE0 + (s / 0x1000));
-                print_char(0x80 + ((s % 0x1000) / 0x40));
-                print_char(0x80 + ((s % 0x1000) % 0x40));
+                print_raw_char(0xE0 + (s / 0x1000), false);
+                print_raw_char(0x80 + ((s % 0x1000) / 0x40), false);
+                print_raw_char(0x80 + ((s % 0x1000) % 0x40), true);
             } else if (s >= 0x110000) {
                 int c = s - 0x110000;
                 if (c >= 256) {
@@ -334,10 +328,10 @@ void print(int s)
                     print_char(c);
                 }
             } else {
-                print_char(0xF0 + (s / 0x40000));
-                print_char(0x80 + ((s % 0x40000) / 0x1000));
-                print_char(0x80 + (((s % 0x40000) % 0x1000) / 0x40));
-                print_char(0x80 + (((s % 0x40000) % 0x1000) % 0x40));
+                print_raw_char(0xF0 + (s / 0x40000), false);
+                print_raw_char(0x80 + ((s % 0x40000) / 0x1000), false);
+                print_raw_char(0x80 + (((s % 0x40000) % 0x1000) / 0x40), false);
+                print_raw_char(0x80 + (((s % 0x40000) % 0x1000) % 0x40), true);
             }
         }
         return;
@@ -349,7 +343,7 @@ void print(int s)
     lprint(&str_lstring(s));
 }
 
-void lprint (lstring *ss) {
+static void lprint(lstring *ss) {
     /*tex current character code position */
     unsigned char *j, *l;
     j = ss->s;
@@ -363,7 +357,12 @@ void lprint (lstring *ss) {
             print_char(c);
             j = j + 4;
         } else {
-            print_char(*j);
+            unsigned char *p = j + 1;
+            /* Find the end of this UTF-8 next character, and if this is the
+             * last byte increment the printing offset, otherwise don't. */
+            while (p < l && (*p & 0xC0) == 0x80)
+                incr(p);
+            print_raw_char(*j, p == j + 1);
             incr(j);
         }
     }
