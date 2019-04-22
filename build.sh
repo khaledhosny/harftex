@@ -142,6 +142,7 @@ then
 TL_MAKE=$MAKE ../source/configure  $TEXLIVEOPT $WARNINGFLAGS \
     --enable-silent-rules \
     --disable-all-pkgs \
+    --disable-ptex \
     --disable-shared    \
     --disable-largefile \
     --disable-ipc \
