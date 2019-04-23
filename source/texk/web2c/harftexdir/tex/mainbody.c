@@ -615,7 +615,7 @@ void close_files_and_terminate(void)
             */
             if (log_opened_global) {
                 fprintf(log_file,
-                    "\n\nHere is how much of LuaTeX's memory you used:\n"
+                    "\n\nHere is how much of " MyName "'s memory you used:\n"
                 );
                 fprintf(log_file, " %d string%s out of %d\n",
                     (int) (str_ptr - init_str_ptr),
