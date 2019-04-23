@@ -4708,8 +4708,6 @@ static int lua_nodelib_fast_getfield(lua_State * L)
             lua_pushinteger(L, char_rhmin(n));
         } else if (lua_key_eq(s, uchyph)) {
             lua_pushinteger(L, char_uchyph(n));
-        } else if (lua_key_eq(s, string)) {
-            nodelib_pushstring(L, glyph_string(n));
         } else {
             lua_pushnil(L);
         }
@@ -5467,8 +5465,6 @@ static int lua_nodelib_direct_getfield(lua_State * L)
             lua_pushinteger(L, char_rhmin(n));
         } else if (lua_key_eq(s, uchyph)) {
             lua_pushinteger(L, char_uchyph(n));
-        } else if (lua_key_eq(s, string)) {
-            nodelib_pushstring(L, glyph_string(n));
         } else {
             lua_pushnil(L);
         }
@@ -6858,8 +6854,6 @@ static int lua_nodelib_fast_setfield(lua_State * L)
             set_char_rhmin(n, (halfword) lua_tointeger(L, 3));
         } else if (lua_key_eq(s, uchyph)) {
             set_char_uchyph(n, (halfword) lua_tointeger(L, 3));
-        } else if (lua_key_eq(s, string)) {
-            glyph_string(n) = nodelib_getstring(L, 3);
         } else {
             return nodelib_cantset(L, n, s);
         }
@@ -7692,8 +7686,6 @@ static int lua_nodelib_direct_setfield(lua_State * L)
             /* not yet */
         } else if (lua_key_eq(s, depth)) {
             /* not yet */
-        } else if (lua_key_eq(s, string)) {
-            glyph_string(n) = nodelib_getstring(L, 3);
         } else {
             return nodelib_cantset(L, n, s);
         }

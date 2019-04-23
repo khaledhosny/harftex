@@ -330,7 +330,7 @@ typedef enum {
 #  define adjust_pre       subtype
 #  define adjust_ptr(a)    vlink(a+2)
 
-#  define glyph_node_size       8
+#  define glyph_node_size       7
 #  define character(a)          vinfo((a)+2)
 #  define font(a)               vlink((a)+2)
 #  define lang_data(a)          vinfo((a)+3)
@@ -341,7 +341,6 @@ typedef enum {
 #  define glyph_node_data(a)    vlink((a)+5)
 #  define synctex_tag_glyph(a)  vinfo((a)+6)
 #  define synctex_line_glyph(a) vlink((a)+6)
-#  define glyph_string(a)       vinfo((a)+7)
 
 #  define is_char_node(a)  (a!=null && type(a)==glyph_node)
 

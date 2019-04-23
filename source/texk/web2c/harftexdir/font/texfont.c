@@ -352,9 +352,8 @@ int char_supported(halfword p)
     if (f > font_id_maxval)
         return 0;
     if (proper_char_index(c)) {
-        if ((font_format(f) == opentype_format ||
-             font_format(f) == truetype_format) &&
-            glyph_string(p)) {
+        if (font_format(f) == opentype_format ||
+            font_format(f) == truetype_format) {
             charinfo *ci = char_info(f, c);
             if (ci->index == 0)
                 return 0;

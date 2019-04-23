@@ -45,10 +45,7 @@ scaled_whd output_one_char(PDF pdf, halfword p)
     if (!char_supported(p)) {
         /* Char is not supported by the font, can also mean this is a glyph
          * index 0 (|.notdef| glyph). */
-        int ch = c;
-        if (glyph_string(p))
-            ch = str2uni(str_string(glyph_string(p)));
-        lua_glyph_not_found_callback(f, ch);
+        lua_glyph_not_found_callback(f, c);
         /* If char exists (e.g. |.notdef|) we still want to output it to PDF. */
         if (!char_exists(f, c))
             return ci;
