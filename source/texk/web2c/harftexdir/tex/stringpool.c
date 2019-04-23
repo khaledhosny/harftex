@@ -257,6 +257,12 @@ str_number maketexlstring(const char *s, size_t l)
 {
     if (s == NULL || l == 0)
         return get_nullstr();
+    if (str_ptr == (max_strings + STRING_OFFSET)) {
+        overflow(
+            "number of strings",
+             (unsigned) (max_strings - init_str_ptr + STRING_OFFSET)
+        );
+    }
     str_string(str_ptr) = xmalloc((unsigned) (l + 1));
     memcpy(str_string(str_ptr), s, (l + 1));
     str_length(str_ptr) = (unsigned) l;
