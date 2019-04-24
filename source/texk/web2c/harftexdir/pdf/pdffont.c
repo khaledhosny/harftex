@@ -48,7 +48,7 @@ scaled_whd output_one_char(PDF pdf, halfword p)
         int ch = c;
         char* str = glyph_string(p);
         if (str)
-            ch = str2uni(str);
+            ch = str2uni((const unsigned char *) str);
         free(str);
         lua_glyph_not_found_callback(f, ch);
         /* If char exists (e.g. |.notdef|) we still want to output it to PDF. */
