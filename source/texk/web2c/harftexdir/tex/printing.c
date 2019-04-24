@@ -192,12 +192,8 @@ printing comes through |print_ln| or |print_char|, except for the case of
         term_offset += 2; \
     }
 
-#define needs_wrapping(A,B) \
-  (   (A>=0xC0) && \
-    (((A>=0xF0) && (B+4>=max_print_line)) || \
-     ((A>=0xE0) && (B+3>=max_print_line)) || \
-     (             (B+2>=max_print_line))) \
-  )
+#define is_leading_byte(b) (((b) & 0xC0) != 0x80)
+#define needs_wrapping(A,B) (is_leading_byte(A) && B==max_print_line)
 
 /* When printing multi-byte UTF-8 characters, incr_offset should be true for
  * the last byte only, to avoid wrapping the line in the middle of the
@@ -475,9 +471,7 @@ void tprint(const char *sss)
                 }
                 if (s != newlinechar) {
                     buffer[i++] = s;
-                    if (file_offset++ == max_print_line) {
-                        t_flush_buffer(log_file,file_offset);
-                    }
+                    file_offset += is_leading_byte(s);
                 }
             }
             if (*buffer) {
@@ -503,9 +497,7 @@ void tprint(const char *sss)
                         buffer[i++] = escaped_char(s);
                         term_offset += 2;
                     }
-                    if (++term_offset == max_print_line) {
-                        t_flush_buffer(term_out,term_offset);
-                    }
+                    term_offset += is_leading_byte(s);
                 }
             }
             if (*buffer) {
