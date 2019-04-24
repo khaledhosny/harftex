@@ -1146,6 +1146,7 @@ extern halfword new_char(int f, int c);
 extern scaled glyph_width(halfword p);
 extern scaled glyph_height(halfword p);
 extern scaled glyph_depth(halfword p);
+extern char* glyph_string(halfword p);
 extern halfword new_disc(void);
 extern halfword new_math(scaled w, int s);
 extern halfword new_spec(halfword p);

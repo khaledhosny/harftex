@@ -1003,6 +1003,17 @@ void print_font_identifier(internal_font_number f)
     }
 }
 
+static void print_glyph_node(halfword p)
+{
+    char* str = glyph_string(p);
+    if (str) {
+        tprint(str);
+        free(str);
+        return;
+    }
+    print(character(p));
+}
+
 /*tex
 
 This prints highlights of list |p|.
@@ -1024,7 +1035,7 @@ void short_display(int p)
                     print_char(' ');
                     font_in_short_display = font(p);
                 }
-                print(character(p));
+                print_glyph_node(p);
             }
         } else {
             /*tex Print a short indication of the contents of node |p| */
@@ -1055,7 +1066,7 @@ void print_font_and_char(int p)
     else
         print_font_identifier(font(p));
     print_char(' ');
-    print(character(p));
+    print_glyph_node(p);
 }
 
 /*tex
@@ -1153,7 +1164,7 @@ void short_display_n(int p, int m)
                     print_char(' ');
                     font_in_short_display = font(p);
                 }
-                print(character(p));
+                print_glyph_node(p);
             }
         } else {
             if ( (type(p) == glue_node) ||

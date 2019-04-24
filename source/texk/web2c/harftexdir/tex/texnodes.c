@@ -4502,6 +4502,15 @@ scaled glyph_depth(halfword p)
     return w;
 }
 
+char* glyph_string(halfword p)
+{
+    char* str = NULL;
+    int callback_id = callback_defined(get_glyph_string_callback);
+    if (callback_id)
+        run_callback(callback_id, "N->R", p, &str);
+    return str;
+}
+
 /*tex
 
     A |disc_node|, which occurs only in horizontal lists, specifies a

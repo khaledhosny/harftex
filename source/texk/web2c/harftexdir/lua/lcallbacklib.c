@@ -85,6 +85,7 @@ static const char *const callbacknames[] = {
     "make_extensible",
     "process_pdf_image_content",
     "get_char_tounicode",
+    "get_glyph_string",
     NULL
 };
 
