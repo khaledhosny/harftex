@@ -67,6 +67,7 @@ extern boolean inhibit_par_tokens;
 extern void print_ln(void);
 extern void print_char(int s);
 extern void print(int s);
+extern void lprint (lstring *ss);
 extern void print_nl(str_number s);
 extern void print_nlp(void);
 extern void print_banner(const char *);
