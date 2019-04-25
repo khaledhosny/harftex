@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/khaledhosny/harftex.svg?branch=harftex)](https://travis-ci.org/khaledhosny/harftex)
+[![Build Status](https://travis-ci.org/khaledhosny/harftex.svg?branch=master)](https://travis-ci.org/khaledhosny/harftex)
 
 HarfTeX
 =======

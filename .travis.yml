@@ -44,4 +44,4 @@ deploy:
   on:
     tags: true
     repo: khaledhosny/harftex
-    branch: harftex
+    branch: master
