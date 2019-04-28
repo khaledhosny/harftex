@@ -113,6 +113,9 @@ boolean writetype2(PDF pdf, fd_entry * fd)
     int callback_id;
     int file_opened = 0;
     boolean ret;
+    sfnt *sfont;
+    long i = 0;
+    dir_tab = NULL;
     glyph_tab = NULL;
     /*tex |fd_cur| is global inside |writettf.c| */
     fd_cur = fd;
@@ -142,10 +145,35 @@ boolean writetype2(PDF pdf, fd_entry * fd)
         ttf_close();
     }
     fd_cur->ff_found = true;
+
+    sfont = sfnt_open(ttf_buffer, ttf_size);
+    if (sfont->type == SFNT_TYPE_TTC) {
+        if (fd->fm->index >= 0)
+            i = fd->fm->index;
+        else
+            i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
+    }
+
     if (is_subsetted(fd_cur->fm))
         report_start_file(filetype_subset,cur_file_name);
      else
         report_start_file(filetype_font,cur_file_name);
+
+    if (sfont->type == SFNT_TYPE_TTC)
+        otc_read_tabdir(i);
+    else
+        ttf_read_tabdir();
+    sfnt_close(sfont);
+
+    /*tex Read font parameters: */
+    if (ttf_name_lookup("head", false) != NULL)
+        ttf_read_head();
+    if (ttf_name_lookup("hhea", false) != NULL)
+        ttf_read_hhea();
+    if (ttf_name_lookup("PCLT", false) != NULL)
+        ttf_read_pclt();
+    if (ttf_name_lookup("post", false) != NULL)
+        ttf_read_post();
     /*tex Here is the real work done: */
     ret = make_tt_subset(pdf, fd, ttf_buffer, ttf_size);
     xfree(ttf_buffer);
