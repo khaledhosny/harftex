@@ -477,6 +477,34 @@ void ttf_read_pclt(void)
     fd_cur->font_dim[CAPHEIGHT_CODE].set = true;
 }
 
+void ttf_read_OS2(void)
+{
+    const dirtab_entry *tab;
+    TTF_USHORT weight_class;
+
+    if (ttf_name_lookup("OS/2", false) == NULL)
+        return;
+
+    tab = ttf_seek_tab("OS/2", 0);
+    if (tab->length < 96)
+        return;
+
+    ttf_skip(4);
+    weight_class = get_ushort();
+    fd_cur->font_dim[STEMV_CODE].val = (int) ((weight_class/65.)*(weight_class/65.)+50);
+    ttf_skip(62);
+    fd_cur->font_dim[ASCENT_CODE].val = (int) ttf_funit(get_short());
+    fd_cur->font_dim[DESCENT_CODE].val = (int) ttf_funit(get_short());
+    ttf_skip(14);
+    fd_cur->font_dim[XHEIGHT_CODE].val = (int) ttf_funit(get_short());
+    fd_cur->font_dim[CAPHEIGHT_CODE].val = (int) ttf_funit(get_short());
+    fd_cur->font_dim[STEMV_CODE].set = true;
+    fd_cur->font_dim[ASCENT_CODE].set = true;
+    fd_cur->font_dim[DESCENT_CODE].set = true;
+    fd_cur->font_dim[XHEIGHT_CODE].set = true;
+    fd_cur->font_dim[CAPHEIGHT_CODE].set = true;
+}
+
 static void ttf_read_hmtx(void)
 {
     glyph_entry *glyph;
@@ -752,8 +780,9 @@ static void ttf_read_font(void)
         new_ntabs--;
     ttf_read_mapx();
     ttf_read_head();
-    ttf_read_hhea();
     ttf_read_pclt();
+    ttf_read_OS2();
+    ttf_read_hhea();
     ttf_read_hmtx();
     ttf_read_post();
     ttf_read_loca();
@@ -1521,10 +1550,12 @@ static void do_writeotf(PDF pdf, fd_entry * fd)
     /*tex Read teh font parameters. */
     if (ttf_name_lookup("head", false) != NULL)
         ttf_read_head();
-    if (ttf_name_lookup("hhea", false) != NULL)
-        ttf_read_hhea();
     if (ttf_name_lookup("PCLT", false) != NULL)
         ttf_read_pclt();
+    if (ttf_name_lookup("OS/2", false) != NULL)
+        ttf_read_OS2();
+    if (ttf_name_lookup("hhea", false) != NULL)
+        ttf_read_hhea();
     if (ttf_name_lookup("post", false) != NULL)
         ttf_read_post();
     /*tex Copy the font file: */

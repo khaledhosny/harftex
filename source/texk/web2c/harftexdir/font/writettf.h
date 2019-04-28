@@ -158,6 +158,7 @@ extern void ttf_read_head(void);
 extern void ttf_read_hhea(void);
 extern void ttf_read_pclt(void);
 extern void ttf_read_post(void);
+extern void ttf_read_OS2(void);
 
 extern FILE *ttf_file;
 

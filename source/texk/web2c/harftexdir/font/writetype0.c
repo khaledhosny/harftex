@@ -94,10 +94,12 @@ void writetype0(PDF pdf, fd_entry * fd)
     /*tex Read font parameters: */
     if (ttf_name_lookup("head", false) != NULL)
         ttf_read_head();
-    if (ttf_name_lookup("hhea", false) != NULL)
-        ttf_read_hhea();
     if (ttf_name_lookup("PCLT", false) != NULL)
         ttf_read_pclt();
+    if (ttf_name_lookup("OS/2", false) != NULL)
+        ttf_read_OS2();
+    if (ttf_name_lookup("hhea", false) != NULL)
+        ttf_read_hhea();
     if (ttf_name_lookup("post", false) != NULL)
         ttf_read_post();
     /*tex Copy font file, including the newer variant: */
