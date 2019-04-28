@@ -491,6 +491,7 @@ void ttf_read_OS2(void)
 
     ttf_skip(4);
     weight_class = get_ushort();
+    /* stemv formula copied from dvipdfmx */
     fd_cur->font_dim[STEMV_CODE].val = (int) ((weight_class/65.)*(weight_class/65.)+50);
     ttf_skip(62);
     fd_cur->font_dim[ASCENT_CODE].val = (int) ttf_funit(get_short());
