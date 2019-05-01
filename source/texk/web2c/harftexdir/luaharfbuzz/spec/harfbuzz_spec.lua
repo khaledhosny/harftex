@@ -145,6 +145,71 @@ describe("harfbuzz module", function()
       assert.are_equal(false,face:ot_color_has_png())
       assert.are_equal(true,f:ot_color_has_png())
     end)
+
+    it("can return script tags", function()
+      local t
+      local tags = {
+        harfbuzz.Tag.new("arab"),
+        harfbuzz.Tag.new("dflt"),
+        harfbuzz.Tag.new("latn"),
+      }
+      t = face:ot_layout_get_script_tags(harfbuzz.Tag.new("GSUB"))
+      assert.are_same(tags, t)
+      t = face:ot_layout_get_script_tags(harfbuzz.Tag.new("GPOS"))
+      assert.are_same({ tags[1] }, t)
+    end)
+
+    it("can return language tags", function()
+      local t
+      local tags = {
+        harfbuzz.Tag.new("ARA "),
+        harfbuzz.Tag.new("FAR "),
+        harfbuzz.Tag.new("KSH "),
+        harfbuzz.Tag.new("SND "),
+        harfbuzz.Tag.new("URD "),
+      }
+      t = face:ot_layout_get_language_tags(harfbuzz.Tag.new("GSUB"), 0)
+      assert.are_same(tags, t)
+      t = face:ot_layout_get_language_tags(harfbuzz.Tag.new("GPOS"), 0)
+      assert.are_equal(nil, t)
+    end)
+
+    it("can return feature tags", function()
+      local t, tags
+      tags = {
+        harfbuzz.Tag.new("ccmp"),
+        harfbuzz.Tag.new("isol"),
+        harfbuzz.Tag.new("init"),
+        harfbuzz.Tag.new("medi"),
+        harfbuzz.Tag.new("fina"),
+        harfbuzz.Tag.new("rlig"),
+      }
+      t = face:ot_layout_get_feature_tags(harfbuzz.Tag.new("GSUB"), 0, 0)
+      assert.are_same(tags, t)
+      tags = {
+        harfbuzz.Tag.new("curs"),
+        harfbuzz.Tag.new("mark"),
+        harfbuzz.Tag.new("mkmk"),
+      }
+      t = face:ot_layout_get_feature_tags(harfbuzz.Tag.new("GPOS"), 0, harfbuzz.ot.LAYOUT_DEFAULT_LANGUAGE_INDEX)
+      assert.are_same(tags, t)
+    end)
+
+    it("can find scripts, languages and features", function()
+      local r, i
+      r, i = face:ot_layout_find_script(harfbuzz.Tag.new("GSUB"), harfbuzz.Tag.new("latn"))
+      assert.True(r)
+      assert.are_same(2, i)
+      r, i = face:ot_layout_find_language(harfbuzz.Tag.new("GSUB"), i, harfbuzz.Tag.new("ENG "))
+      assert.False(r)
+      assert.are_same(harfbuzz.ot.LAYOUT_DEFAULT_LANGUAGE_INDEX, i)
+      r, i = face:ot_layout_find_language(harfbuzz.Tag.new("GSUB"), 0, harfbuzz.Tag.new("ARA "))
+      assert.True(r)
+      assert.are_same(0, i)
+      r, i = face:ot_layout_find_feature(harfbuzz.Tag.new("GSUB"), 0, i, harfbuzz.Tag.new("rlig"))
+      assert.True(r)
+      assert.are_same(13, i)
+    end)
   end)
 
   describe("harfbuzz.Font", function()
@@ -197,6 +262,12 @@ describe("harfbuzz module", function()
       local font = harfbuzz.Font.new(face)
       assert.are_equal(".notdef", font:get_glyph_name(0))
       assert.are_equal("null", font:get_glyph_name(1))
+    end)
+
+    it("can get glyph using get_glyph_from_name", function()
+      local font = harfbuzz.Font.new(face)
+      assert.are_equal(0, font:get_glyph_from_name(".notdef"))
+      assert.are_equal(1, font:get_glyph_from_name("null"))
     end)
 
     it("can get glyph advance using get_glyph_h_advance", function()

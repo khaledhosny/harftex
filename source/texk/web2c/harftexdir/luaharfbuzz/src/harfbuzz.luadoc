@@ -167,6 +167,11 @@
 --  @return name of the glyph or nil.
 --  @function Font:get_glyph_name
 
+--- Wraps `hb_font_get_glyph_from_name`.
+--  @param name of the glyph.
+--  @return glyph index inside the font or nil.
+--  @function Font:get_glyph_from_name
+
 --- Wraps `hb_font_get_glyph_h_advance`.
 --  @param glyph index inside the font.
 --  @return advance glyph advance of the glyph in horizontal direction.
