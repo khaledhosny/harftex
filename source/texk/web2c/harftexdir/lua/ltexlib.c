@@ -2582,6 +2582,8 @@ static int tex_definefont(lua_State * L)
     if (!d) {
         /*tex We have a new string. */
         cs_text(font_id_base + f) = t;
+    } else if (t == d) {
+        /*tex The same string number, do nothing */
     } else if (str_eq_str(d,t)){
         /*tex We have the same string. */
         flush_str(t);
