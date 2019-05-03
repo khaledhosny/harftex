@@ -3,6 +3,7 @@
 printing.w
 
 Copyright 2009-2013 Taco Hoekwater <taco@luatex.org>
+Copyright 2019 Khaled Hosny
 
 This file is part of LuaTeX.
 

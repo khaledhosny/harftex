@@ -1,6 +1,7 @@
 /* luatexcallbackids.h
 
    Copyright 2012 Taco Hoekwater <taco@luatex.org>
+   Copyright 2019 Khaled Hosny
 
    This file is part of LuaTeX.
 

@@ -1,6 +1,6 @@
 ## texk/web2c/harftexdir/am/libharftex.am: Makefile fragment for libharftex.
 ##
-## Copyright (C) 2019 HarfTeX team
+## Copyright (C) 2019 Khaled Hosny
 ## Copyright (C) 2009-2015 Peter Breitenlohner <tex-live@tug.org>
 ## You may freely use, modify and/or distribute this file.
 

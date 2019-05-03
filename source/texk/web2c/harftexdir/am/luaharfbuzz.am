@@ -1,9 +1,9 @@
 ## texk/web2c/harftexdir/am/luaharfbuzz.am: Makefile fragment for luaharfbuzz.
 ##
-## Copyright (C) 2019 HarfTeX team
+## Copyright (C) 2019 Khaled Hosny
 ## You may freely use, modify and/or distribute this file.
 
-## luafontforge
+## luaharfbuzz
 ##
 EXTRA_LIBRARIES += libluaharfbuzz.a
 
