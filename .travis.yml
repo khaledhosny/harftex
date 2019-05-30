@@ -13,6 +13,7 @@ env:
 matrix:
   include:
     - os: linux
+      dist: xenial
     - os: osx
       install:
         - export PATH="/usr/local/opt/ccache/libexec:$PATH"
