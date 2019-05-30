@@ -38,7 +38,7 @@ harftex_postldadd += $(LDADD) libmputil.a libunilib.a libmd5.a $(lua_socketlibs)
 
 
 harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a libluaffi.a libluapplib.a libluaharfbuzz.a
-harftex_LDADD += $(LUA_LIBS) $(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(ICU_LIBS) $(ICU_LIBS_EXTRA) $(luatex_postldadd)
+harftex_LDADD += $(LUA_LIBS) $(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(luatex_postldadd)
 
 harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libmd5.a
 harftex_DEPENDENCIES = $(harftex_depend) libharftex.a

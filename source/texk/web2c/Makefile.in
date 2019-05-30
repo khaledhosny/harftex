@@ -5144,8 +5144,8 @@ dist_libharftex_sources = harftexdir/harftexcallbackids.h \
 	harftexdir/utils/unistring.c harftexdir/utils/utils.c \
 	synctexdir/synctex-common.h synctexdir/synctex-luatex.h \
 	synctexdir/synctex.c synctexdir/synctex.h
-libluaharfbuzz_a_DEPENDENCIES = $(HARFBUZZ_DEPEND) $(GRAPHITE2_DEPEND) $(ICU_DEPEND)
-libluaharfbuzz_a_CPPFLAGS = $(AM_CPPFLAGS) $(LUA_INCLUDES) $(ICU_INCLUDES) $(HARFBUZZ_INCLUDES) $(GRAPHITE2_INCLUDES)
+libluaharfbuzz_a_DEPENDENCIES = $(HARFBUZZ_DEPEND) $(GRAPHITE2_DEPEND)
+libluaharfbuzz_a_CPPFLAGS = $(AM_CPPFLAGS) $(LUA_INCLUDES) $(HARFBUZZ_INCLUDES) $(GRAPHITE2_INCLUDES)
 libluaharfbuzz_a_CFLAGS = # $(WARNING_CFLAGS)
 libluaharfbuzz_a_SOURCES = \
 	harftexdir/luaharfbuzz/src/luaharfbuzz/blob.c \
@@ -5178,8 +5178,7 @@ harftex_postldadd = libmplibcore.a $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) \
 	$(lua_socketlibs)
 harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a \
 	libluaffi.a libluapplib.a libluaharfbuzz.a $(LUA_LIBS) \
-	$(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(ICU_LIBS) \
-	$(ICU_LIBS_EXTRA) $(luatex_postldadd)
+	$(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(luatex_postldadd)
 harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libmd5.a
 harftex_DEPENDENCIES = $(harftex_depend) libharftex.a
 nodist_harftex_SOURCES = $(harftex_sources)
