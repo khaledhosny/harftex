@@ -150,6 +150,7 @@ TL_MAKE=$MAKE ../source/configure  $TEXLIVEOPT $WARNINGFLAGS \
     --enable-coremp  \
     --enable-web2c  \
     --enable-harftex \
+    --without-mf-x-toolkit --without-x \
    || exit 1 
 fi
 
