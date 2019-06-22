@@ -2,6 +2,7 @@
 
 Copyright 1996-2006 Han The Thanh <thanh@pdftex.org>
 Copyright 2006-2010 Taco Hoekwater <taco@luatex.org>
+Copyright 2019 Khaled Hosny
 
 This file is part of LuaTeX.
 
@@ -22,8 +23,6 @@ with LuaTeX; if not, see <http://www.gnu.org/licenses/>.
 
 #include "ptexlib.h"
 #include "lua/luatex-api.h"
-
-int t1_wide_mode = 1 ;
 
 void write_cid_fontdictionary(PDF pdf, fo_entry * fo, internal_font_number f);
 
@@ -451,11 +450,7 @@ static void write_fontfile(PDF pdf, fd_entry * fd)
                 fd->fm->type |= F_OTF; fd->fm->type ^= F_TRUETYPE;
             }
         } else if (is_type1(fd->fm)) {
-            if (t1_wide_mode) {
-                writet1(pdf, fd, 1);
-            } else {
-                writetype1w(pdf, fd);
-            }
+            writet1(pdf, fd, 1);
         } else {
             normal_error("fonts","there is a problem writing the font file (1)");
         }
@@ -481,13 +476,9 @@ static void write_fontfile(PDF pdf, fd_entry * fd)
         if (is_opentype(fd->fm)) {
             pdf_dict_add_name(pdf, "Subtype", "CIDFontType0C");
         } else if (is_type1(fd->fm)) {
-            if (t1_wide_mode) {
-                pdf_dict_add_int(pdf, "Length1", (int) t1_length1);
-                pdf_dict_add_int(pdf, "Length2", (int) t1_length2);
-                pdf_dict_add_int(pdf, "Length3", (int) t1_length3);
-            } else {
-                pdf_dict_add_name(pdf, "Subtype", "CIDFontType0C");
-            }
+            pdf_dict_add_int(pdf, "Length1", (int) t1_length1);
+            pdf_dict_add_int(pdf, "Length2", (int) t1_length2);
+            pdf_dict_add_int(pdf, "Length3", (int) t1_length3);
         }
     } else if (is_type1(fd->fm)) {
         pdf_dict_add_int(pdf, "Length1", (int) t1_length1);
@@ -568,11 +559,7 @@ static void write_fontdescriptor(PDF pdf, fd_entry * fd)
     if (fd->ff_found) {
         if (is_cidkeyed(fd->fm)) {
             if (is_type1(fd->fm)) {
-                if (t1_wide_mode) {
-                    pdf_dict_add_ref(pdf, "FontFile", (int) fd->ff_objnum);
-                } else {
-                    pdf_dict_add_ref(pdf, "FontFile3", (int) fd->ff_objnum);
-                }
+                pdf_dict_add_ref(pdf, "FontFile", (int) fd->ff_objnum);
             } else if (is_truetype(fd->fm)) {
                 pdf_dict_add_ref(pdf, "FontFile2", (int) fd->ff_objnum);
             } else if (is_opentype(fd->fm)) {
@@ -1041,12 +1028,8 @@ void write_cid_fontdictionary(PDF pdf, fo_entry * fo, internal_font_number f)
     if (is_opentype(fo->fm)) {
         pdf_dict_add_name(pdf, "Subtype", "CIDFontType0");
     } else if (is_type1(fo->fm)) {
-        if (t1_wide_mode) {
-            pdf_dict_add_name(pdf, "Subtype", "CIDFontType0");
-         // pdf_dict_add_name(pdf, "CIDToGIDMap", "Identity");
-        } else {
-            pdf_dict_add_name(pdf, "Subtype", "CIDFontType0");
-        }
+        pdf_dict_add_name(pdf, "Subtype", "CIDFontType0");
+     // pdf_dict_add_name(pdf, "CIDToGIDMap", "Identity");
     } else {
         pdf_dict_add_name(pdf, "Subtype", "CIDFontType2");
         pdf_dict_add_name(pdf, "CIDToGIDMap", "Identity");
