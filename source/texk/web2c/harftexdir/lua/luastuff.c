@@ -352,7 +352,6 @@ void luainterpreter(void)
     luaopen_gzip(L);
     /*tex our own libraries register themselves */
     luaopen_fio(L);
-    luaopen_ff(L);
     luaopen_tex(L);
     luaopen_token(L);
     luaopen_node(L);

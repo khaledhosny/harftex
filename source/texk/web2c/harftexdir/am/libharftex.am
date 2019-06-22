@@ -8,16 +8,13 @@
 ##
 EXTRA_LIBRARIES += libharftex.a
 
-libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
+libharftex_a_DEPENDENCIES = libluamisc.a libluaharfbuzz.a
 
 libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES) $(HARFBUZZ_INCLUDES)
 libharftex_a_preflags += -I$(srcdir)/libmd5
 libharftex_a_preflags += -DpdfTeX -I$(srcdir)/harftexdir
 libharftex_a_preflags += -I$(srcdir)/luatexdir
-libharftex_a_preflags += -I$(srcdir)/luatexdir/unilib
 libharftex_a_preflags += -I$(srcdir)/luatexdir/luapplib/util
-libharftex_a_preflags += -I$(srcdir)/luatexdir/luafontloader/fontforge/inc
-libharftex_a_preflags += -DLUA_FF_LIB=1 -I$(srcdir)/luatexdir/luafontloader/fontforge/fontforge
 libharftex_a_preflags += -DSYNCTEX_ENGINE_H='<synctex-luatex.h>' -I$(srcdir)/synctexdir
 
 libharftex_a_CPPFLAGS = $(libharftex_a_preflags) $(LUA_INCLUDES)
@@ -33,7 +30,7 @@ nodist_libharftex_a_SOURCES = \
 	$(nodist_libharftex_sources)
 
 ## mplib "stub" backends are in mplibstuff.c
-$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
+$(libharftex_a_OBJECTS): libmplibcore.a libluamisc.a libluaharfbuzz.a
 
 
 nodist_libharftex_sources =
@@ -45,13 +42,6 @@ dist_libharftex_sources = \
 	harftexdir/harftex.h \
 	harftexdir/harftex-common.h \
 	harftexdir/ptexlib.h
-
-## from luatexdir/luafontloader/src
-##
-dist_libharftex_sources += \
-        luatexdir/luafontloader/src/ffdummies.c \
-        luatexdir/luafontloader/src/ffdummies.h \
-        luatexdir/luafontloader/src/luafflib.c
 
 ## from harftexdir/dvi
 ##
