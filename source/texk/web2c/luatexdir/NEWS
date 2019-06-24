@@ -1,4 +1,80 @@
 ==============================================================
+HarfTeX 0.2.0 2019-06-24
+==============================================================
+
+- Read font parameters from OpenType tables for Type 2 fonts similar to other
+  font types.
+- Read font x-height and cap-height from the OS/2 table in addition to the now
+  rarely used PCLT table. Also read ascender, descender ans well as stemv from
+  the OS/2 table. Previously the engine would derive these parameters from the
+  metrics of a hard-coded set of characters and ignore the values supplied by the
+  font.
+- Update HarfBuzz and Graphite2 to their latest releases.
+- Update luaharfbuzz to fix a bug in detecting features supported by the font
+  (#3).
+- Drop dependency on ICU in favor of HarfBuzz's own Unicode character property
+  functions, decreasing the binary size significantly (#2). However ICU might
+  return back if we need any of its functionality.
+- Emending "wide" Type 1 fonts now using the experimental FontForge-independent
+  code, please report any bugs with such fonts.
+- TTC fonts now must set the index field in the font structure, otherwise it
+  will be assumed to be zero. Guessing the face index from the font's
+  PostScript name is no longer supported.
+- Drop old FontForge-based fontloader module, further decreasing the binary
+  size. This might break old documents relying on such module.
+
+
+
+==============================================================
+HarfTeX 0.1.2 2019-04-26
+==============================================================
+
+- Fix an uninitialized memory access detected by valgrind
+- Detect overflow in maketexlstring() instead of silently continuing even if
+  the string pool is full, leading to failures elsewhere.
+- Drop recently add string field from glyph nodes as it was inefficient.
+- Add get_glyph_string callback to be used instead of the removed string field.
+- Revert fix for wrapping multi-bytes chars when printing logs, as there are
+  other places that needs the same fix and it needs more considerations to fix
+  properly.
+- Sync with LuaTeX 1.10.1.
+
+
+
+==============================================================
+HarfTeX 0.1.1 2019-04-21
+==============================================================
+
+- Add string field to glyph nodes. When set, HarfTeX will use it when printing
+  the glyph nodes to the logs (e.g. in overfull box messages) instead of the
+  font chratacter. This allows printing the actual character of the glyph for
+  complex scripts with no one-to-one mapping between glyphs and characters.
+- Show missing character warning for .notdef glyph (glyph index 0) in TrueType
+  and OpenType fonts.
+- When wrapping log lines, don't count the bytes of multi-byte UTF-8 characters
+  but the Unicode code points.
+- Sync with final LuaTeX 1.10.0 for TeX Live 2019.
+- Sync with luaharfbuzz master branch.
+
+
+
+==============================================================
+HarfTeX 0.1.0 2019-04-15
+==============================================================
+
+First version of the HarfTeX engine based on LuaTeX.
+
+-  Add \harftexversion and \harftexrevision primitives, similar to
+   \luatexversion and \luatexrevision (which are also kept).
+-  Add luaharfbuzz module.
+-  Add get_char_tounicode callback, if set HarfTeX will use it to get the
+   tounicode fields for font chars and cache them in the font.
+-  Allow setting font index from Lua for TTC fonts instead of relaying on the
+   PostScript name to get the font index.
+
+
+
+==============================================================
 LuaTeX 1.10.0 2019-03-15
 ==============================================================
 
