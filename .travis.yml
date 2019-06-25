@@ -8,15 +8,26 @@ git:
 env:
   global:
     - JOBS_IF_PARALLEL=2
-    - PACKAGE=harftex-bin-x86_64-${TRAVIS_OS_NAME}-${TRAVIS_TAG}.tar.gz
+    - PACKAGE=harftex-bin-${ARCH}-${TRAVIS_OS_NAME}-${TRAVIS_TAG}.tar.gz
 
 matrix:
   include:
     - os: linux
+      env: ARCH=x86_64
       dist: xenial
     - os: osx
+      env: ARCH=x86_64
       install:
         - export PATH="/usr/local/opt/ccache/libexec:$PATH"
+    - os: linux
+      env: ARCH=i386
+      services: docker
+      script: |
+        docker run \
+        -e JOBS_IF_PARALLEL="${JOBS_IF_PARALLEL}" \
+        -v ${TRAVIS_BUILD_DIR}:/luatex -w /luatex \
+        -it i386/debian:jessie sh -c \
+        "apt-get update; apt-get install -y --no-install-recommends bash gcc g++ make; ./build.sh --parallel"
 
 addons:
   homebrew:
