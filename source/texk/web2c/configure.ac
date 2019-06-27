@@ -266,12 +266,13 @@ KPSE_TECKIT_FLAGS
 
 # LuaTeX and XeTeX need harfbuzz.
 if test "x$enable_xetex" = xyes \
-   || test "x$enable_luatex" = xyes || test "x$enable_luatex53" = xyes; then
+   || test "x$enable_luatex" = xyes || test "x$enable_luatex53" = xyes \
+   || test "x$enable_harftex" = xyes; then
   KPSE_HARFBUZZ_FLAGS
 fi # end xetex/luatex for harfbuzz
 
 # XeTeX, but not LuaTeX, needs icu and graphite.
-if test "x$enable_xetex" = xyes; then
+if test "x$enable_xetex" = xyes || test "x$enable_harftex" = xyes; then
   KPSE_ICU_FLAGS
   KPSE_GRAPHITE2_FLAGS
 fi # end xetex for icu/graphite

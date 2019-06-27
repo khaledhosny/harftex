@@ -25584,7 +25584,8 @@ fi
 
 # LuaTeX and XeTeX need harfbuzz.
 if test "x$enable_xetex" = xyes \
-   || test "x$enable_luatex" = xyes || test "x$enable_luatex53" = xyes; then
+   || test "x$enable_luatex" = xyes || test "x$enable_luatex53" = xyes \
+   || test "x$enable_harftex" = xyes; then
   ##tldbg _KPSE_LIB_FLAGS: Setup graphite2 (-lgraphite2) flags.
 echo 'tldbg:_KPSE_LIB_FLAGS called: libdir=graphite2, libname=graphite2, options=, tlincl=-IBLD/libs/graphite2/include -DGRAPHITE2_STATIC, tllib=BLD/libs/graphite2/libgraphite2.a, tlextra=, rebuildsrcdeps=, rebuildblddeps=${top_builddir}/../../libs/graphite2/include/graphite2/Font.h.' >&5
 ##tldbg _KPSE_LIB_FLAGS_TL: graphite2 (graphite2) .
@@ -25640,7 +25641,7 @@ fi
 fi # end xetex/luatex for harfbuzz
 
 # XeTeX, but not LuaTeX, needs icu and graphite.
-if test "x$enable_xetex" = xyes; then
+if test "x$enable_xetex" = xyes || test "x$enable_harftex" = xyes; then
   echo 'tldbg:KPSE_ICU_FLAGS called: more-icu-libs=, icu-config-args=.' >&5
 ##tldbg _KPSE_LIB_FLAGS: Setup icu (-licuxxx) flags.
 echo 'tldbg:_KPSE_LIB_FLAGS called: libdir=icu, libname=icuxxx, options=, tlincl=-DU_STATIC_IMPLEMENTATION -IBLD/libs/icu/include, tllib= BLD/libs/icu/icu-build/lib/libicuuc.a BLD/libs/icu/icu-build/lib/libicudata.a, tlextra=, rebuildsrcdeps=, rebuildblddeps=${top_builddir}/../../libs/icu/include/unicode/uversion.h.' >&5
