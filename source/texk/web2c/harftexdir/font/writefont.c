@@ -23,7 +23,7 @@ with LuaTeX; if not, see <http://www.gnu.org/licenses/>.
 #include "ptexlib.h"
 #include "lua/luatex-api.h"
 
-int t1_wide_mode = 1 ;
+int t1_wide_mode = 0 ;
 
 void write_cid_fontdictionary(PDF pdf, fo_entry * fo, internal_font_number f);
 
