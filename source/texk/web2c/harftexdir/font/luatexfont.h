@@ -1,7 +1,6 @@
 /*
 
    Copyright 2008-2013 Taco Hoekwater <taco@luatex.org>
-   Copyright 2019 Khaled Hosny
 
    This file is part of LuaTeX.
 
@@ -133,6 +132,10 @@ int packet_cur_s;               /* current |do_vf_packet()| recursion level */
 int packet_stack_ptr;           /* pointer into |packet_stack| */
 vf_struct *new_vfstruct(void);
 
+/* writecff.c */
+
+void writetype1w(PDF pdf, fd_entry * fd);
+
 /* writetype0.c */
 
 void writetype0(PDF pdf, fd_entry * fd);
@@ -152,6 +155,8 @@ char **load_enc_file(char *);
 void writet1(PDF, fd_entry *, int wide);
 void t1_free(void);
 extern int t1_length1, t1_length2, t1_length3;
+
+extern int t1_wide_mode;
 
 /* writetype2.c */
 

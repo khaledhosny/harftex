@@ -1,7 +1,6 @@
 /* lpdflib.c
 
    Copyright 2006-2011 Taco Hoekwater <taco@luatex.org>
-   Copyright 2019 Khaled Hosny
 
    This file is part of LuaTeX.
 
@@ -1266,7 +1265,7 @@ static int getpdfnofobjects(lua_State * L)
 
 static int settypeonewidemode(lua_State * L)
 {
-    /*t1_wide_mode =*/ lua_tointeger(L,1);
+    t1_wide_mode = lua_tointeger(L,1);
     return 0;
 }
 
