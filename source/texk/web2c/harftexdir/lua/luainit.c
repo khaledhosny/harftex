@@ -446,7 +446,7 @@ static void parse_options(int ac, char **av)
                  "lua       : Roberto Ierusalimschy, Waldemar Celes and Luiz Henrique de Figueiredo\n"
                  "metapost  : John Hobby, Taco Hoekwater, Luigi Scarso, Hans Hagen and friends\n"
                  "pplib     : Paweł Jackowski\n"
-                 );
+                 "fontforge : George Williams (partial)\n");
             /* *INDENT-ON* */
             puts(versions);
             uexit(0);

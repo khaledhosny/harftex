@@ -563,7 +563,10 @@ dist_libharftex_a_OBJECTS =  \
 	harftexdir/lua/libharftex_a-lstrlibext.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-helpers.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-texluac.$(OBJEXT)
-am__objects_1 = harftexdir/dvi/libharftex_a-dvigen.$(OBJEXT) \
+am__objects_1 =  \
+	luatexdir/luafontloader/src/libharftex_a-ffdummies.$(OBJEXT) \
+	luatexdir/luafontloader/src/libharftex_a-luafflib.$(OBJEXT) \
+	harftexdir/dvi/libharftex_a-dvigen.$(OBJEXT) \
 	harftexdir/font/libharftex_a-dofont.$(OBJEXT) \
 	harftexdir/font/libharftex_a-luafont.$(OBJEXT) \
 	harftexdir/font/libharftex_a-mapfile.$(OBJEXT) \
@@ -1382,7 +1385,7 @@ harftex_OBJECTS = $(nodist_harftex_OBJECTS)
 am__DEPENDENCIES_6 = $(am__DEPENDENCIES_1)
 am__DEPENDENCIES_7 = libmplibcore.a $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_2) libmputil.a libmd5.a \
+	$(am__DEPENDENCIES_2) libmputil.a libunilib.a libmd5.a \
 	$(am__DEPENDENCIES_1)
 harftex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(harftex_CXXFLAGS) \
@@ -1394,10 +1397,6 @@ am__objects_36 = luatexdir/luajittex-luatex.$(OBJEXT) \
 	mplibdir/luajittex-lmplib.$(OBJEXT)
 nodist_luajittex_OBJECTS = $(am__objects_36)
 luajittex_OBJECTS = $(nodist_luajittex_OBJECTS)
-am__DEPENDENCIES_8 = libmplibcore.a $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_2) libmputil.a libunilib.a libmd5.a \
-	$(am__DEPENDENCIES_1)
 luajittex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(luajittex_LDFLAGS) $(LDFLAGS) -o $@
@@ -1413,19 +1412,19 @@ md5main_OBJECTS = $(am_md5main_OBJECTS)
 md5main_DEPENDENCIES = libmd5.a
 dist_mf_OBJECTS = mf-mfextra.$(OBJEXT)
 mf_OBJECTS = $(dist_mf_OBJECTS)
-@WIN32_FALSE@am__DEPENDENCIES_9 = $(am__DEPENDENCIES_1) \
+@WIN32_FALSE@am__DEPENDENCIES_8 = $(am__DEPENDENCIES_1) \
 @WIN32_FALSE@	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 @WIN32_FALSE@	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 @WIN32_FALSE@	$(am__DEPENDENCIES_1)
 mf_DEPENDENCIES = libmf.a $(am__DEPENDENCIES_2) $(windowlib) \
-	$(am__DEPENDENCIES_9)
+	$(am__DEPENDENCIES_8)
 dist_mf_nowin_OBJECTS = mf_nowin-mfextra.$(OBJEXT)
 mf_nowin_OBJECTS = $(dist_mf_nowin_OBJECTS)
 mf_nowin_DEPENDENCIES = libmf.a $(am__DEPENDENCIES_2) $(windowlib)
 dist_mflua_OBJECTS = mfluadir/mflua-mfluaextra.$(OBJEXT)
 mflua_OBJECTS = $(dist_mflua_OBJECTS)
 mflua_DEPENDENCIES = libmflua.a $(am__DEPENDENCIES_2) $(windowlib) \
-	$(am__DEPENDENCIES_9) $(am__DEPENDENCIES_6)
+	$(am__DEPENDENCIES_8) $(am__DEPENDENCIES_6)
 mflua_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(mflua_LDFLAGS) $(LDFLAGS) -o $@
@@ -1440,7 +1439,7 @@ mflua_nowin_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 dist_mfluajit_OBJECTS = mfluajitdir/mfluajit-mfluajitextra.$(OBJEXT)
 mfluajit_OBJECTS = $(dist_mfluajit_OBJECTS)
 mfluajit_DEPENDENCIES = libmfluajit.a $(am__DEPENDENCIES_2) \
-	$(windowlib) $(am__DEPENDENCIES_9) $(am__DEPENDENCIES_1)
+	$(windowlib) $(am__DEPENDENCIES_8) $(am__DEPENDENCIES_1)
 mfluajit_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(mfluajit_LDFLAGS) $(LDFLAGS) -o $@
@@ -1484,7 +1483,7 @@ patgen_DEPENDENCIES = $(proglib) $(am__DEPENDENCIES_1)
 am_pbibtex_OBJECTS =
 nodist_pbibtex_OBJECTS = pbibtex-pbibtex.$(OBJEXT)
 pbibtex_OBJECTS = $(am_pbibtex_OBJECTS) $(nodist_pbibtex_OBJECTS)
-am__DEPENDENCIES_10 = libkanji.a $(pproglib) $(am__DEPENDENCIES_1) \
+am__DEPENDENCIES_9 = libkanji.a $(pproglib) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_2)
 am__dist_pdftex_SOURCES_DIST = pdftexdir/pdftexextra.c \
 	pdftexdir/pdftexextra.h pdftexdir/pdftex_version.h \
@@ -1498,7 +1497,7 @@ dist_pdftex_OBJECTS = pdftexdir/pdftex-pdftexextra.$(OBJEXT) \
 am__objects_42 = pdftex-pdftexini.$(OBJEXT) pdftex-pdftex0.$(OBJEXT)
 nodist_pdftex_OBJECTS = $(am__objects_42) pdftex-pdftex-pool.$(OBJEXT)
 pdftex_OBJECTS = $(dist_pdftex_OBJECTS) $(nodist_pdftex_OBJECTS)
-am__DEPENDENCIES_11 = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+am__DEPENDENCIES_10 = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) libmd5.a
 pdftex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(pdftex_CXXFLAGS) \
@@ -1559,14 +1558,14 @@ dist_ptex_OBJECTS = ptexdir/ptex-ptexextra.$(OBJEXT) $(am__objects_53)
 am__objects_54 = ptex-ptexini.$(OBJEXT) ptex-ptex0.$(OBJEXT)
 nodist_ptex_OBJECTS = $(am__objects_54) ptex-ptex-pool.$(OBJEXT)
 ptex_OBJECTS = $(dist_ptex_OBJECTS) $(nodist_ptex_OBJECTS)
-@PTEX_SYNCTEX_TRUE@am__DEPENDENCIES_12 = $(am__DEPENDENCIES_1)
+@PTEX_SYNCTEX_TRUE@am__DEPENDENCIES_11 = $(am__DEPENDENCIES_1)
 am_ptftopl_OBJECTS =
 nodist_ptftopl_OBJECTS = ptftopl-ptftopl.$(OBJEXT)
 ptftopl_OBJECTS = $(am_ptftopl_OBJECTS) $(nodist_ptftopl_OBJECTS)
 am_synctex_OBJECTS = synctexdir/synctex-synctex_main.$(OBJEXT)
 synctex_OBJECTS = $(am_synctex_OBJECTS)
-am__DEPENDENCIES_13 = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
-synctex_DEPENDENCIES = $(am__DEPENDENCIES_13) $(am__DEPENDENCIES_1) \
+am__DEPENDENCIES_12 = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+synctex_DEPENDENCIES = $(am__DEPENDENCIES_12) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
 nodist_tangle_OBJECTS = tangle.$(OBJEXT)
 tangle_OBJECTS = $(nodist_tangle_OBJECTS)
@@ -1583,9 +1582,9 @@ dist_tex_OBJECTS = tex-texextra.$(OBJEXT) $(am__objects_55)
 am__objects_56 = tex-texini.$(OBJEXT) tex-tex0.$(OBJEXT)
 nodist_tex_OBJECTS = $(am__objects_56) tex-tex-pool.$(OBJEXT)
 tex_OBJECTS = $(dist_tex_OBJECTS) $(nodist_tex_OBJECTS)
-@TEX_SYNCTEX_TRUE@am__DEPENDENCIES_14 = $(am__DEPENDENCIES_1)
+@TEX_SYNCTEX_TRUE@am__DEPENDENCIES_13 = $(am__DEPENDENCIES_1)
 tex_DEPENDENCIES = $(am__DEPENDENCIES_2) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_14)
+	$(am__DEPENDENCIES_13)
 nodist_tftopl_OBJECTS = tftopl.$(OBJEXT)
 tftopl_OBJECTS = $(nodist_tftopl_OBJECTS)
 tftopl_LDADD = $(LDADD)
@@ -1600,7 +1599,7 @@ ttf2afm_LDADD = $(LDADD)
 am_upbibtex_OBJECTS =
 nodist_upbibtex_OBJECTS = upbibtex-upbibtex.$(OBJEXT)
 upbibtex_OBJECTS = $(am_upbibtex_OBJECTS) $(nodist_upbibtex_OBJECTS)
-am__DEPENDENCIES_15 = libukanji.a $(pproglib) $(am__DEPENDENCIES_1) \
+am__DEPENDENCIES_14 = libukanji.a $(pproglib) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_2)
 am_updvitype_OBJECTS =
 nodist_updvitype_OBJECTS = updvitype-updvitype.$(OBJEXT)
@@ -1622,11 +1621,11 @@ am__objects_67 = $(am__objects_57) $(am__objects_58) $(am__objects_59) \
 	$(am__objects_65) $(am__objects_66) upmpost-ptfmin.$(OBJEXT)
 nodist_upmpost_OBJECTS = $(am__objects_67)
 upmpost_OBJECTS = $(nodist_upmpost_OBJECTS)
-am__DEPENDENCIES_16 = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+am__DEPENDENCIES_15 = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) libmputil.a
-upmpost_DEPENDENCIES = $(am__DEPENDENCIES_16)
+upmpost_DEPENDENCIES = $(am__DEPENDENCIES_15)
 am_uppltotf_OBJECTS =
 nodist_uppltotf_OBJECTS = uppltotf-uppltotf.$(OBJEXT)
 uppltotf_OBJECTS = $(am_uppltotf_OBJECTS) $(nodist_uppltotf_OBJECTS)
@@ -1641,7 +1640,7 @@ dist_uptex_OBJECTS = uptexdir/uptex-uptexextra.$(OBJEXT) \
 am__objects_69 = uptex-uptexini.$(OBJEXT) uptex-uptex0.$(OBJEXT)
 nodist_uptex_OBJECTS = $(am__objects_69) uptex-uptex-pool.$(OBJEXT)
 uptex_OBJECTS = $(dist_uptex_OBJECTS) $(nodist_uptex_OBJECTS)
-@UPTEX_SYNCTEX_TRUE@am__DEPENDENCIES_17 = $(am__DEPENDENCIES_1)
+@UPTEX_SYNCTEX_TRUE@am__DEPENDENCIES_16 = $(am__DEPENDENCIES_1)
 am_uptftopl_OBJECTS =
 nodist_uptftopl_OBJECTS = uptftopl-uptftopl.$(OBJEXT)
 uptftopl_OBJECTS = $(am_uptftopl_OBJECTS) $(nodist_uptftopl_OBJECTS)
@@ -1685,13 +1684,13 @@ dist_xetex_OBJECTS = xetexdir/xetex-xetexextra.$(OBJEXT) \
 am__objects_71 = xetex-xetexini.$(OBJEXT) xetex-xetex0.$(OBJEXT)
 nodist_xetex_OBJECTS = $(am__objects_71) xetex-xetex-pool.$(OBJEXT)
 xetex_OBJECTS = $(dist_xetex_OBJECTS) $(nodist_xetex_OBJECTS)
-@XETEX_MACOSX_FALSE@am__DEPENDENCIES_18 = $(am__DEPENDENCIES_1)
-am__DEPENDENCIES_19 = $(libxetex) $(am__DEPENDENCIES_1) \
+@XETEX_MACOSX_FALSE@am__DEPENDENCIES_17 = $(am__DEPENDENCIES_1)
+am__DEPENDENCIES_18 = $(libxetex) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1) libmd5.a $(am__DEPENDENCIES_18)
-xetex_DEPENDENCIES = $(am__DEPENDENCIES_19) $(am__DEPENDENCIES_2) \
+	$(am__DEPENDENCIES_1) libmd5.a $(am__DEPENDENCIES_17)
+xetex_DEPENDENCIES = $(am__DEPENDENCIES_18) $(am__DEPENDENCIES_2) \
 	$(am__DEPENDENCIES_1)
 xetex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(xetex_CXXFLAGS) \
@@ -2094,6 +2093,8 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-tottfgpos.Po \
 	luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-ttfspecial.Po \
 	luatexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libff_a-fsys.Po \
+	luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po \
+	luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po \
 	luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-ffdummies.Po \
 	luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-luafflib.Po \
 	luatexdir/luafontloader/src/$(DEPDIR)/libluatex_a-ffdummies.Po \
@@ -5018,11 +5019,15 @@ luatex_tests = luatexdir/luatex.test luatexdir/luaimage.test
 #luatex53_tests = luatexdir/luatex.test luatexdir/luaimage.test
 #luatexdir/luatex53.log luatexdir/luaimage53.log: luatex53$(EXEEXT)
 luajittex_tests = luatexdir/luajittex.test luatexdir/luajitimage.test
-libharftex_a_DEPENDENCIES = libluamisc.a libluaharfbuzz.a
+libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
 libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) \
 	$(LIBPNG_INCLUDES) $(HARFBUZZ_INCLUDES) -I$(srcdir)/libmd5 \
 	-DpdfTeX -I$(srcdir)/harftexdir -I$(srcdir)/luatexdir \
+	-I$(srcdir)/luatexdir/unilib \
 	-I$(srcdir)/luatexdir/luapplib/util \
+	-I$(srcdir)/luatexdir/luafontloader/fontforge/inc \
+	-DLUA_FF_LIB=1 \
+	-I$(srcdir)/luatexdir/luafontloader/fontforge/fontforge \
 	-DSYNCTEX_ENGINE_H='<synctex-luatex.h>' -I$(srcdir)/synctexdir
 libharftex_a_CPPFLAGS = $(libharftex_a_preflags) $(LUA_INCLUDES)
 libharftex_a_CXXFLAGS = $(WARNING_CXXFLAGS)
@@ -5038,7 +5043,9 @@ nodist_libharftex_a_SOURCES = \
 nodist_libharftex_sources = 
 dist_libharftex_sources = harftexdir/harftexcallbackids.h \
 	harftexdir/harftex.h harftexdir/harftex-common.h \
-	harftexdir/ptexlib.h harftexdir/dvi/dvigen.h \
+	harftexdir/ptexlib.h luatexdir/luafontloader/src/ffdummies.c \
+	luatexdir/luafontloader/src/ffdummies.h \
+	luatexdir/luafontloader/src/luafflib.c harftexdir/dvi/dvigen.h \
 	harftexdir/dvi/dvigen.c harftexdir/font/luatexfont.h \
 	harftexdir/font/mapfile.h harftexdir/font/sfnt.h \
 	harftexdir/font/texfont.h harftexdir/font/tt_glyf.h \
@@ -5168,10 +5175,11 @@ harftex_CPPFLAGS = $(harftex_preflags) $(LUA_INCLUDES) $(harftex_postflags)
 harftex_CXXFLAGS = $(WARNING_CXXFLAGS)
 harftex_LDFLAGS = -export-dynamic
 harftex_postldadd = libmplibcore.a $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) \
-	$(ZLIB_LIBS) $(LDADD) libmputil.a libmd5.a $(lua_socketlibs)
-harftex_LDADD = libharftex.a libluamisc.a libluasocket.a libluaffi.a \
-	libluapplib.a libluaharfbuzz.a $(LUA_LIBS) $(HARFBUZZ_LIBS) \
-	$(GRAPHITE2_LIBS) $(harftex_postldadd)
+	$(ZLIB_LIBS) $(LDADD) libmputil.a libunilib.a libmd5.a \
+	$(lua_socketlibs)
+harftex_LDADD = libharftex.a libff.a libluamisc.a libluasocket.a \
+	libluaffi.a libluapplib.a libluaharfbuzz.a $(LUA_LIBS) \
+	$(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(luatex_postldadd)
 harftex_depend = $(proglib) $(KPATHSEA_DEPEND) $(LIBPNG_DEPEND) libmputil.a libmd5.a
 harftex_DEPENDENCIES = $(harftex_depend) libharftex.a
 nodist_harftex_SOURCES = $(harftex_sources)
@@ -5823,6 +5831,18 @@ harftexdir/lua/libharftex_a-helpers.$(OBJEXT):  \
 harftexdir/lua/libharftex_a-texluac.$(OBJEXT):  \
 	harftexdir/lua/$(am__dirstamp) \
 	harftexdir/lua/$(DEPDIR)/$(am__dirstamp)
+luatexdir/luafontloader/src/$(am__dirstamp):
+	@$(MKDIR_P) luatexdir/luafontloader/src
+	@: > luatexdir/luafontloader/src/$(am__dirstamp)
+luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) luatexdir/luafontloader/src/$(DEPDIR)
+	@: > luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp)
+luatexdir/luafontloader/src/libharftex_a-ffdummies.$(OBJEXT):  \
+	luatexdir/luafontloader/src/$(am__dirstamp) \
+	luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp)
+luatexdir/luafontloader/src/libharftex_a-luafflib.$(OBJEXT):  \
+	luatexdir/luafontloader/src/$(am__dirstamp) \
+	luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp)
 harftexdir/dvi/$(am__dirstamp):
 	@$(MKDIR_P) harftexdir/dvi
 	@: > harftexdir/dvi/$(am__dirstamp)
@@ -6518,12 +6538,6 @@ luatexdir/lua/libluajittex_a-lstrlibext.$(OBJEXT):  \
 luatexdir/lua/libluajittex_a-texluajitc.$(OBJEXT):  \
 	luatexdir/lua/$(am__dirstamp) \
 	luatexdir/lua/$(DEPDIR)/$(am__dirstamp)
-luatexdir/luafontloader/src/$(am__dirstamp):
-	@$(MKDIR_P) luatexdir/luafontloader/src
-	@: > luatexdir/luafontloader/src/$(am__dirstamp)
-luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) luatexdir/luafontloader/src/$(DEPDIR)
-	@: > luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp)
 luatexdir/luafontloader/src/libluajittex_a-ffdummies.$(OBJEXT):  \
 	luatexdir/luafontloader/src/$(am__dirstamp) \
 	luatexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp)
@@ -8609,6 +8623,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-tottfgpos.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-ttfspecial.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libff_a-fsys.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-ffdummies.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-luafflib.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@luatexdir/luafontloader/src/$(DEPDIR)/libluatex_a-ffdummies.Po@am__quote@ # am--include-marker
@@ -9573,6 +9589,34 @@ harftexdir/lua/libharftex_a-texluac.obj: harftexdir/lua/texluac.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/lua/texluac.c' object='harftexdir/lua/libharftex_a-texluac.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o harftexdir/lua/libharftex_a-texluac.obj `if test -f 'harftexdir/lua/texluac.c'; then $(CYGPATH_W) 'harftexdir/lua/texluac.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/lua/texluac.c'; fi`
+
+luatexdir/luafontloader/src/libharftex_a-ffdummies.o: luatexdir/luafontloader/src/ffdummies.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT luatexdir/luafontloader/src/libharftex_a-ffdummies.o -MD -MP -MF luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Tpo -c -o luatexdir/luafontloader/src/libharftex_a-ffdummies.o `test -f 'luatexdir/luafontloader/src/ffdummies.c' || echo '$(srcdir)/'`luatexdir/luafontloader/src/ffdummies.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Tpo luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='luatexdir/luafontloader/src/ffdummies.c' object='luatexdir/luafontloader/src/libharftex_a-ffdummies.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o luatexdir/luafontloader/src/libharftex_a-ffdummies.o `test -f 'luatexdir/luafontloader/src/ffdummies.c' || echo '$(srcdir)/'`luatexdir/luafontloader/src/ffdummies.c
+
+luatexdir/luafontloader/src/libharftex_a-ffdummies.obj: luatexdir/luafontloader/src/ffdummies.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT luatexdir/luafontloader/src/libharftex_a-ffdummies.obj -MD -MP -MF luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Tpo -c -o luatexdir/luafontloader/src/libharftex_a-ffdummies.obj `if test -f 'luatexdir/luafontloader/src/ffdummies.c'; then $(CYGPATH_W) 'luatexdir/luafontloader/src/ffdummies.c'; else $(CYGPATH_W) '$(srcdir)/luatexdir/luafontloader/src/ffdummies.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Tpo luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='luatexdir/luafontloader/src/ffdummies.c' object='luatexdir/luafontloader/src/libharftex_a-ffdummies.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o luatexdir/luafontloader/src/libharftex_a-ffdummies.obj `if test -f 'luatexdir/luafontloader/src/ffdummies.c'; then $(CYGPATH_W) 'luatexdir/luafontloader/src/ffdummies.c'; else $(CYGPATH_W) '$(srcdir)/luatexdir/luafontloader/src/ffdummies.c'; fi`
+
+luatexdir/luafontloader/src/libharftex_a-luafflib.o: luatexdir/luafontloader/src/luafflib.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT luatexdir/luafontloader/src/libharftex_a-luafflib.o -MD -MP -MF luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Tpo -c -o luatexdir/luafontloader/src/libharftex_a-luafflib.o `test -f 'luatexdir/luafontloader/src/luafflib.c' || echo '$(srcdir)/'`luatexdir/luafontloader/src/luafflib.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Tpo luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='luatexdir/luafontloader/src/luafflib.c' object='luatexdir/luafontloader/src/libharftex_a-luafflib.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o luatexdir/luafontloader/src/libharftex_a-luafflib.o `test -f 'luatexdir/luafontloader/src/luafflib.c' || echo '$(srcdir)/'`luatexdir/luafontloader/src/luafflib.c
+
+luatexdir/luafontloader/src/libharftex_a-luafflib.obj: luatexdir/luafontloader/src/luafflib.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT luatexdir/luafontloader/src/libharftex_a-luafflib.obj -MD -MP -MF luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Tpo -c -o luatexdir/luafontloader/src/libharftex_a-luafflib.obj `if test -f 'luatexdir/luafontloader/src/luafflib.c'; then $(CYGPATH_W) 'luatexdir/luafontloader/src/luafflib.c'; else $(CYGPATH_W) '$(srcdir)/luatexdir/luafontloader/src/luafflib.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Tpo luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='luatexdir/luafontloader/src/luafflib.c' object='luatexdir/luafontloader/src/libharftex_a-luafflib.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o luatexdir/luafontloader/src/libharftex_a-luafflib.obj `if test -f 'luatexdir/luafontloader/src/luafflib.c'; then $(CYGPATH_W) 'luatexdir/luafontloader/src/luafflib.c'; else $(CYGPATH_W) '$(srcdir)/luatexdir/luafontloader/src/luafflib.c'; fi`
 
 harftexdir/dvi/libharftex_a-dvigen.o: harftexdir/dvi/dvigen.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT harftexdir/dvi/libharftex_a-dvigen.o -MD -MP -MF harftexdir/dvi/$(DEPDIR)/libharftex_a-dvigen.Tpo -c -o harftexdir/dvi/libharftex_a-dvigen.o `test -f 'harftexdir/dvi/dvigen.c' || echo '$(srcdir)/'`harftexdir/dvi/dvigen.c
@@ -19988,6 +20032,8 @@ distclean: distclean-recursive
 	-rm -f luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-tottfgpos.Po
 	-rm -f luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-ttfspecial.Po
 	-rm -f luatexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libff_a-fsys.Po
+	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po
+	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po
 	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-ffdummies.Po
 	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-luafflib.Po
 	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libluatex_a-ffdummies.Po
@@ -20773,6 +20819,8 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-tottfgpos.Po
 	-rm -f luatexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libff_a-ttfspecial.Po
 	-rm -f luatexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libff_a-fsys.Po
+	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po
+	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po
 	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-ffdummies.Po
 	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libluajittex_a-luafflib.Po
 	-rm -f luatexdir/luafontloader/src/$(DEPDIR)/libluatex_a-ffdummies.Po
@@ -22027,7 +22075,7 @@ $(luajittex_OBJECTS): libluajittex.a
 luatexdir/luatex.log luatexdir/luaimage.log: luatex$(EXEEXT)
 luatexdir/luajittex.log luatexdir/luajitimage.log: luajittex$(EXEEXT)
 
-$(libharftex_a_OBJECTS): libmplibcore.a libluamisc.a libluaharfbuzz.a
+$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
 
 $(libluaharfbuzz_a_OBJECTS): $(LUA_DEPEND)
 
