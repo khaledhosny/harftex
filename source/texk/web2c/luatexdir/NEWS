@@ -1,4 +1,15 @@
 ==============================================================
+HarfTeX 0.3.0 2019-06-30
+==============================================================
+
+- Restore FontForge-based fontloader module as few packages still depend on it
+  (#6).
+- Fix embedding "wide" Type 1 fonts (#5).
+- Update to HarfBuzz 2.5.3
+
+
+
+==============================================================
 HarfTeX 0.2.0 2019-06-24
 ==============================================================
 
@@ -7,8 +18,8 @@ HarfTeX 0.2.0 2019-06-24
 - Read font x-height and cap-height from the OS/2 table in addition to the now
   rarely used PCLT table. Also read ascender, descender ans well as stemv from
   the OS/2 table. Previously the engine would derive these parameters from the
-  metrics of a hard-coded set of characters and ignore the values supplied by the
-  font.
+  metrics of a hard-coded set of characters and ignore the values supplied by
+  the font.
 - Update HarfBuzz and Graphite2 to their latest releases.
 - Update luaharfbuzz to fix a bug in detecting features supported by the font
   (#3).
