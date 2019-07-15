@@ -561,7 +561,6 @@ libharftex_a_AR = $(AR) $(ARFLAGS)
 libharftex_a_LIBADD =
 dist_libharftex_a_OBJECTS =  \
 	harftexdir/lua/libharftex_a-lstrlibext.$(OBJEXT) \
-	harftexdir/lua/libharftex_a-helpers.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-texluac.$(OBJEXT)
 am__objects_1 =  \
 	luatexdir/luafontloader/src/libharftex_a-ffdummies.$(OBJEXT) \
@@ -613,7 +612,6 @@ am__objects_1 =  \
 	harftexdir/lua/libharftex_a-ltexlib.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-lnewtokenlib.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-luatex-core.$(OBJEXT) \
-	harftexdir/lua/libharftex_a-helpers.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-luainit.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-luanode.$(OBJEXT) \
 	harftexdir/lua/libharftex_a-luastuff.$(OBJEXT) \
@@ -1832,7 +1830,6 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	harftexdir/lang/$(DEPDIR)/libharftex_a-hnjalloc.Po \
 	harftexdir/lang/$(DEPDIR)/libharftex_a-hyphen.Po \
 	harftexdir/lang/$(DEPDIR)/libharftex_a-texlang.Po \
-	harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Po \
 	harftexdir/lua/$(DEPDIR)/libharftex_a-lcallbacklib.Po \
 	harftexdir/lua/$(DEPDIR)/libharftex_a-lfontlib.Po \
 	harftexdir/lua/$(DEPDIR)/libharftex_a-limglib.Po \
@@ -5032,7 +5029,6 @@ libharftex_a_CPPFLAGS = $(libharftex_a_preflags) $(LUA_INCLUDES)
 libharftex_a_CXXFLAGS = $(WARNING_CXXFLAGS)
 dist_libharftex_a_SOURCES = \
 	harftexdir/lua/lstrlibext.c \
-	harftexdir/lua/helpers.c \
 	harftexdir/lua/texluac.c
 
 nodist_libharftex_a_SOURCES = \
@@ -5078,72 +5074,72 @@ dist_libharftex_sources = harftexdir/harftexcallbackids.h \
 	harftexdir/lua/lpdflib.c harftexdir/lua/lstatslib.c \
 	harftexdir/lua/ltexiolib.c harftexdir/lua/ltexlib.c \
 	harftexdir/lua/lnewtokenlib.c harftexdir/lua/luatex-api.h \
-	harftexdir/lua/luatex-core.c harftexdir/lua/helpers.c \
-	harftexdir/lua/luainit.c harftexdir/lua/luanode.c \
-	harftexdir/lua/luastuff.c harftexdir/lua/luatoken.c \
-	harftexdir/lua/mplibstuff.c harftexdir/pdf/pdfpagetree.h \
-	harftexdir/pdf/pdfaction.h harftexdir/pdf/pdfannot.h \
-	harftexdir/pdf/pdfcolorstack.h harftexdir/pdf/pdfdest.h \
-	harftexdir/pdf/pdffont.h harftexdir/pdf/pdfgen.h \
-	harftexdir/pdf/pdfglyph.h harftexdir/pdf/pdfimage.h \
-	harftexdir/pdf/pdflink.h harftexdir/pdf/pdflistout.h \
-	harftexdir/pdf/pdfliteral.h harftexdir/pdf/pdfobj.h \
-	harftexdir/pdf/pdfoutline.h harftexdir/pdf/pdfpage.h \
-	harftexdir/pdf/pdfrule.h harftexdir/pdf/pdfsaverestore.h \
-	harftexdir/pdf/pdfsetmatrix.h harftexdir/pdf/pdfshipout.h \
-	harftexdir/pdf/pdftables.h harftexdir/pdf/pdfthread.h \
-	harftexdir/pdf/pdftypes.h harftexdir/pdf/pdfxform.h \
-	harftexdir/pdf/pdfaction.c harftexdir/pdf/pdfannot.c \
-	harftexdir/pdf/pdfcolorstack.c harftexdir/pdf/pdfdest.c \
-	harftexdir/pdf/pdffont.c harftexdir/pdf/pdfgen.c \
-	harftexdir/pdf/pdfglyph.c harftexdir/pdf/pdfimage.c \
-	harftexdir/pdf/pdflink.c harftexdir/pdf/pdflistout.c \
-	harftexdir/pdf/pdfliteral.c harftexdir/pdf/pdfobj.c \
-	harftexdir/pdf/pdfoutline.c harftexdir/pdf/pdfpage.c \
-	harftexdir/pdf/pdfpagetree.c harftexdir/pdf/pdfrule.c \
-	harftexdir/pdf/pdfsaverestore.c harftexdir/pdf/pdfsetmatrix.c \
-	harftexdir/pdf/pdfshipout.c harftexdir/pdf/pdftables.c \
-	harftexdir/pdf/pdfthread.c harftexdir/pdf/pdfxform.c \
-	harftexdir/tex/align.h harftexdir/tex/arithmetic.h \
-	harftexdir/tex/backend.h harftexdir/tex/backend.c \
-	harftexdir/tex/buildpage.h harftexdir/tex/commands.h \
-	harftexdir/tex/conditional.h harftexdir/tex/directions.h \
-	harftexdir/tex/dumpdata.h harftexdir/tex/equivalents.h \
-	harftexdir/tex/errors.h harftexdir/tex/expand.h \
-	harftexdir/tex/extensions.h harftexdir/tex/filename.h \
-	harftexdir/tex/inputstack.h harftexdir/tex/linebreak.h \
-	harftexdir/tex/mainbody.h harftexdir/tex/maincontrol.h \
-	harftexdir/tex/mathcodes.h harftexdir/tex/memoryword.h \
-	harftexdir/tex/mlist.h harftexdir/tex/nesting.h \
-	harftexdir/tex/packaging.h harftexdir/tex/postlinebreak.h \
-	harftexdir/tex/primitive.h harftexdir/tex/printing.h \
-	harftexdir/tex/scanning.h harftexdir/tex/stringpool.h \
-	harftexdir/tex/texdeffont.h harftexdir/tex/texfileio.h \
-	harftexdir/tex/texmath.h harftexdir/tex/texnodes.h \
-	harftexdir/tex/textcodes.h harftexdir/tex/textoken.h \
-	harftexdir/tex/align.c harftexdir/tex/arithmetic.c \
-	harftexdir/tex/buildpage.c harftexdir/tex/commands.c \
-	harftexdir/tex/conditional.c harftexdir/tex/directions.c \
-	harftexdir/tex/dumpdata.c harftexdir/tex/equivalents.c \
-	harftexdir/tex/errors.c harftexdir/tex/expand.c \
-	harftexdir/tex/extensions.c harftexdir/tex/filename.c \
-	harftexdir/tex/inputstack.c harftexdir/tex/linebreak.c \
-	harftexdir/tex/mainbody.c harftexdir/tex/maincontrol.c \
-	harftexdir/tex/mathcodes.c harftexdir/tex/memoryword.c \
-	harftexdir/tex/mlist.c harftexdir/tex/nesting.c \
-	harftexdir/tex/packaging.c harftexdir/tex/postlinebreak.c \
-	harftexdir/tex/primitive.c harftexdir/tex/printing.c \
-	harftexdir/tex/scanning.c harftexdir/tex/stringpool.c \
-	harftexdir/tex/texdeffont.c harftexdir/tex/texfileio.c \
-	harftexdir/tex/texmath.c harftexdir/tex/texnodes.c \
-	harftexdir/tex/textcodes.c harftexdir/tex/textoken.c \
-	harftexdir/utils/avl.c harftexdir/utils/avl.h \
-	harftexdir/utils/avlstuff.h harftexdir/utils/managed-sa.h \
-	harftexdir/utils/utils.h harftexdir/utils/unistring.h \
-	harftexdir/utils/avlstuff.c harftexdir/utils/managed-sa.c \
-	harftexdir/utils/unistring.c harftexdir/utils/utils.c \
-	synctexdir/synctex-common.h synctexdir/synctex-luatex.h \
-	synctexdir/synctex.c synctexdir/synctex.h
+	harftexdir/lua/luatex-core.c harftexdir/lua/luainit.c \
+	harftexdir/lua/luanode.c harftexdir/lua/luastuff.c \
+	harftexdir/lua/luatoken.c harftexdir/lua/mplibstuff.c \
+	harftexdir/pdf/pdfpagetree.h harftexdir/pdf/pdfaction.h \
+	harftexdir/pdf/pdfannot.h harftexdir/pdf/pdfcolorstack.h \
+	harftexdir/pdf/pdfdest.h harftexdir/pdf/pdffont.h \
+	harftexdir/pdf/pdfgen.h harftexdir/pdf/pdfglyph.h \
+	harftexdir/pdf/pdfimage.h harftexdir/pdf/pdflink.h \
+	harftexdir/pdf/pdflistout.h harftexdir/pdf/pdfliteral.h \
+	harftexdir/pdf/pdfobj.h harftexdir/pdf/pdfoutline.h \
+	harftexdir/pdf/pdfpage.h harftexdir/pdf/pdfrule.h \
+	harftexdir/pdf/pdfsaverestore.h harftexdir/pdf/pdfsetmatrix.h \
+	harftexdir/pdf/pdfshipout.h harftexdir/pdf/pdftables.h \
+	harftexdir/pdf/pdfthread.h harftexdir/pdf/pdftypes.h \
+	harftexdir/pdf/pdfxform.h harftexdir/pdf/pdfaction.c \
+	harftexdir/pdf/pdfannot.c harftexdir/pdf/pdfcolorstack.c \
+	harftexdir/pdf/pdfdest.c harftexdir/pdf/pdffont.c \
+	harftexdir/pdf/pdfgen.c harftexdir/pdf/pdfglyph.c \
+	harftexdir/pdf/pdfimage.c harftexdir/pdf/pdflink.c \
+	harftexdir/pdf/pdflistout.c harftexdir/pdf/pdfliteral.c \
+	harftexdir/pdf/pdfobj.c harftexdir/pdf/pdfoutline.c \
+	harftexdir/pdf/pdfpage.c harftexdir/pdf/pdfpagetree.c \
+	harftexdir/pdf/pdfrule.c harftexdir/pdf/pdfsaverestore.c \
+	harftexdir/pdf/pdfsetmatrix.c harftexdir/pdf/pdfshipout.c \
+	harftexdir/pdf/pdftables.c harftexdir/pdf/pdfthread.c \
+	harftexdir/pdf/pdfxform.c harftexdir/tex/align.h \
+	harftexdir/tex/arithmetic.h harftexdir/tex/backend.h \
+	harftexdir/tex/backend.c harftexdir/tex/buildpage.h \
+	harftexdir/tex/commands.h harftexdir/tex/conditional.h \
+	harftexdir/tex/directions.h harftexdir/tex/dumpdata.h \
+	harftexdir/tex/equivalents.h harftexdir/tex/errors.h \
+	harftexdir/tex/expand.h harftexdir/tex/extensions.h \
+	harftexdir/tex/filename.h harftexdir/tex/inputstack.h \
+	harftexdir/tex/linebreak.h harftexdir/tex/mainbody.h \
+	harftexdir/tex/maincontrol.h harftexdir/tex/mathcodes.h \
+	harftexdir/tex/memoryword.h harftexdir/tex/mlist.h \
+	harftexdir/tex/nesting.h harftexdir/tex/packaging.h \
+	harftexdir/tex/postlinebreak.h harftexdir/tex/primitive.h \
+	harftexdir/tex/printing.h harftexdir/tex/scanning.h \
+	harftexdir/tex/stringpool.h harftexdir/tex/texdeffont.h \
+	harftexdir/tex/texfileio.h harftexdir/tex/texmath.h \
+	harftexdir/tex/texnodes.h harftexdir/tex/textcodes.h \
+	harftexdir/tex/textoken.h harftexdir/tex/align.c \
+	harftexdir/tex/arithmetic.c harftexdir/tex/buildpage.c \
+	harftexdir/tex/commands.c harftexdir/tex/conditional.c \
+	harftexdir/tex/directions.c harftexdir/tex/dumpdata.c \
+	harftexdir/tex/equivalents.c harftexdir/tex/errors.c \
+	harftexdir/tex/expand.c harftexdir/tex/extensions.c \
+	harftexdir/tex/filename.c harftexdir/tex/inputstack.c \
+	harftexdir/tex/linebreak.c harftexdir/tex/mainbody.c \
+	harftexdir/tex/maincontrol.c harftexdir/tex/mathcodes.c \
+	harftexdir/tex/memoryword.c harftexdir/tex/mlist.c \
+	harftexdir/tex/nesting.c harftexdir/tex/packaging.c \
+	harftexdir/tex/postlinebreak.c harftexdir/tex/primitive.c \
+	harftexdir/tex/printing.c harftexdir/tex/scanning.c \
+	harftexdir/tex/stringpool.c harftexdir/tex/texdeffont.c \
+	harftexdir/tex/texfileio.c harftexdir/tex/texmath.c \
+	harftexdir/tex/texnodes.c harftexdir/tex/textcodes.c \
+	harftexdir/tex/textoken.c harftexdir/utils/avl.c \
+	harftexdir/utils/avl.h harftexdir/utils/avlstuff.h \
+	harftexdir/utils/managed-sa.h harftexdir/utils/utils.h \
+	harftexdir/utils/unistring.h harftexdir/utils/avlstuff.c \
+	harftexdir/utils/managed-sa.c harftexdir/utils/unistring.c \
+	harftexdir/utils/utils.c synctexdir/synctex-common.h \
+	synctexdir/synctex-luatex.h synctexdir/synctex.c \
+	synctexdir/synctex.h
 libluaharfbuzz_a_DEPENDENCIES = $(HARFBUZZ_DEPEND) $(GRAPHITE2_DEPEND)
 libluaharfbuzz_a_CPPFLAGS = $(AM_CPPFLAGS) $(LUA_INCLUDES) $(HARFBUZZ_INCLUDES) $(GRAPHITE2_INCLUDES)
 libluaharfbuzz_a_CFLAGS = # $(WARNING_CFLAGS)
@@ -5822,9 +5818,6 @@ harftexdir/lua/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) harftexdir/lua/$(DEPDIR)
 	@: > harftexdir/lua/$(DEPDIR)/$(am__dirstamp)
 harftexdir/lua/libharftex_a-lstrlibext.$(OBJEXT):  \
-	harftexdir/lua/$(am__dirstamp) \
-	harftexdir/lua/$(DEPDIR)/$(am__dirstamp)
-harftexdir/lua/libharftex_a-helpers.$(OBJEXT):  \
 	harftexdir/lua/$(am__dirstamp) \
 	harftexdir/lua/$(DEPDIR)/$(am__dirstamp)
 harftexdir/lua/libharftex_a-texluac.$(OBJEXT):  \
@@ -8360,7 +8353,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lang/$(DEPDIR)/libharftex_a-hnjalloc.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lang/$(DEPDIR)/libharftex_a-hyphen.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lang/$(DEPDIR)/libharftex_a-texlang.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-lcallbacklib.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-lfontlib.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/lua/$(DEPDIR)/libharftex_a-limglib.Po@am__quote@ # am--include-marker
@@ -9560,20 +9552,6 @@ harftexdir/lua/libharftex_a-lstrlibext.obj: harftexdir/lua/lstrlibext.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/lua/lstrlibext.c' object='harftexdir/lua/libharftex_a-lstrlibext.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o harftexdir/lua/libharftex_a-lstrlibext.obj `if test -f 'harftexdir/lua/lstrlibext.c'; then $(CYGPATH_W) 'harftexdir/lua/lstrlibext.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/lua/lstrlibext.c'; fi`
-
-harftexdir/lua/libharftex_a-helpers.o: harftexdir/lua/helpers.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT harftexdir/lua/libharftex_a-helpers.o -MD -MP -MF harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Tpo -c -o harftexdir/lua/libharftex_a-helpers.o `test -f 'harftexdir/lua/helpers.c' || echo '$(srcdir)/'`harftexdir/lua/helpers.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Tpo harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/lua/helpers.c' object='harftexdir/lua/libharftex_a-helpers.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o harftexdir/lua/libharftex_a-helpers.o `test -f 'harftexdir/lua/helpers.c' || echo '$(srcdir)/'`harftexdir/lua/helpers.c
-
-harftexdir/lua/libharftex_a-helpers.obj: harftexdir/lua/helpers.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT harftexdir/lua/libharftex_a-helpers.obj -MD -MP -MF harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Tpo -c -o harftexdir/lua/libharftex_a-helpers.obj `if test -f 'harftexdir/lua/helpers.c'; then $(CYGPATH_W) 'harftexdir/lua/helpers.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/lua/helpers.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Tpo harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/lua/helpers.c' object='harftexdir/lua/libharftex_a-helpers.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o harftexdir/lua/libharftex_a-helpers.obj `if test -f 'harftexdir/lua/helpers.c'; then $(CYGPATH_W) 'harftexdir/lua/helpers.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/lua/helpers.c'; fi`
 
 harftexdir/lua/libharftex_a-texluac.o: harftexdir/lua/texluac.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libharftex_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT harftexdir/lua/libharftex_a-texluac.o -MD -MP -MF harftexdir/lua/$(DEPDIR)/libharftex_a-texluac.Tpo -c -o harftexdir/lua/libharftex_a-texluac.o `test -f 'harftexdir/lua/texluac.c' || echo '$(srcdir)/'`harftexdir/lua/texluac.c
@@ -19769,7 +19747,6 @@ distclean: distclean-recursive
 	-rm -f harftexdir/lang/$(DEPDIR)/libharftex_a-hnjalloc.Po
 	-rm -f harftexdir/lang/$(DEPDIR)/libharftex_a-hyphen.Po
 	-rm -f harftexdir/lang/$(DEPDIR)/libharftex_a-texlang.Po
-	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-lcallbacklib.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-lfontlib.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-limglib.Po
@@ -20556,7 +20533,6 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f harftexdir/lang/$(DEPDIR)/libharftex_a-hnjalloc.Po
 	-rm -f harftexdir/lang/$(DEPDIR)/libharftex_a-hyphen.Po
 	-rm -f harftexdir/lang/$(DEPDIR)/libharftex_a-texlang.Po
-	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-helpers.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-lcallbacklib.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-lfontlib.Po
 	-rm -f harftexdir/lua/$(DEPDIR)/libharftex_a-limglib.Po

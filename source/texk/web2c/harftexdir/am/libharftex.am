@@ -26,7 +26,6 @@ libharftex_a_CXXFLAGS = $(WARNING_CXXFLAGS)
 
 dist_libharftex_a_SOURCES = \
 	harftexdir/lua/lstrlibext.c \
-	harftexdir/lua/helpers.c \
 	harftexdir/lua/texluac.c
 nodist_libharftex_a_SOURCES = \
 	$(dist_libharftex_sources) \
@@ -141,7 +140,6 @@ dist_libharftex_sources += \
 	harftexdir/lua/lnewtokenlib.c \
 	harftexdir/lua/luatex-api.h \
 	harftexdir/lua/luatex-core.c \
-	harftexdir/lua/helpers.c \
 	harftexdir/lua/luainit.c \
 	harftexdir/lua/luanode.c \
 	harftexdir/lua/luastuff.c \
