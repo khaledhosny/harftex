@@ -1217,10 +1217,6 @@ typedef struct splinechar {
     struct glyphvariants *horiz_variants;
     struct mathkern *mathkern;
 /* End of MATH/TeX fields */
-#ifndef _NO_PYTHON
-    void *python_sc_object;
-    void *python_temporary;
-#endif
     void *python_persistent;		/* If python this will hold a python object, if not python this will hold a string containing a pickled object. We do nothing with it (if not python) except save it back out unchanged */
 #ifdef FONTFORGE_CONFIG_TYPE3
 	/* If the glyph is used as a tile pattern, then the next two values */
@@ -2832,24 +2828,6 @@ extern void SCClearContents(SplineChar *sc,int layer);
 extern void SCClearAll(SplineChar *sc,int layer);
 extern void BCClearAll(BDFChar *bc);
 
-#if !defined(_NO_PYTHON)
-extern void FontForge_PythonInit(void);
-extern void PyFF_ErrorString(const char *msg,const char *str);
-extern void PyFF_ErrorF3(const char *frmt, const char *str, int size, int depth);
-extern void PyFF_Stdin(void);
-extern void PyFF_Main(int argc,char **argv,int start);
-extern void PyFF_ScriptFile(struct fontviewbase *fv,SplineChar *sc,char *filename);
-extern void PyFF_ScriptString(struct fontviewbase *fv,SplineChar *sc,int layer,char *str);
-extern void PyFF_FreeFV(struct fontviewbase *fv);
-extern void PyFF_FreeSC(SplineChar *sc);
-extern void PyFF_FreeSF(SplineFont *sf);
-extern void PyFF_ProcessInitFiles(void);
-extern char *PyFF_PickleMeToString(void *pydata);
-extern void *PyFF_UnPickleMeToObjects(char *str);
-struct _object;		/* Python Object */
-extern void PyFF_CallDictFunc(struct _object *dict,char *key,char *argtypes, ... );
-extern void ff_init(void);
-#endif
 extern void doinitFontForgeMain(void);
 
 extern void InitSimpleStuff(void);
@@ -2902,11 +2880,9 @@ extern void SCClearInstrsOrMark(SplineChar *sc, int layer, int complain);
 extern void instrcheck(SplineChar *sc,int layer);
 extern void TTFPointMatches(SplineChar *sc,int layer,int top);
 
-#ifdef LUA_FF_LIB
 extern SplineFont *ReadSplineFontInfo(char *filename,enum openflags openflags); /* splinefont.c */ 
 extern SplineFont *SFReadTTFInfo(char *filename, int flags, enum openflags openflags);  /* parsettf.c */ 
 extern SplineFont *SFReadMacBinaryInfo(char *filename,int flags,enum openflags openflags); /* macbinary.c */
-#endif
 
 
 

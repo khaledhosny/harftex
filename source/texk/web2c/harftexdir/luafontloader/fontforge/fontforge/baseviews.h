@@ -129,9 +129,6 @@ typedef struct fontviewbase {
 #ifndef _NO_FFSCRIPT
     struct dictionary *fontvars;	/* Scripting */
 #endif
-#ifndef _NO_PYTHON
-    void *python_fv_object;
-#endif
 } FontViewBase;
 
 enum origins { or_zero, or_center, or_lastpress, or_value, or_undefined };
@@ -502,11 +499,6 @@ extern struct python_import_export {
     char *extension;
     char *all_extensions;
 } *py_ie;
-extern void PyFF_SCExport(SplineChar *sc,int ie_index,char *filename,
-	int layer);
-extern void PyFF_SCImport(SplineChar *sc,int ie_index,char *filename,
-	int layer, int clear);
-extern void PyFF_InitFontHook(FontViewBase *fv);
 
 extern void LookupInit(void);
 extern int UserFeaturesDiffer(void);

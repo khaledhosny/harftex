@@ -1155,23 +1155,11 @@ return( copy( tags2suffix[i].suffix ));
     }
 return( NULL );
 }
-#ifdef LUA_FF_LIB
+
 /* ma = State Machine, un = Unknown */
 char *lookup_type_names[2][10] =
             { { "us", "ss", "ms", "as", "ls", "cs", "ks", "es", "rk" },
               { "up", "sp", "pp", "ca", "mb", "ml", "mm", "cp", "kp","ep" }};
-#else
-char *lookup_type_names[2][10] =
-	    { { N_("Undefined substitution"), N_("Single Substitution"), N_("Multiple Substitution"),
-		N_("Alternate Substitution"), N_("Ligature Substitution"), N_("Contextual Substitution"),
-		N_("Contextual Chaining Substitution"), N_("Extension"),
-		N_("Reverse Contextual Chaining Substitution") },
-	      { N_("Undefined positioning"), N_("Single Positioning"), N_("Pairwise Positioning (kerning)"),
-		N_("Cursive attachment"), N_("Mark to base attachment"),
-		N_("Mark to Ligature attachment"), N_("Mark to Mark attachment"),
-		N_("Contextual Positioning"), N_("Contextual Chaining Positioning"),
-		N_("Extension") }};
-#endif
 
 /* This is a non-ui based copy of a similar list in lookupui.c */
 static struct {
@@ -1368,34 +1356,17 @@ void NameOTLookup(OTLookup *otl,SplineFont *sf) {
 
     if ( otl->lookup_name==NULL ) {
 	for ( k=0; k<2; ++k ) {
-#ifndef LUA_FF_LIB
-	    for ( fl=otl->features; fl!=NULL ; fl=fl->next ) {
-		/* look first for a feature attached to a default language */
-		if ( k==1 || DefaultLangTagInScriptList(fl->scripts,false)!=NULL ) {
-		    userfriendly = TagFullName(sf,fl->featuretag, true);
-		    if ( userfriendly!=NULL )
-	    break;
-		}
-	    }
-	    if ( userfriendly!=NULL )
-	break;
-#endif
 	}
 	if ( userfriendly==NULL ) {
 	    if ( (otl->lookup_type>>8)<2 && (otl->lookup_type&0xff)<10 )
 		lookuptype = _(lookup_type_names[otl->lookup_type>>8][otl->lookup_type&0xff]);
 	    else
-#ifdef LUA_FF_LIB
         lookuptype = "un";
-#else
-		lookuptype = _("Unknown");
-#endif
 	    for ( fl=otl->features; fl!=NULL; fl=fl->next );
 	    if ( fl==NULL )
 		userfriendly = copy(lookuptype);
 	    else {
 		userfriendly = galloc( strlen(lookuptype) + 40);
-#ifdef LUA_FF_LIB
         if ( (otl->lookup_type&0xff)>= 0xf0 ) {
           sprintf( userfriendly, "%s_<%d,%d>", lookuptype,
                  (fl->featuretag>>16), (fl->featuretag&0xffff));
@@ -1406,13 +1377,6 @@ void NameOTLookup(OTLookup *otl,SplineFont *sf) {
 		    fl->featuretag>>8 ,
 		    fl->featuretag );
         }
-#else
-		sprintf( userfriendly, "%s '%c%c%c%c'", lookuptype,
-		    fl->featuretag>>24,
-		    fl->featuretag>>16,
-		    fl->featuretag>>8 ,
-		    fl->featuretag );
-#endif
 	    }
 	}
 	script = NULL;
@@ -1443,27 +1407,12 @@ void NameOTLookup(OTLookup *otl,SplineFont *sf) {
 	    if ( found!=NULL ) {
 		script_tag = found->script;
 		for ( j=0; localscripts[j].text!=NULL && script_tag!=localscripts[j].tag; ++j ) {;}
-#ifdef LUA_FF_LIB
             buf[0] = fl->scripts->script>>24;
             buf[1] = (fl->scripts->script>>16)&0xff;
             buf[2] = (fl->scripts->script>>8)&0xff;
             buf[3] = fl->scripts->script&0xff;
             buf[4] = 0;
 		    script = copy(buf);
-#else
-		if ( localscripts[j].text!=NULL )
-		    script = copy( _((char *) localscripts[j].text) );
-		else {
-		    buf[0] = '\'';
-		    buf[1] = fl->scripts->script>>24;
-		    buf[2] = (fl->scripts->script>>16)&0xff;
-		    buf[3] = (fl->scripts->script>>8)&0xff;
-		    buf[4] = fl->scripts->script&0xff;
-		    buf[5] = '\'';
-		    buf[6] = 0;
-		    script = copy(buf);
-		}
-#endif
 	    }
 	}
 	if ( script!=NULL ) {
@@ -1472,19 +1421,11 @@ void NameOTLookup(OTLookup *otl,SplineFont *sf) {
 /* GT: The second %s (if present) is the script */
 /* GT: While the %d is the index into the lookup list and is used to disambiguate it */
 /* GT: In case that is needed */
-#ifdef LUA_FF_LIB
         format = "%s_%s_l_%d";
-#else
-	    format = _("%s in %s lookup %d");
-#endif
 	    otl->lookup_name = galloc( strlen(userfriendly)+strlen(format)+strlen(script)+10 );
 	    sprintf( otl->lookup_name, format, userfriendly, script, otl->lookup_index );
 	} else {
-#ifdef LUA_FF_LIB
         format = "%s_l_%d";
-#else
-	    format = _("%s lookup %d");
-#endif
 	    otl->lookup_name = galloc( strlen(userfriendly)+strlen(format)+10 );
 	    sprintf( otl->lookup_name, format, userfriendly, otl->lookup_index );
 	}
@@ -1501,37 +1442,17 @@ void NameOTLookup(OTLookup *otl,SplineFont *sf) {
 	    if ( subtable==otl->subtables && subtable->next==NULL )
 /* GT: This string is used to generate a name for an OpenType lookup subtable. */
 /* GT:  %s is the lookup name */
-#ifdef LUA_FF_LIB
         format = "%s_s";
-#else
-		format = _("%s subtable");
-#endif
 	    else if ( subtable->per_glyph_pst_or_kern )
 /* GT: This string is used to generate a name for an OpenType lookup subtable. */
 /* GT:  %s is the lookup name, %d is the index of the subtable in the lookup */
-#ifdef LUA_FF_LIB
         format = "%s_g_%d";
-#else
-		format = _("%s per glyph data %d");
-#endif
 	    else if ( subtable->kc!=NULL )
-#ifdef LUA_FF_LIB
         format = "%s_k_%d";
-#else
-		format = _("%s kerning class %d");
-#endif
 	    else if ( subtable->fpst!=NULL )
-#ifdef LUA_FF_LIB
         format = "%s_c_%d";
-#else
-		format = _("%s contextual %d");
-#endif
 	    else if ( subtable->anchor_classes )
-#ifdef LUA_FF_LIB
         format = "%s_a_%d";
-#else
-		format = _("%s anchor %d");
-#endif
 	    else {
 		IError("Subtable status not filled in for %dth subtable of %s", cnt, otl->lookup_name );
 		format = "%s !!!!!!!! %d";
