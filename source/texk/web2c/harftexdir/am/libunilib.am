@@ -1,0 +1,36 @@
+## texk/web2c/harftexdir/am/libunilib.am: Makefile fragment for libhunilib.
+##
+## Copyright (C) 2013, 2014 Taco Hoekwater <taco@luatex.org>
+## You may freely use, modify and/or distribute this file.
+
+## libhunilib
+##
+EXTRA_LIBRARIES += libhunilib.a
+
+libhunilib_a_CPPFLAGS = $(AM_CPPFLAGS) \
+	-I$(top_srcdir)/w2c \
+	-I$(top_srcdir)/harftexdir/unilib
+
+libhunilib_a_CFLAGS = # $(WARNING_CFLAGS)
+
+libhunilib_a_SOURCES = \
+	harftexdir/unilib/ArabicForms.c \
+	harftexdir/unilib/alphabet.c \
+	harftexdir/unilib/char.c \
+	harftexdir/unilib/chardata.h \
+	harftexdir/unilib/charset.h \
+	harftexdir/unilib/cjk.c \
+	harftexdir/unilib/combiners.h \
+	harftexdir/unilib/gwwiconv.c \
+	harftexdir/unilib/gwwiconv.h \
+	harftexdir/unilib/ucharmap.c \
+	harftexdir/unilib/unialt.c \
+	harftexdir/unilib/unibasics.h \
+	harftexdir/unilib/usprintf.c \
+	harftexdir/unilib/ustring.c \
+	harftexdir/unilib/ustring.h \
+	harftexdir/unilib/utype.c \
+	harftexdir/unilib/utype.h
+
+EXTRA_DIST += harftexdir/unilib/src/makeutype.c
+

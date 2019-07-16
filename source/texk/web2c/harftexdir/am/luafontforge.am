@@ -1,0 +1,99 @@
+## texk/web2c/harftexdir/am/luafontforge.am: Makefile fragment for libhff.
+##
+## Copyright (C) 2009-2015 Peter Breitenlohner <tex-live@tug.org>
+## You may freely use, modify and/or distribute this file.
+
+## luafontforge
+##
+EXTRA_LIBRARIES += libhff.a
+
+$(libhff_a_OBJECTS): libhunilib.a
+
+libhff_a_CPPFLAGS = $(AM_CPPFLAGS) \
+	-DLUA_FF_LIB=1 -D_NO_PYTHON=1 -DX_DISPLAY_MISSING=1 -DUSE_OUR_MEMORY=1 \
+	-I$(srcdir)/w2c \
+	-I$(srcdir)/harftexdir \
+	-I$(srcdir)/luatexdir/unilib \
+	-I$(srcdir)/harftexdir/luafontloader/fontforge/inc \
+	-I$(srcdir)/harftexdir/luafontloader/fontforge/fontforge
+
+
+libhff_a_CFLAGS = # $(WARNING_CFLAGS)
+
+libhff_a_SOURCES = \
+	harftexdir/luafontloader/fontforge/fontforge/PfEd.h \
+	harftexdir/luafontloader/fontforge/fontforge/autohint.c \
+	harftexdir/luafontloader/fontforge/fontforge/baseviews.h \
+	harftexdir/luafontloader/fontforge/fontforge/clipnoui.c \
+	harftexdir/luafontloader/fontforge/fontforge/configure-pfaedit.h \
+	harftexdir/luafontloader/fontforge/fontforge/cvundoes.c \
+	harftexdir/luafontloader/fontforge/fontforge/dumppfa.c \
+	harftexdir/luafontloader/fontforge/fontforge/edgelist.h \
+	harftexdir/luafontloader/fontforge/fontforge/edgelist2.h \
+	harftexdir/luafontloader/fontforge/fontforge/encoding.c \
+	harftexdir/luafontloader/fontforge/fontforge/encoding.h \
+	harftexdir/luafontloader/fontforge/fontforge/featurefile.c \
+	harftexdir/luafontloader/fontforge/fontforge/fontforgevw.h \
+	harftexdir/luafontloader/fontforge/fontforge/fontviewbase.c \
+	harftexdir/luafontloader/fontforge/fontforge/fvcomposit.c \
+	harftexdir/luafontloader/fontforge/fontforge/fvfonts.c \
+	harftexdir/luafontloader/fontforge/fontforge/lookups.c \
+	harftexdir/luafontloader/fontforge/fontforge/lookups.h \
+	harftexdir/luafontloader/fontforge/fontforge/macbinary.c \
+	harftexdir/luafontloader/fontforge/fontforge/macenc.c \
+	harftexdir/luafontloader/fontforge/fontforge/mathconstants.c \
+	harftexdir/luafontloader/fontforge/fontforge/memory.c \
+	harftexdir/luafontloader/fontforge/fontforge/mm.c \
+	harftexdir/luafontloader/fontforge/fontforge/mm.h \
+	harftexdir/luafontloader/fontforge/fontforge/namelist.c \
+	harftexdir/luafontloader/fontforge/fontforge/noprefs.c \
+	harftexdir/luafontloader/fontforge/fontforge/nouiutil.c \
+	harftexdir/luafontloader/fontforge/fontforge/parsepfa.c \
+	harftexdir/luafontloader/fontforge/fontforge/parsettf.c \
+	harftexdir/luafontloader/fontforge/fontforge/parsettfatt.c \
+	harftexdir/luafontloader/fontforge/fontforge/pfaedit.h \
+	harftexdir/luafontloader/fontforge/fontforge/plugins.h \
+	harftexdir/luafontloader/fontforge/fontforge/psfont.h \
+	harftexdir/luafontloader/fontforge/fontforge/psread.c \
+	harftexdir/luafontloader/fontforge/fontforge/pua.c \
+	harftexdir/luafontloader/fontforge/fontforge/python.c \
+	harftexdir/luafontloader/fontforge/fontforge/scripting.h \
+	harftexdir/luafontloader/fontforge/fontforge/sd.h \
+	harftexdir/luafontloader/fontforge/fontforge/sfd1.c \
+	harftexdir/luafontloader/fontforge/fontforge/sfd1.h \
+	harftexdir/luafontloader/fontforge/fontforge/splinechar.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinefill.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinefont.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinefont.h \
+	harftexdir/luafontloader/fontforge/fontforge/splineorder2.c \
+	harftexdir/luafontloader/fontforge/fontforge/splineoverlap.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinerefigure.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinesave.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinesaveafm.c \
+	harftexdir/luafontloader/fontforge/fontforge/splinestroke.c \
+	harftexdir/luafontloader/fontforge/fontforge/splineutil.c \
+	harftexdir/luafontloader/fontforge/fontforge/splineutil2.c \
+	harftexdir/luafontloader/fontforge/fontforge/start.c \
+	harftexdir/luafontloader/fontforge/fontforge/stemdb.c \
+	harftexdir/luafontloader/fontforge/fontforge/stemdb.h \
+	harftexdir/luafontloader/fontforge/fontforge/tottf.c \
+	harftexdir/luafontloader/fontforge/fontforge/tottfgpos.c \
+	harftexdir/luafontloader/fontforge/fontforge/ttf.h \
+	harftexdir/luafontloader/fontforge/fontforge/ttfspecial.c \
+	harftexdir/luafontloader/fontforge/fontforge/uiinterface.h \
+	harftexdir/luafontloader/fontforge/fontforge/unicoderange.h \
+	harftexdir/luafontloader/fontforge/gutils/fsys.c \
+	harftexdir/luafontloader/fontforge/inc/basics.h \
+	harftexdir/luafontloader/fontforge/inc/gfile.h \
+	harftexdir/luafontloader/fontforge/inc/gimage.h \
+	harftexdir/luafontloader/fontforge/inc/intl.h
+
+## Not used
+##
+EXTRA_DIST += \
+	harftexdir/luafontloader/ChangeLog \
+	harftexdir/luafontloader/fontforge/AUTHORS \
+	harftexdir/luafontloader/fontforge/INSTALL \
+	harftexdir/luafontloader/fontforge/LICENSE \
+	harftexdir/luafontloader/fontforge/VERSION
+

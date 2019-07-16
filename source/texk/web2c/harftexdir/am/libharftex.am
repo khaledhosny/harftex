@@ -8,7 +8,7 @@
 ##
 EXTRA_LIBRARIES += libharftex.a
 
-libharftex_a_DEPENDENCIES = libff.a libluamisc.a libluaharfbuzz.a
+libharftex_a_DEPENDENCIES = libhff.a libluamisc.a libluaharfbuzz.a
 
 libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) $(LIBPNG_INCLUDES) $(HARFBUZZ_INCLUDES)
 libharftex_a_preflags += -I$(srcdir)/libmd5
@@ -32,7 +32,7 @@ nodist_libharftex_a_SOURCES = \
 	$(nodist_libharftex_sources)
 
 ## mplib "stub" backends are in mplibstuff.c
-$(libharftex_a_OBJECTS): libff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
+$(libharftex_a_OBJECTS): libhff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
 
 
 nodist_libharftex_sources =
@@ -48,9 +48,9 @@ dist_libharftex_sources = \
 ## from luatexdir/luafontloader/src
 ##
 dist_libharftex_sources += \
-        luatexdir/luafontloader/src/ffdummies.c \
-        luatexdir/luafontloader/src/ffdummies.h \
-        luatexdir/luafontloader/src/luafflib.c
+        harftexdir/luafontloader/src/ffdummies.c \
+        harftexdir/luafontloader/src/ffdummies.h \
+        harftexdir/luafontloader/src/luafflib.c
 
 ## from harftexdir/dvi
 ##
