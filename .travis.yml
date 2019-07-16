@@ -9,6 +9,8 @@ env:
   global:
     - JOBS_IF_PARALLEL=2
     - PACKAGE=harftex-bin
+    - CFLAGS="-Os"
+    - CXXFLAGS="-Os"
 
 matrix:
   include:
@@ -16,7 +18,10 @@ matrix:
       env: ARCH=x86_64
       dist: xenial
     - os: osx
-      env: ARCH=x86_64
+      env:
+        - ARCH=x86_64
+        - CFLAGS="-Oz"
+        - CXXFLAGS="-Oz"
       install:
         - export PATH="/usr/local/opt/ccache/libexec:$PATH"
     - os: linux
