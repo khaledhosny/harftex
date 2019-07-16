@@ -3547,6 +3547,7 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	harftexdir/luaharfbuzz/README.md \
 	harftexdir/luaharfbuzz/README-win.md \
 	harftexdir/luaharfbuzz/THANKS \
+	harftexdir/unilib/src/makeutype.c \
 	harftexdir/luafontloader/ChangeLog \
 	harftexdir/luafontloader/fontforge/AUTHORS \
 	harftexdir/luafontloader/fontforge/INSTALL \
@@ -5285,7 +5286,6 @@ libhunilib_a_SOURCES = \
 	harftexdir/unilib/chardata.h \
 	harftexdir/unilib/charset.h \
 	harftexdir/unilib/cjk.c \
-	harftexdir/unilib/combiners.h \
 	harftexdir/unilib/gwwiconv.c \
 	harftexdir/unilib/gwwiconv.h \
 	harftexdir/unilib/unibasics.h \

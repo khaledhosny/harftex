@@ -19,7 +19,6 @@ libhunilib_a_SOURCES = \
 	harftexdir/unilib/chardata.h \
 	harftexdir/unilib/charset.h \
 	harftexdir/unilib/cjk.c \
-	harftexdir/unilib/combiners.h \
 	harftexdir/unilib/gwwiconv.c \
 	harftexdir/unilib/gwwiconv.h \
 	harftexdir/unilib/unibasics.h \

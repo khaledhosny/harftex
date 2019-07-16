@@ -3,8 +3,8 @@
 
 /* This file was generated using the program 'makeutype' */
 
-#include <unibasics.h>		/* Include here so we can use pre-defined int types to correctly size constant data arrays. */
 #include <ctype.h>		/* Include here so we can control it. If a system header includes it later bad things happen */
+#include <unibasics.h>		/* Include here so we can use pre-defined int types to correctly size constant data arrays. */
 #ifdef tolower
 # undef tolower
 #endif
@@ -32,12 +32,12 @@
 #define ____TITLE	0x4
 #define ____D	0x8
 #define ____S	0x10
-#define ____X	0x40
-#define ____COMBINE	0x8000
-#define ____AL	0x200000
+#define ____X	0x20
+#define ____COMBINE	0x40
+#define ____AL	0x80
 
 extern const unsigned short ____tolower[];
-extern const uint32         ____utype[];
+extern const unsigned short ____utype[];
 
 #define tolower(ch) (____tolower[(ch)+1])
 #define isupper(ch) (____utype[(ch)+1]&____U)
@@ -47,12 +47,5 @@ extern const uint32         ____utype[];
 #define isspace(ch) (____utype[(ch)+1]&____S)
 #define ishexdigit(ch) (____utype[(ch)+1]&____X)
 #define iscombining(ch) (____utype[(ch)+1]&____COMBINE)
-
-#define isdecompositionnormative(ch) (____utype[(ch)+1]&____DECOMPNORM)
-
-
-#define _SOFT_HYPHEN	0xad
-
-#define _DOUBLE_S	0xdf
 
 #endif
