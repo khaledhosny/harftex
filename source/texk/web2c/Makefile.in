@@ -725,18 +725,14 @@ am_libhff_a_OBJECTS = harftexdir/luafontloader/fontforge/fontforge/libhff_a-auto
 	harftexdir/luafontloader/fontforge/fontforge/libhff_a-tottf.$(OBJEXT) \
 	harftexdir/luafontloader/fontforge/fontforge/libhff_a-tottfgpos.$(OBJEXT) \
 	harftexdir/luafontloader/fontforge/fontforge/libhff_a-ttfspecial.$(OBJEXT) \
-	harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.$(OBJEXT)
+	harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.$(OBJEXT) \
+	harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.$(OBJEXT) \
+	harftexdir/luafontloader/fontforge/unilib/libhff_a-char.$(OBJEXT) \
+	harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.$(OBJEXT) \
+	harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.$(OBJEXT) \
+	harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.$(OBJEXT) \
+	harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.$(OBJEXT)
 libhff_a_OBJECTS = $(am_libhff_a_OBJECTS)
-libhunilib_a_AR = $(AR) $(ARFLAGS)
-libhunilib_a_LIBADD =
-am_libhunilib_a_OBJECTS =  \
-	harftexdir/unilib/libhunilib_a-alphabet.$(OBJEXT) \
-	harftexdir/unilib/libhunilib_a-char.$(OBJEXT) \
-	harftexdir/unilib/libhunilib_a-cjk.$(OBJEXT) \
-	harftexdir/unilib/libhunilib_a-gwwiconv.$(OBJEXT) \
-	harftexdir/unilib/libhunilib_a-ustring.$(OBJEXT) \
-	harftexdir/unilib/libhunilib_a-utype.$(OBJEXT)
-libhunilib_a_OBJECTS = $(am_libhunilib_a_OBJECTS)
 libkanji_a_AR = $(AR) $(ARFLAGS)
 libkanji_a_LIBADD =
 am_libkanji_a_OBJECTS = ptexdir/libkanji_a-kanji.$(OBJEXT) \
@@ -1438,7 +1434,7 @@ harftex_OBJECTS = $(nodist_harftex_OBJECTS)
 am__DEPENDENCIES_6 = $(am__DEPENDENCIES_1)
 am__DEPENDENCIES_7 = libmplibcore.a $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_2) libmputil.a libhunilib.a libmd5.a \
+	$(am__DEPENDENCIES_2) libmputil.a libmd5.a \
 	$(am__DEPENDENCIES_1)
 harftex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(harftex_CXXFLAGS) \
@@ -1955,6 +1951,12 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-tottfgpos.Po \
 	harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-ttfspecial.Po \
 	harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libhff_a-fsys.Po \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Po \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Po \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Po \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Po \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Po \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Po \
 	harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po \
 	harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po \
 	harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po \
@@ -2025,12 +2027,6 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po \
 	harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po \
 	harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po \
 	harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po \
 	harftexdir/utils/$(DEPDIR)/libharftex_a-avlstuff.Po \
 	harftexdir/utils/$(DEPDIR)/libharftex_a-managed-sa.Po \
@@ -2559,9 +2555,8 @@ am__v_OBJCXXLD_0 = @echo "  OBJCXXLD" $@;
 am__v_OBJCXXLD_1 = 
 SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
 	$(nodist_libharftex_a_SOURCES) $(libhff_a_SOURCES) \
-	$(libhunilib_a_SOURCES) $(libkanji_a_SOURCES) \
-	$(nodist_libluaffi_a_SOURCES) $(libluaharfbuzz_a_SOURCES) \
-	$(nodist_libluajitmisc_a_SOURCES) \
+	$(libkanji_a_SOURCES) $(nodist_libluaffi_a_SOURCES) \
+	$(libluaharfbuzz_a_SOURCES) $(nodist_libluajitmisc_a_SOURCES) \
 	$(nodist_libluajitpplib_a_SOURCES) \
 	$(nodist_libluajitsocket_a_SOURCES) \
 	$(dist_libluajittex_a_SOURCES) \
@@ -2630,21 +2625,20 @@ SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
 	$(dist_xetex_SOURCES) $(nodist_xetex_SOURCES) \
 	$(nodist_EXTRA_xetex_SOURCES)
 DIST_SOURCES = $(libff_a_SOURCES) $(dist_libharftex_a_SOURCES) \
-	$(libhff_a_SOURCES) $(libhunilib_a_SOURCES) \
-	$(libkanji_a_SOURCES) $(libluaharfbuzz_a_SOURCES) \
-	$(dist_libluajittex_a_SOURCES) $(dist_libluatex_a_SOURCES) \
-	$(libmd5_a_SOURCES) $(dist_libmflua_a_SOURCES) \
-	$(dist_libmfluajit_a_SOURCES) $(libmputil_a_SOURCES) \
-	$(am__libpdftex_a_SOURCES_DIST) $(EXTRA_libpdftex_a_SOURCES) \
-	$(libukanji_a_SOURCES) $(libunilib_a_SOURCES) \
-	$(am__libxetex_a_SOURCES_DIST) $(libsynctex_la_SOURCES) \
-	$(dist_aleph_SOURCES) $(am__dist_eptex_SOURCES_DIST) \
-	$(am__dist_etex_SOURCES_DIST) $(am__dist_euptex_SOURCES_DIST) \
-	$(gftodvi_SOURCES) $(md5main_SOURCES) $(dist_mf_SOURCES) \
-	$(dist_mf_nowin_SOURCES) $(dist_mflua_SOURCES) \
-	$(dist_mfluajit_SOURCES) $(pbibtex_SOURCES) \
-	$(am__dist_pdftex_SOURCES_DIST) $(pdftosrc_SOURCES) \
-	$(pdvitype_SOURCES) $(ppltotf_SOURCES) \
+	$(libhff_a_SOURCES) $(libkanji_a_SOURCES) \
+	$(libluaharfbuzz_a_SOURCES) $(dist_libluajittex_a_SOURCES) \
+	$(dist_libluatex_a_SOURCES) $(libmd5_a_SOURCES) \
+	$(dist_libmflua_a_SOURCES) $(dist_libmfluajit_a_SOURCES) \
+	$(libmputil_a_SOURCES) $(am__libpdftex_a_SOURCES_DIST) \
+	$(EXTRA_libpdftex_a_SOURCES) $(libukanji_a_SOURCES) \
+	$(libunilib_a_SOURCES) $(am__libxetex_a_SOURCES_DIST) \
+	$(libsynctex_la_SOURCES) $(dist_aleph_SOURCES) \
+	$(am__dist_eptex_SOURCES_DIST) $(am__dist_etex_SOURCES_DIST) \
+	$(am__dist_euptex_SOURCES_DIST) $(gftodvi_SOURCES) \
+	$(md5main_SOURCES) $(dist_mf_SOURCES) $(dist_mf_nowin_SOURCES) \
+	$(dist_mflua_SOURCES) $(dist_mfluajit_SOURCES) \
+	$(pbibtex_SOURCES) $(am__dist_pdftex_SOURCES_DIST) \
+	$(pdftosrc_SOURCES) $(pdvitype_SOURCES) $(ppltotf_SOURCES) \
 	$(am__dist_ptex_SOURCES_DIST) $(ptftopl_SOURCES) \
 	$(synctex_SOURCES) $(am__dist_tex_SOURCES_DIST) \
 	$(ttf2afm_SOURCES) $(EXTRA_ttf2afm_SOURCES) \
@@ -2896,7 +2890,6 @@ am__DIST_COMMON = $(dist_man_MANS) $(srcdir)/../../am/bin_links.am \
 	$(srcdir)/euptexdir/am/euptex.am \
 	$(srcdir)/harftexdir/am/harftex.am \
 	$(srcdir)/harftexdir/am/libharftex.am \
-	$(srcdir)/harftexdir/am/libunilib.am \
 	$(srcdir)/harftexdir/am/luafontforge.am \
 	$(srcdir)/harftexdir/am/luaharfbuzz.am \
 	$(srcdir)/libmd5/am/md5.am $(srcdir)/luatexdir/am/libluatex.am \
@@ -3231,8 +3224,8 @@ EXTRA_LIBRARIES = libmf.a libmflua.a libmfluajit.a libmputil.a \
 	libkanji.a libukanji.a libpdftex.a libluasocket.a \
 	libluajitsocket.a libluamisc.a libluajitmisc.a libunilib.a \
 	libff.a libluatex.a libluajittex.a libluaffi.a libluapplib.a \
-	libluajitpplib.a libharftex.a libluaharfbuzz.a libhunilib.a \
-	libhff.a libxetex.a libsynctex.a libmd5.a
+	libluajitpplib.a libharftex.a libluaharfbuzz.a libhff.a \
+	libxetex.a libsynctex.a libmd5.a
 EXTRA_LTLIBRARIES = libsynctex.la
 lib_LIBRARIES = $(am__append_115)
 lib_LTLIBRARIES = $(am__append_114)
@@ -3547,18 +3540,19 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	harftexdir/luaharfbuzz/README.md \
 	harftexdir/luaharfbuzz/README-win.md \
 	harftexdir/luaharfbuzz/THANKS \
-	harftexdir/unilib/src/makeutype.c \
 	harftexdir/luafontloader/ChangeLog \
 	harftexdir/luafontloader/fontforge/AUTHORS \
 	harftexdir/luafontloader/fontforge/INSTALL \
 	harftexdir/luafontloader/fontforge/LICENSE \
-	harftexdir/luafontloader/fontforge/VERSION $(harftex_sources) \
-	$(harftex_tests) harftexdir/tests/luaimage.tex tests/1-4.jpg \
-	tests/B.pdf tests/basic.tex tests/lily-ledger-broken.png \
-	$(xetex_web_srcs) $(xetex_ch_srcs) xetexdir/xetex.defines \
-	xetexdir/ChangeLog xetexdir/COPYING xetexdir/NEWS \
-	xetexdir/image/README xetexdir/unicode-char-prep.pl \
-	xetexdir/xewebmac.tex $(xetex_tests) xetexdir/tests/bug73.log \
+	harftexdir/luafontloader/fontforge/VERSION \
+	harftexdir/luafontloader/fontforge/unilib/src/makeutype.c \
+	$(harftex_sources) $(harftex_tests) \
+	harftexdir/tests/luaimage.tex tests/1-4.jpg tests/B.pdf \
+	tests/basic.tex tests/lily-ledger-broken.png $(xetex_web_srcs) \
+	$(xetex_ch_srcs) xetexdir/xetex.defines xetexdir/ChangeLog \
+	xetexdir/COPYING xetexdir/NEWS xetexdir/image/README \
+	xetexdir/unicode-char-prep.pl xetexdir/xewebmac.tex \
+	$(xetex_tests) xetexdir/tests/bug73.log \
 	xetexdir/tests/bug73.tex omegaware/README omegaware/ChangeLog \
 	$(odvicopy_sources) $(odvitype_sources) omegaware/ofm2opl.web \
 	omegaware/ofm2opl.up omegaware/ofm2opl.ch \
@@ -5275,29 +5269,10 @@ libluaharfbuzz_a_SOURCES = \
 	harftexdir/luaharfbuzz/src/luaharfbuzz/tag.c \
 	harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
 
-libhunilib_a_CPPFLAGS = $(AM_CPPFLAGS) \
-	-I$(top_srcdir)/w2c \
-	-I$(top_srcdir)/harftexdir/unilib
-
-libhunilib_a_CFLAGS = # $(WARNING_CFLAGS)
-libhunilib_a_SOURCES = \
-	harftexdir/unilib/alphabet.c \
-	harftexdir/unilib/char.c \
-	harftexdir/unilib/chardata.h \
-	harftexdir/unilib/charset.h \
-	harftexdir/unilib/cjk.c \
-	harftexdir/unilib/gwwiconv.c \
-	harftexdir/unilib/gwwiconv.h \
-	harftexdir/unilib/unibasics.h \
-	harftexdir/unilib/ustring.c \
-	harftexdir/unilib/ustring.h \
-	harftexdir/unilib/utype.c \
-	harftexdir/unilib/utype.h
-
 libhff_a_CPPFLAGS = $(AM_CPPFLAGS) \
 	-I$(srcdir)/w2c \
 	-I$(srcdir)/harftexdir \
-	-I$(srcdir)/luatexdir/unilib \
+	-I$(srcdir)/harftexdir/luafontloader/fontforge/unilib \
 	-I$(srcdir)/harftexdir/luafontloader/fontforge/inc \
 	-I$(srcdir)/harftexdir/luafontloader/fontforge/fontforge
 
@@ -5368,7 +5343,19 @@ libhff_a_SOURCES = \
 	harftexdir/luafontloader/fontforge/inc/basics.h \
 	harftexdir/luafontloader/fontforge/inc/gfile.h \
 	harftexdir/luafontloader/fontforge/inc/gimage.h \
-	harftexdir/luafontloader/fontforge/inc/intl.h
+	harftexdir/luafontloader/fontforge/inc/intl.h \
+	harftexdir/luafontloader/fontforge/unilib/alphabet.c \
+	harftexdir/luafontloader/fontforge/unilib/char.c \
+	harftexdir/luafontloader/fontforge/unilib/chardata.h \
+	harftexdir/luafontloader/fontforge/unilib/charset.h \
+	harftexdir/luafontloader/fontforge/unilib/cjk.c \
+	harftexdir/luafontloader/fontforge/unilib/gwwiconv.c \
+	harftexdir/luafontloader/fontforge/unilib/gwwiconv.h \
+	harftexdir/luafontloader/fontforge/unilib/unibasics.h \
+	harftexdir/luafontloader/fontforge/unilib/ustring.c \
+	harftexdir/luafontloader/fontforge/unilib/ustring.h \
+	harftexdir/luafontloader/fontforge/unilib/utype.c \
+	harftexdir/luafontloader/fontforge/unilib/utype.h
 
 
 # Force Automake to use CXXLD for linking
@@ -5381,8 +5368,7 @@ harftex_CPPFLAGS = $(harftex_preflags) $(LUA_INCLUDES) $(harftex_postflags)
 harftex_CXXFLAGS = $(WARNING_CXXFLAGS)
 harftex_LDFLAGS = -export-dynamic
 harftex_postldadd = libmplibcore.a $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) \
-	$(ZLIB_LIBS) $(LDADD) libmputil.a libhunilib.a libmd5.a \
-	$(lua_socketlibs)
+	$(ZLIB_LIBS) $(LDADD) libmputil.a libmd5.a $(lua_socketlibs)
 harftex_LDADD = libharftex.a libhff.a libluamisc.a libluasocket.a \
 	libluaffi.a libluapplib.a libluaharfbuzz.a $(LUA_LIBS) \
 	$(HARFBUZZ_LIBS) $(GRAPHITE2_LIBS) $(harftex_postldadd)
@@ -5682,7 +5668,7 @@ all: ff-config.h
 .SUFFIXES: .c .cc .cin .cpp .cxx .h .hin .lo .log .mm .o .obj .p .pin .pl .pl$(EXEEXT) .test .test$(EXEEXT) .trs
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/luaharfbuzz.am $(srcdir)/harftexdir/am/libunilib.am $(srcdir)/harftexdir/am/luafontforge.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/luaharfbuzz.am $(srcdir)/harftexdir/am/luafontforge.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -5704,7 +5690,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/luaharfbuzz.am $(srcdir)/harftexdir/am/libunilib.am $(srcdir)/harftexdir/am/luafontforge.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__empty):
+$(srcdir)/../../am/dist_hook.am $(srcdir)/am/bootstrap.am $(srcdir)/am/web.am $(srcdir)/am/cweb.am $(srcdir)/am/texmf.am $(srcdir)/mfluadir/am/mflua.am $(srcdir)/mfluajitdir/am/mfluajit.am $(srcdir)/mplibdir/am/mplib.am $(srcdir)/pmpostdir/am/pmpost.am $(srcdir)/mplibdir/am/libmputil.am $(srcdir)/mplibdir/am/libmplib.am $(srcdir)/etexdir/am/etex.am $(srcdir)/ptexdir/am/ptex.am $(srcdir)/eptexdir/am/eptex.am $(srcdir)/uptexdir/am/uptex.am $(srcdir)/euptexdir/am/euptex.am $(srcdir)/pdftexdir/am/libpdftex.am $(srcdir)/pdftexdir/am/pdftex.am $(srcdir)/pdftexdir/am/ttf2afm.am $(srcdir)/pdftexdir/am/pdftosrc.am $(srcdir)/luatexdir/am/luasocket.am $(srcdir)/luatexdir/am/luamisc.am $(srcdir)/luatexdir/am/libunilib.am $(srcdir)/luatexdir/am/luafontforge.am $(srcdir)/luatexdir/am/libluatex.am $(srcdir)/luatexdir/am/luaffi.am $(srcdir)/luatexdir/am/luapplib.am $(srcdir)/luatexdir/am/luatex.am $(srcdir)/harftexdir/am/libharftex.am $(srcdir)/harftexdir/am/luaharfbuzz.am $(srcdir)/harftexdir/am/luafontforge.am $(srcdir)/harftexdir/am/harftex.am $(srcdir)/xetexdir/am/xetex.am $(srcdir)/omegaware/am/omegaware.am $(srcdir)/alephdir/am/aleph.am $(srcdir)/synctexdir/am/synctex.am $(srcdir)/libmd5/am/md5.am $(srcdir)/../../am/bin_links.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -6575,40 +6561,35 @@ harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/$(am__dirstamp):
 harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.$(OBJEXT):  \
 	harftexdir/luafontloader/fontforge/gutils/$(am__dirstamp) \
 	harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp):
+	@$(MKDIR_P) harftexdir/luafontloader/fontforge/unilib
+	@: > harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)
+	@: > harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.$(OBJEXT):  \
+	harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp) \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/libhff_a-char.$(OBJEXT):  \
+	harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp) \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.$(OBJEXT):  \
+	harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp) \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.$(OBJEXT):  \
+	harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp) \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.$(OBJEXT):  \
+	harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp) \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.$(OBJEXT):  \
+	harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp) \
+	harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
 
 libhff.a: $(libhff_a_OBJECTS) $(libhff_a_DEPENDENCIES) $(EXTRA_libhff_a_DEPENDENCIES) 
 	$(AM_V_at)-rm -f libhff.a
 	$(AM_V_AR)$(libhff_a_AR) libhff.a $(libhff_a_OBJECTS) $(libhff_a_LIBADD)
 	$(AM_V_at)$(RANLIB) libhff.a
-harftexdir/unilib/$(am__dirstamp):
-	@$(MKDIR_P) harftexdir/unilib
-	@: > harftexdir/unilib/$(am__dirstamp)
-harftexdir/unilib/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) harftexdir/unilib/$(DEPDIR)
-	@: > harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-alphabet.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-char.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-cjk.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-gwwiconv.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-ustring.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-utype.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-
-libhunilib.a: $(libhunilib_a_OBJECTS) $(libhunilib_a_DEPENDENCIES) $(EXTRA_libhunilib_a_DEPENDENCIES) 
-	$(AM_V_at)-rm -f libhunilib.a
-	$(AM_V_AR)$(libhunilib_a_AR) libhunilib.a $(libhunilib_a_OBJECTS) $(libhunilib_a_LIBADD)
-	$(AM_V_at)$(RANLIB) libhunilib.a
 ptexdir/$(am__dirstamp):
 	@$(MKDIR_P) ptexdir
 	@: > ptexdir/$(am__dirstamp)
@@ -8532,11 +8513,11 @@ mostlyclean-compile:
 	-rm -f harftexdir/lua/*.$(OBJEXT)
 	-rm -f harftexdir/luafontloader/fontforge/fontforge/*.$(OBJEXT)
 	-rm -f harftexdir/luafontloader/fontforge/gutils/*.$(OBJEXT)
+	-rm -f harftexdir/luafontloader/fontforge/unilib/*.$(OBJEXT)
 	-rm -f harftexdir/luafontloader/src/*.$(OBJEXT)
 	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/*.$(OBJEXT)
 	-rm -f harftexdir/pdf/*.$(OBJEXT)
 	-rm -f harftexdir/tex/*.$(OBJEXT)
-	-rm -f harftexdir/unilib/*.$(OBJEXT)
 	-rm -f harftexdir/utils/*.$(OBJEXT)
 	-rm -f libmd5/*.$(OBJEXT)
 	-rm -f luatexdir/*.$(OBJEXT)
@@ -8812,6 +8793,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-tottfgpos.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-ttfspecial.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libhff_a-fsys.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po@am__quote@ # am--include-marker
@@ -8882,12 +8869,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/utils/$(DEPDIR)/libharftex_a-avlstuff.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/utils/$(DEPDIR)/libharftex_a-managed-sa.Po@am__quote@ # am--include-marker
@@ -12206,89 +12187,89 @@ harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.obj: harftexdir/luafontl
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.obj `if test -f 'harftexdir/luafontloader/fontforge/gutils/fsys.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/gutils/fsys.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/gutils/fsys.c'; fi`
 
-harftexdir/unilib/libhunilib_a-alphabet.o: harftexdir/unilib/alphabet.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-alphabet.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Tpo -c -o harftexdir/unilib/libhunilib_a-alphabet.o `test -f 'harftexdir/unilib/alphabet.c' || echo '$(srcdir)/'`harftexdir/unilib/alphabet.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/alphabet.c' object='harftexdir/unilib/libhunilib_a-alphabet.o' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.o: harftexdir/luafontloader/fontforge/unilib/alphabet.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.o -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.o `test -f 'harftexdir/luafontloader/fontforge/unilib/alphabet.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/alphabet.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/alphabet.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-alphabet.o `test -f 'harftexdir/unilib/alphabet.c' || echo '$(srcdir)/'`harftexdir/unilib/alphabet.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.o `test -f 'harftexdir/luafontloader/fontforge/unilib/alphabet.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/alphabet.c
 
-harftexdir/unilib/libhunilib_a-alphabet.obj: harftexdir/unilib/alphabet.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-alphabet.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Tpo -c -o harftexdir/unilib/libhunilib_a-alphabet.obj `if test -f 'harftexdir/unilib/alphabet.c'; then $(CYGPATH_W) 'harftexdir/unilib/alphabet.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/alphabet.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/alphabet.c' object='harftexdir/unilib/libhunilib_a-alphabet.obj' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.obj: harftexdir/luafontloader/fontforge/unilib/alphabet.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.obj -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/alphabet.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/alphabet.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/alphabet.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/alphabet.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-alphabet.obj `if test -f 'harftexdir/unilib/alphabet.c'; then $(CYGPATH_W) 'harftexdir/unilib/alphabet.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/alphabet.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-alphabet.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/alphabet.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/alphabet.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/alphabet.c'; fi`
 
-harftexdir/unilib/libhunilib_a-char.o: harftexdir/unilib/char.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-char.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Tpo -c -o harftexdir/unilib/libhunilib_a-char.o `test -f 'harftexdir/unilib/char.c' || echo '$(srcdir)/'`harftexdir/unilib/char.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/char.c' object='harftexdir/unilib/libhunilib_a-char.o' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-char.o: harftexdir/luafontloader/fontforge/unilib/char.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-char.o -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-char.o `test -f 'harftexdir/luafontloader/fontforge/unilib/char.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/char.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/char.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-char.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-char.o `test -f 'harftexdir/unilib/char.c' || echo '$(srcdir)/'`harftexdir/unilib/char.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-char.o `test -f 'harftexdir/luafontloader/fontforge/unilib/char.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/char.c
 
-harftexdir/unilib/libhunilib_a-char.obj: harftexdir/unilib/char.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-char.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Tpo -c -o harftexdir/unilib/libhunilib_a-char.obj `if test -f 'harftexdir/unilib/char.c'; then $(CYGPATH_W) 'harftexdir/unilib/char.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/char.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/char.c' object='harftexdir/unilib/libhunilib_a-char.obj' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-char.obj: harftexdir/luafontloader/fontforge/unilib/char.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-char.obj -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-char.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/char.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/char.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/char.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/char.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-char.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-char.obj `if test -f 'harftexdir/unilib/char.c'; then $(CYGPATH_W) 'harftexdir/unilib/char.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/char.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-char.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/char.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/char.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/char.c'; fi`
 
-harftexdir/unilib/libhunilib_a-cjk.o: harftexdir/unilib/cjk.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-cjk.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Tpo -c -o harftexdir/unilib/libhunilib_a-cjk.o `test -f 'harftexdir/unilib/cjk.c' || echo '$(srcdir)/'`harftexdir/unilib/cjk.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/cjk.c' object='harftexdir/unilib/libhunilib_a-cjk.o' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.o: harftexdir/luafontloader/fontforge/unilib/cjk.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.o -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.o `test -f 'harftexdir/luafontloader/fontforge/unilib/cjk.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/cjk.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/cjk.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-cjk.o `test -f 'harftexdir/unilib/cjk.c' || echo '$(srcdir)/'`harftexdir/unilib/cjk.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.o `test -f 'harftexdir/luafontloader/fontforge/unilib/cjk.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/cjk.c
 
-harftexdir/unilib/libhunilib_a-cjk.obj: harftexdir/unilib/cjk.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-cjk.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Tpo -c -o harftexdir/unilib/libhunilib_a-cjk.obj `if test -f 'harftexdir/unilib/cjk.c'; then $(CYGPATH_W) 'harftexdir/unilib/cjk.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/cjk.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/cjk.c' object='harftexdir/unilib/libhunilib_a-cjk.obj' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.obj: harftexdir/luafontloader/fontforge/unilib/cjk.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.obj -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/cjk.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/cjk.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/cjk.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/cjk.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-cjk.obj `if test -f 'harftexdir/unilib/cjk.c'; then $(CYGPATH_W) 'harftexdir/unilib/cjk.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/cjk.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-cjk.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/cjk.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/cjk.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/cjk.c'; fi`
 
-harftexdir/unilib/libhunilib_a-gwwiconv.o: harftexdir/unilib/gwwiconv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-gwwiconv.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Tpo -c -o harftexdir/unilib/libhunilib_a-gwwiconv.o `test -f 'harftexdir/unilib/gwwiconv.c' || echo '$(srcdir)/'`harftexdir/unilib/gwwiconv.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/gwwiconv.c' object='harftexdir/unilib/libhunilib_a-gwwiconv.o' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.o: harftexdir/luafontloader/fontforge/unilib/gwwiconv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.o -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.o `test -f 'harftexdir/luafontloader/fontforge/unilib/gwwiconv.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/gwwiconv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/gwwiconv.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-gwwiconv.o `test -f 'harftexdir/unilib/gwwiconv.c' || echo '$(srcdir)/'`harftexdir/unilib/gwwiconv.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.o `test -f 'harftexdir/luafontloader/fontforge/unilib/gwwiconv.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/gwwiconv.c
 
-harftexdir/unilib/libhunilib_a-gwwiconv.obj: harftexdir/unilib/gwwiconv.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-gwwiconv.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Tpo -c -o harftexdir/unilib/libhunilib_a-gwwiconv.obj `if test -f 'harftexdir/unilib/gwwiconv.c'; then $(CYGPATH_W) 'harftexdir/unilib/gwwiconv.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/gwwiconv.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/gwwiconv.c' object='harftexdir/unilib/libhunilib_a-gwwiconv.obj' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.obj: harftexdir/luafontloader/fontforge/unilib/gwwiconv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.obj -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/gwwiconv.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/gwwiconv.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/gwwiconv.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/gwwiconv.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-gwwiconv.obj `if test -f 'harftexdir/unilib/gwwiconv.c'; then $(CYGPATH_W) 'harftexdir/unilib/gwwiconv.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/gwwiconv.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-gwwiconv.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/gwwiconv.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/gwwiconv.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/gwwiconv.c'; fi`
 
-harftexdir/unilib/libhunilib_a-ustring.o: harftexdir/unilib/ustring.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-ustring.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Tpo -c -o harftexdir/unilib/libhunilib_a-ustring.o `test -f 'harftexdir/unilib/ustring.c' || echo '$(srcdir)/'`harftexdir/unilib/ustring.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/ustring.c' object='harftexdir/unilib/libhunilib_a-ustring.o' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.o: harftexdir/luafontloader/fontforge/unilib/ustring.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.o -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.o `test -f 'harftexdir/luafontloader/fontforge/unilib/ustring.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/ustring.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/ustring.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-ustring.o `test -f 'harftexdir/unilib/ustring.c' || echo '$(srcdir)/'`harftexdir/unilib/ustring.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.o `test -f 'harftexdir/luafontloader/fontforge/unilib/ustring.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/ustring.c
 
-harftexdir/unilib/libhunilib_a-ustring.obj: harftexdir/unilib/ustring.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-ustring.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Tpo -c -o harftexdir/unilib/libhunilib_a-ustring.obj `if test -f 'harftexdir/unilib/ustring.c'; then $(CYGPATH_W) 'harftexdir/unilib/ustring.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/ustring.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/ustring.c' object='harftexdir/unilib/libhunilib_a-ustring.obj' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.obj: harftexdir/luafontloader/fontforge/unilib/ustring.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.obj -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/ustring.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/ustring.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/ustring.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/ustring.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-ustring.obj `if test -f 'harftexdir/unilib/ustring.c'; then $(CYGPATH_W) 'harftexdir/unilib/ustring.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/ustring.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-ustring.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/ustring.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/ustring.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/ustring.c'; fi`
 
-harftexdir/unilib/libhunilib_a-utype.o: harftexdir/unilib/utype.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-utype.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Tpo -c -o harftexdir/unilib/libhunilib_a-utype.o `test -f 'harftexdir/unilib/utype.c' || echo '$(srcdir)/'`harftexdir/unilib/utype.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/utype.c' object='harftexdir/unilib/libhunilib_a-utype.o' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.o: harftexdir/luafontloader/fontforge/unilib/utype.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.o -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.o `test -f 'harftexdir/luafontloader/fontforge/unilib/utype.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/utype.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/utype.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-utype.o `test -f 'harftexdir/unilib/utype.c' || echo '$(srcdir)/'`harftexdir/unilib/utype.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.o `test -f 'harftexdir/luafontloader/fontforge/unilib/utype.c' || echo '$(srcdir)/'`harftexdir/luafontloader/fontforge/unilib/utype.c
 
-harftexdir/unilib/libhunilib_a-utype.obj: harftexdir/unilib/utype.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-utype.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Tpo -c -o harftexdir/unilib/libhunilib_a-utype.obj `if test -f 'harftexdir/unilib/utype.c'; then $(CYGPATH_W) 'harftexdir/unilib/utype.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/utype.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/utype.c' object='harftexdir/unilib/libhunilib_a-utype.obj' libtool=no @AMDEPBACKSLASH@
+harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.obj: harftexdir/luafontloader/fontforge/unilib/utype.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -MT harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.obj -MD -MP -MF harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Tpo -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/utype.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/utype.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/utype.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Tpo harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/luafontloader/fontforge/unilib/utype.c' object='harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-utype.obj `if test -f 'harftexdir/unilib/utype.c'; then $(CYGPATH_W) 'harftexdir/unilib/utype.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/utype.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/unilib/libhff_a-utype.obj `if test -f 'harftexdir/luafontloader/fontforge/unilib/utype.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/unilib/utype.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/unilib/utype.c'; fi`
 
 ptexdir/libkanji_a-kanji.o: ptexdir/kanji.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkanji_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT ptexdir/libkanji_a-kanji.o -MD -MP -MF ptexdir/$(DEPDIR)/libkanji_a-kanji.Tpo -c -o ptexdir/libkanji_a-kanji.o `test -f 'ptexdir/kanji.c' || echo '$(srcdir)/'`ptexdir/kanji.c
@@ -20606,6 +20587,8 @@ distclean-generic:
 	-rm -f harftexdir/luafontloader/fontforge/fontforge/$(am__dirstamp)
 	-rm -f harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/$(am__dirstamp)
 	-rm -f harftexdir/luafontloader/fontforge/gutils/$(am__dirstamp)
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/$(am__dirstamp)
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(am__dirstamp)
 	-rm -f harftexdir/luafontloader/src/$(DEPDIR)/$(am__dirstamp)
 	-rm -f harftexdir/luafontloader/src/$(am__dirstamp)
 	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/$(am__dirstamp)
@@ -20614,8 +20597,6 @@ distclean-generic:
 	-rm -f harftexdir/pdf/$(am__dirstamp)
 	-rm -f harftexdir/tex/$(DEPDIR)/$(am__dirstamp)
 	-rm -f harftexdir/tex/$(am__dirstamp)
-	-rm -f harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-	-rm -f harftexdir/unilib/$(am__dirstamp)
 	-rm -f harftexdir/utils/$(DEPDIR)/$(am__dirstamp)
 	-rm -f harftexdir/utils/$(am__dirstamp)
 	-rm -f libmd5/$(DEPDIR)/$(am__dirstamp)
@@ -20934,6 +20915,12 @@ distclean: distclean-recursive
 	-rm -f harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-tottfgpos.Po
 	-rm -f harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-ttfspecial.Po
 	-rm -f harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libhff_a-fsys.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Po
 	-rm -f harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po
 	-rm -f harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po
 	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po
@@ -21004,12 +20991,6 @@ distclean: distclean-recursive
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-avlstuff.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-managed-sa.Po
@@ -21768,6 +21749,12 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-tottfgpos.Po
 	-rm -f harftexdir/luafontloader/fontforge/fontforge/$(DEPDIR)/libhff_a-ttfspecial.Po
 	-rm -f harftexdir/luafontloader/fontforge/gutils/$(DEPDIR)/libhff_a-fsys.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-alphabet.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-char.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-cjk.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-gwwiconv.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-ustring.Po
+	-rm -f harftexdir/luafontloader/fontforge/unilib/$(DEPDIR)/libhff_a-utype.Po
 	-rm -f harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-ffdummies.Po
 	-rm -f harftexdir/luafontloader/src/$(DEPDIR)/libharftex_a-luafflib.Po
 	-rm -f harftexdir/luaharfbuzz/src/luaharfbuzz/$(DEPDIR)/libluaharfbuzz_a-blob.Po
@@ -21838,12 +21825,6 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-avlstuff.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-managed-sa.Po
@@ -23270,8 +23251,6 @@ luatexdir/luajittex.log luatexdir/luajitimage.log: luajittex$(EXEEXT)
 $(libharftex_a_OBJECTS): libhff.a libmplibcore.a libluamisc.a libluaharfbuzz.a
 
 $(libluaharfbuzz_a_OBJECTS): $(LUA_DEPEND)
-
-$(libhff_a_OBJECTS): libhunilib.a
 
 $(harftex_OBJECTS): libharftex.a
 

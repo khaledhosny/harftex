@@ -243,7 +243,6 @@ include $(srcdir)/luatexdir/am/luatex.am
 ## HarfTeX
 include $(srcdir)/harftexdir/am/libharftex.am
 include $(srcdir)/harftexdir/am/luaharfbuzz.am
-include $(srcdir)/harftexdir/am/libunilib.am
 include $(srcdir)/harftexdir/am/luafontforge.am
 include $(srcdir)/harftexdir/am/harftex.am
 

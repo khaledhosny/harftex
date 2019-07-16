@@ -7,12 +7,10 @@
 ##
 EXTRA_LIBRARIES += libhff.a
 
-$(libhff_a_OBJECTS): libhunilib.a
-
 libhff_a_CPPFLAGS = $(AM_CPPFLAGS) \
 	-I$(srcdir)/w2c \
 	-I$(srcdir)/harftexdir \
-	-I$(srcdir)/luatexdir/unilib \
+	-I$(srcdir)/harftexdir/luafontloader/fontforge/unilib \
 	-I$(srcdir)/harftexdir/luafontloader/fontforge/inc \
 	-I$(srcdir)/harftexdir/luafontloader/fontforge/fontforge
 
@@ -85,7 +83,20 @@ libhff_a_SOURCES = \
 	harftexdir/luafontloader/fontforge/inc/basics.h \
 	harftexdir/luafontloader/fontforge/inc/gfile.h \
 	harftexdir/luafontloader/fontforge/inc/gimage.h \
-	harftexdir/luafontloader/fontforge/inc/intl.h
+	harftexdir/luafontloader/fontforge/inc/intl.h \
+	harftexdir/luafontloader/fontforge/unilib/alphabet.c \
+	harftexdir/luafontloader/fontforge/unilib/char.c \
+	harftexdir/luafontloader/fontforge/unilib/chardata.h \
+	harftexdir/luafontloader/fontforge/unilib/charset.h \
+	harftexdir/luafontloader/fontforge/unilib/cjk.c \
+	harftexdir/luafontloader/fontforge/unilib/gwwiconv.c \
+	harftexdir/luafontloader/fontforge/unilib/gwwiconv.h \
+	harftexdir/luafontloader/fontforge/unilib/unibasics.h \
+	harftexdir/luafontloader/fontforge/unilib/ustring.c \
+	harftexdir/luafontloader/fontforge/unilib/ustring.h \
+	harftexdir/luafontloader/fontforge/unilib/utype.c \
+	harftexdir/luafontloader/fontforge/unilib/utype.h
+
 
 ## Not used
 ##
@@ -94,5 +105,6 @@ EXTRA_DIST += \
 	harftexdir/luafontloader/fontforge/AUTHORS \
 	harftexdir/luafontloader/fontforge/INSTALL \
 	harftexdir/luafontloader/fontforge/LICENSE \
-	harftexdir/luafontloader/fontforge/VERSION
+	harftexdir/luafontloader/fontforge/VERSION \
+	harftexdir/luafontloader/fontforge/unilib/src/makeutype.c
 

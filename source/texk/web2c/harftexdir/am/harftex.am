@@ -34,7 +34,7 @@ harftex_LDFLAGS = -export-dynamic
 
 harftex_postldadd = libmplibcore.a
 harftex_postldadd += $(ZZIPLIB_LIBS) $(LIBPNG_LIBS) $(ZLIB_LIBS)
-harftex_postldadd += $(LDADD) libmputil.a libhunilib.a libmd5.a $(lua_socketlibs)
+harftex_postldadd += $(LDADD) libmputil.a libmd5.a $(lua_socketlibs)
 
 
 harftex_LDADD = libharftex.a libhff.a libluamisc.a libluasocket.a libluaffi.a libluapplib.a libluaharfbuzz.a
