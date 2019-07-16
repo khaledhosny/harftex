@@ -3276,29 +3276,6 @@ int ff_createcff(char *file, unsigned char **buf, int *bufsiz)
     return notdefpos;
 }
 
-int ff_get_ttc_index(char *ffname, char *psname)
-{
-    SplineFont *sf;
-    int i = 0;
-    int openflags = 1;
-    int index = -1;
-
-    sf = ReadSplineFontInfo((char *) ffname, openflags);
-    if (sf == NULL) {
-        normal_error("fontloader","font loading failed unexpectedly");
-    }
-    while (sf != NULL) {
-        if (strcmp(sf->fontname, psname) == 0) {
-            index = i;
-        }
-        i++;
-        sf = sf->next;
-    }
-    if (index>=0)
-        return (i-index-1);
-    return -1;
-}
-
 static struct luaL_Reg fllib[] = {
     {"open", ff_open},
     {"info", ff_info},
