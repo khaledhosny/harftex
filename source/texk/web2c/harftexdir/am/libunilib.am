@@ -23,10 +23,8 @@ libhunilib_a_SOURCES = \
 	harftexdir/unilib/combiners.h \
 	harftexdir/unilib/gwwiconv.c \
 	harftexdir/unilib/gwwiconv.h \
-	harftexdir/unilib/ucharmap.c \
 	harftexdir/unilib/unialt.c \
 	harftexdir/unilib/unibasics.h \
-	harftexdir/unilib/usprintf.c \
 	harftexdir/unilib/ustring.c \
 	harftexdir/unilib/ustring.h \
 	harftexdir/unilib/utype.c \

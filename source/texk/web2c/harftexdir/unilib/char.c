@@ -40,19 +40,6 @@ return(NULL);
     }
 }
 
-char *strstartmatch(const char *initial, const char *full) {
-    int ch1, ch2;
-    for (;;) {
-	ch1 = *initial++; ch2 = *full++ ;
-	if ( ch1=='\0' )
-return( (char *) full );
-	ch1 = tolower(ch1);
-	ch2 = tolower(ch2);
-	if ( ch1!=ch2 || ch1=='\0' )
-return(NULL);
-    }
-}
-
 int strmatch(const char *str1, const char *str2) {
     int ch1, ch2;
     for (;;) {
