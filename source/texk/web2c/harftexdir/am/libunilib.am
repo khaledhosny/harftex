@@ -14,7 +14,6 @@ libhunilib_a_CPPFLAGS = $(AM_CPPFLAGS) \
 libhunilib_a_CFLAGS = # $(WARNING_CFLAGS)
 
 libhunilib_a_SOURCES = \
-	harftexdir/unilib/ArabicForms.c \
 	harftexdir/unilib/alphabet.c \
 	harftexdir/unilib/char.c \
 	harftexdir/unilib/chardata.h \
@@ -23,7 +22,6 @@ libhunilib_a_SOURCES = \
 	harftexdir/unilib/combiners.h \
 	harftexdir/unilib/gwwiconv.c \
 	harftexdir/unilib/gwwiconv.h \
-	harftexdir/unilib/unialt.c \
 	harftexdir/unilib/unibasics.h \
 	harftexdir/unilib/ustring.c \
 	harftexdir/unilib/ustring.h \

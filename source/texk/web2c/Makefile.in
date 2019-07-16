@@ -730,12 +730,10 @@ libhff_a_OBJECTS = $(am_libhff_a_OBJECTS)
 libhunilib_a_AR = $(AR) $(ARFLAGS)
 libhunilib_a_LIBADD =
 am_libhunilib_a_OBJECTS =  \
-	harftexdir/unilib/libhunilib_a-ArabicForms.$(OBJEXT) \
 	harftexdir/unilib/libhunilib_a-alphabet.$(OBJEXT) \
 	harftexdir/unilib/libhunilib_a-char.$(OBJEXT) \
 	harftexdir/unilib/libhunilib_a-cjk.$(OBJEXT) \
 	harftexdir/unilib/libhunilib_a-gwwiconv.$(OBJEXT) \
-	harftexdir/unilib/libhunilib_a-unialt.$(OBJEXT) \
 	harftexdir/unilib/libhunilib_a-ustring.$(OBJEXT) \
 	harftexdir/unilib/libhunilib_a-utype.$(OBJEXT)
 libhunilib_a_OBJECTS = $(am_libhunilib_a_OBJECTS)
@@ -2027,12 +2025,10 @@ am__depfiles_remade = ./$(DEPDIR)/aleph-aleph-pool.Po \
 	harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po \
 	harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po \
 	harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Po \
 	harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po \
 	harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po \
 	harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po \
 	harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po \
-	harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Po \
 	harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po \
 	harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po \
 	harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po \
@@ -3551,7 +3547,6 @@ EXTRA_DIST = PROJECTS cftests cpascal.h help.h w2c/config.h \
 	harftexdir/luaharfbuzz/README.md \
 	harftexdir/luaharfbuzz/README-win.md \
 	harftexdir/luaharfbuzz/THANKS \
-	harftexdir/unilib/src/makeutype.c \
 	harftexdir/luafontloader/ChangeLog \
 	harftexdir/luafontloader/fontforge/AUTHORS \
 	harftexdir/luafontloader/fontforge/INSTALL \
@@ -5285,7 +5280,6 @@ libhunilib_a_CPPFLAGS = $(AM_CPPFLAGS) \
 
 libhunilib_a_CFLAGS = # $(WARNING_CFLAGS)
 libhunilib_a_SOURCES = \
-	harftexdir/unilib/ArabicForms.c \
 	harftexdir/unilib/alphabet.c \
 	harftexdir/unilib/char.c \
 	harftexdir/unilib/chardata.h \
@@ -5294,7 +5288,6 @@ libhunilib_a_SOURCES = \
 	harftexdir/unilib/combiners.h \
 	harftexdir/unilib/gwwiconv.c \
 	harftexdir/unilib/gwwiconv.h \
-	harftexdir/unilib/unialt.c \
 	harftexdir/unilib/unibasics.h \
 	harftexdir/unilib/ustring.c \
 	harftexdir/unilib/ustring.h \
@@ -6593,9 +6586,6 @@ harftexdir/unilib/$(am__dirstamp):
 harftexdir/unilib/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) harftexdir/unilib/$(DEPDIR)
 	@: > harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-ArabicForms.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
 harftexdir/unilib/libhunilib_a-alphabet.$(OBJEXT):  \
 	harftexdir/unilib/$(am__dirstamp) \
 	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
@@ -6606,9 +6596,6 @@ harftexdir/unilib/libhunilib_a-cjk.$(OBJEXT):  \
 	harftexdir/unilib/$(am__dirstamp) \
 	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
 harftexdir/unilib/libhunilib_a-gwwiconv.$(OBJEXT):  \
-	harftexdir/unilib/$(am__dirstamp) \
-	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
-harftexdir/unilib/libhunilib_a-unialt.$(OBJEXT):  \
 	harftexdir/unilib/$(am__dirstamp) \
 	harftexdir/unilib/$(DEPDIR)/$(am__dirstamp)
 harftexdir/unilib/libhunilib_a-ustring.$(OBJEXT):  \
@@ -8895,12 +8882,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po@am__quote@ # am--include-marker
@@ -12221,20 +12206,6 @@ harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.obj: harftexdir/luafontl
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhff_a_CPPFLAGS) $(CPPFLAGS) $(libhff_a_CFLAGS) $(CFLAGS) -c -o harftexdir/luafontloader/fontforge/gutils/libhff_a-fsys.obj `if test -f 'harftexdir/luafontloader/fontforge/gutils/fsys.c'; then $(CYGPATH_W) 'harftexdir/luafontloader/fontforge/gutils/fsys.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/luafontloader/fontforge/gutils/fsys.c'; fi`
 
-harftexdir/unilib/libhunilib_a-ArabicForms.o: harftexdir/unilib/ArabicForms.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-ArabicForms.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Tpo -c -o harftexdir/unilib/libhunilib_a-ArabicForms.o `test -f 'harftexdir/unilib/ArabicForms.c' || echo '$(srcdir)/'`harftexdir/unilib/ArabicForms.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/ArabicForms.c' object='harftexdir/unilib/libhunilib_a-ArabicForms.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-ArabicForms.o `test -f 'harftexdir/unilib/ArabicForms.c' || echo '$(srcdir)/'`harftexdir/unilib/ArabicForms.c
-
-harftexdir/unilib/libhunilib_a-ArabicForms.obj: harftexdir/unilib/ArabicForms.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-ArabicForms.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Tpo -c -o harftexdir/unilib/libhunilib_a-ArabicForms.obj `if test -f 'harftexdir/unilib/ArabicForms.c'; then $(CYGPATH_W) 'harftexdir/unilib/ArabicForms.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/ArabicForms.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/ArabicForms.c' object='harftexdir/unilib/libhunilib_a-ArabicForms.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-ArabicForms.obj `if test -f 'harftexdir/unilib/ArabicForms.c'; then $(CYGPATH_W) 'harftexdir/unilib/ArabicForms.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/ArabicForms.c'; fi`
-
 harftexdir/unilib/libhunilib_a-alphabet.o: harftexdir/unilib/alphabet.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-alphabet.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Tpo -c -o harftexdir/unilib/libhunilib_a-alphabet.o `test -f 'harftexdir/unilib/alphabet.c' || echo '$(srcdir)/'`harftexdir/unilib/alphabet.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
@@ -12290,20 +12261,6 @@ harftexdir/unilib/libhunilib_a-gwwiconv.obj: harftexdir/unilib/gwwiconv.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/gwwiconv.c' object='harftexdir/unilib/libhunilib_a-gwwiconv.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-gwwiconv.obj `if test -f 'harftexdir/unilib/gwwiconv.c'; then $(CYGPATH_W) 'harftexdir/unilib/gwwiconv.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/gwwiconv.c'; fi`
-
-harftexdir/unilib/libhunilib_a-unialt.o: harftexdir/unilib/unialt.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-unialt.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Tpo -c -o harftexdir/unilib/libhunilib_a-unialt.o `test -f 'harftexdir/unilib/unialt.c' || echo '$(srcdir)/'`harftexdir/unilib/unialt.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/unialt.c' object='harftexdir/unilib/libhunilib_a-unialt.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-unialt.o `test -f 'harftexdir/unilib/unialt.c' || echo '$(srcdir)/'`harftexdir/unilib/unialt.c
-
-harftexdir/unilib/libhunilib_a-unialt.obj: harftexdir/unilib/unialt.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-unialt.obj -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Tpo -c -o harftexdir/unilib/libhunilib_a-unialt.obj `if test -f 'harftexdir/unilib/unialt.c'; then $(CYGPATH_W) 'harftexdir/unilib/unialt.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/unialt.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Tpo harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='harftexdir/unilib/unialt.c' object='harftexdir/unilib/libhunilib_a-unialt.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -c -o harftexdir/unilib/libhunilib_a-unialt.obj `if test -f 'harftexdir/unilib/unialt.c'; then $(CYGPATH_W) 'harftexdir/unilib/unialt.c'; else $(CYGPATH_W) '$(srcdir)/harftexdir/unilib/unialt.c'; fi`
 
 harftexdir/unilib/libhunilib_a-ustring.o: harftexdir/unilib/ustring.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhunilib_a_CPPFLAGS) $(CPPFLAGS) $(libhunilib_a_CFLAGS) $(CFLAGS) -MT harftexdir/unilib/libhunilib_a-ustring.o -MD -MP -MF harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Tpo -c -o harftexdir/unilib/libhunilib_a-ustring.o `test -f 'harftexdir/unilib/ustring.c' || echo '$(srcdir)/'`harftexdir/unilib/ustring.c
@@ -21047,12 +21004,10 @@ distclean: distclean-recursive
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po
@@ -21883,12 +21838,10 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-texnodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textcodes.Po
 	-rm -f harftexdir/tex/$(DEPDIR)/libharftex_a-textoken.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-ArabicForms.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-alphabet.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-char.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-cjk.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-gwwiconv.Po
-	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-unialt.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-ustring.Po
 	-rm -f harftexdir/unilib/$(DEPDIR)/libhunilib_a-utype.Po
 	-rm -f harftexdir/utils/$(DEPDIR)/libharftex_a-avl.Po

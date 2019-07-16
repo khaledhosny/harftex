@@ -65,5 +65,3 @@ extern const unichar_t unicode_from_ksc5601[];
 /* Subtract 0x8400 before indexing this array */
 extern const unichar_t unicode_from_johab[];
 extern const unichar_t unicode_from_gb2312[];
-
-extern const unichar_t *const * const unicode_alternates[];
