@@ -28,35 +28,10 @@
 #define _GFILE_H
 
 extern char *GFileGetAbsoluteName(char *name, char *result, int rsiz);
-extern char *GFileMakeAbsoluteName(char *name);
-extern char *GFileBuildName(char *dir,char *fname,char *buffer,int size);
-extern char *GFileReplaceName(char *oldname,char *fname,char *buffer,int size);
 extern char *GFileNameTail(const char *oldname);
 extern char *GFileAppendFile(char *dir,char *name,int isdir);
-extern int GFileIsAbsolute(const char *file);
-extern int GFileIsDir(const char *file);
 extern int GFileExists(const char *file);
 extern int GFileModifyable(const char *file);
-extern int GFileModifyableDir(const char *file);
 extern int GFileReadable(char *file);
-extern int GFileMkDir(char *name);
-extern int GFileRmDir(char *name);
-extern int GFileUnlink(char *name);
-extern char *_GFile_find_program_dir(char *prog);
-extern unichar_t *u_GFileGetAbsoluteName(unichar_t *name, unichar_t *result, int rsiz);
-extern unichar_t *u_GFileBuildName(unichar_t *dir,unichar_t *fname,unichar_t *buffer,int size);
-extern unichar_t *u_GFileReplaceName(unichar_t *oldname,unichar_t *fname,unichar_t *buffer,int size);
-extern unichar_t *u_GFileNameTail(const unichar_t *oldname);
-extern unichar_t *u_GFileNormalize(unichar_t *name);
-extern unichar_t *u_GFileAppendFile(unichar_t *dir,unichar_t *name,int isdir);
-extern int u_GFileIsAbsolute(const unichar_t *file);
-extern int u_GFileIsDir(const unichar_t *file);
-extern int u_GFileExists(const unichar_t *file);
-extern int u_GFileModifyable(const unichar_t *file);
-extern int u_GFileModifyableDir(const unichar_t *file);
-extern int u_GFileReadable(unichar_t *file);
-extern int u_GFileMkDir(unichar_t *name);
-extern int u_GFileRmDir(unichar_t *name);
-extern int u_GFileUnlink(unichar_t *name);
 
 #endif
