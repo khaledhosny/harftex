@@ -39,7 +39,7 @@
  * Next, you will need to build ./makeutype before you can use it:
  * Run "make makeutype"
  * or
- * Run "gcc -s -I../inc -o makeutype makeutype.c"
+ * Run "gcc -I../ -o makeutype makeutype.c"
  *
  * Then run the executable binary "/makeutype".
  * This will create 4 files in the same directory:
@@ -56,7 +56,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unibasics.h>
+#include "unibasics.h"
 #define true 1
 #define false 0
 
