@@ -1173,8 +1173,8 @@ static long pack_real(card8 * dest, long destlen, double value)
     long e;
     int i = 0, pos = 2;
     int res;
-    char work_buffer[WORK_BUFFER_SIZE];
 #define CFF_REAL_MAX_LEN 17
+    char buffer[CFF_REAL_MAX_LEN];
     if (destlen < 2)
         normal_error("cff","buffer overflow (6)");
     dest[0] = 30;
@@ -1199,20 +1199,18 @@ static long pack_real(card8 * dest, long destlen, double value)
             e--;
         }
     }
-    res = snprintf(work_buffer, WORK_BUFFER_SIZE, "%1.14g", value);
+    res = snprintf(buffer, CFF_REAL_MAX_LEN, "%1.14g", value);
     if (res<0)
         normal_error("cff","invalid conversion");
-    if (res>CFF_REAL_MAX_LEN)
-        res=CFF_REAL_MAX_LEN;
     for (i = 0; i < res; i++) {
         unsigned char ch = 0;
-        if (work_buffer[i] == '\0') {
+        if (buffer[i] == '\0') {
             /*tex In fact |res| should prevent this. */
             break;
-        } else if (work_buffer[i] == '.') {
+        } else if (buffer[i] == '.') {
             ch = 0x0a;
-        } else if (work_buffer[i] >= '0' && work_buffer[i] <= '9') {
-            ch = (unsigned char) (work_buffer[i] - '0');
+        } else if (buffer[i] >= '0' && buffer[i] <= '9') {
+            ch = (unsigned char) (buffer[i] - '0');
         } else {
             normal_error("cff","invalid character");
         }
@@ -1247,19 +1245,17 @@ static long pack_real(card8 * dest, long destlen, double value)
         pos++;
     }
     if (e != 0) {
-        res = snprintf(work_buffer, WORK_BUFFER_SIZE, "%ld", e);
+        res = snprintf(buffer, CFF_REAL_MAX_LEN, "%ld", e);
         if (res<0)
             normal_error("cff","invalid conversion");
-        if (res>CFF_REAL_MAX_LEN)
-            res=CFF_REAL_MAX_LEN;
         for (i = 0; i < res; i++) {
             unsigned char ch = 0;
-            if (work_buffer[i] == '\0') {
+            if (buffer[i] == '\0') {
                 break;
-            } else if (work_buffer[i] == '.') {
+            } else if (buffer[i] == '.') {
                 ch = 0x0a;
-            } else if (work_buffer[i] >= '0' && work_buffer[i] <= '9') {
-                ch = (unsigned char) (work_buffer[i] - '0');
+            } else if (buffer[i] >= '0' && buffer[i] <= '9') {
+                ch = (unsigned char) (buffer[i] - '0');
             } else {
                 normal_error("cff","invalid character");
             }
