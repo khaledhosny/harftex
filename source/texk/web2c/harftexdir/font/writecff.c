@@ -37,8 +37,6 @@ extern int cidset;
 
 #define WORK_BUFFER_SIZE 1024
 
-static char work_buffer[WORK_BUFFER_SIZE];
-
 static unsigned long get_unsigned(cff_font * cff, int n)
 {
     unsigned long v = 0;
@@ -657,6 +655,7 @@ static double get_real(card8 ** data, card8 * endptr, int *status)
     double result = 0.0;
     int nibble = 0, pos = 0;
     int len = 0, fail = 0;
+    char work_buffer[WORK_BUFFER_SIZE];
 
     if (**data != 30 || *data >= endptr - 1) {
         *status = CFF_CFF_ERROR_PARSE_CFF_ERROR;
@@ -2561,6 +2560,7 @@ static void write_fontfile(PDF pdf, cff_font * cffont, char *fullname)
     unsigned char *dest;
     long destlen = 0, i, size;
     long offset, topdict_offset, fdarray_offset;
+    char work_buffer[WORK_BUFFER_SIZE];
     topdict = cff_new_index(1);
     fdarray = cff_new_index(cffont->num_fds);
     private = cff_new_index(cffont->num_fds);
