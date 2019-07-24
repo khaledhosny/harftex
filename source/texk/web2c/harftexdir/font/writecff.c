@@ -1174,6 +1174,7 @@ static long pack_real(card8 * dest, long destlen, double value)
     long e;
     int i = 0, pos = 2;
     int res;
+    char work_buffer[WORK_BUFFER_SIZE];
 #define CFF_REAL_MAX_LEN 17
     if (destlen < 2)
         normal_error("cff","buffer overflow (6)");
