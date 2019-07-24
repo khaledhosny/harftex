@@ -1199,7 +1199,7 @@ static long pack_real(card8 * dest, long destlen, double value)
             e--;
         }
     }
-    res = sprintf(work_buffer, "%1.14g", value);
+    res = snprintf(work_buffer, WORK_BUFFER_SIZE, "%1.14g", value);
     if (res<0)
         normal_error("cff","invalid conversion");
     if (res>CFF_REAL_MAX_LEN)
@@ -1247,8 +1247,12 @@ static long pack_real(card8 * dest, long destlen, double value)
         pos++;
     }
     if (e != 0) {
-        sprintf(work_buffer, "%ld", e);
-        for (i = 0; i < CFF_REAL_MAX_LEN; i++) {
+        res = snprintf(work_buffer, WORK_BUFFER_SIZE, "%ld", e);
+        if (res<0)
+            normal_error("cff","invalid conversion");
+        if (res>CFF_REAL_MAX_LEN)
+            res=CFF_REAL_MAX_LEN;
+        for (i = 0; i < res; i++) {
             unsigned char ch = 0;
             if (work_buffer[i] == '\0') {
                 break;
