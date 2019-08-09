@@ -76,7 +76,6 @@ typedef enum {
     page_objnum_provider_callback,
     make_extensible_callback,
     process_pdf_image_content_callback,
-    get_char_tounicode_callback,
     get_glyph_string_callback,
     total_callbacks,
 } callback_callback_types;

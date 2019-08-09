@@ -570,7 +570,6 @@ extern int ext_mid(internal_font_number f, int c);
 #  define list_tag 2 /* character has a successor in a charlist */
 #  define ext_tag  3 /* character is extensible */
 
-extern char *char_tounicode(internal_font_number f, int c);
 extern scaled char_height(internal_font_number f, int c);
 extern scaled calc_char_width(internal_font_number f, int c, int ex);
 extern scaled char_width(internal_font_number f, int c);
