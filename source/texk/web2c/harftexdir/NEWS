@@ -1,4 +1,19 @@
 ==============================================================
+HarfTeX 0.4.0 2019-07-18
+==============================================================
+
+- Fix abug in reading CFF table in soe fonts causing the engine to abort.
+- Update luaharfbuzz to fix a logic error when populating Lua dictionaries from
+  C arrays (#11).
+- Remove the newly introduced get_char_tounicode callback, its functionality can
+  be implemented on top if existing callbacks.
+- Do not require setting font index for TTC fonts, for compatibility with
+  LuaTeX, though setting the index is still recommended.
+- Fix handling fonts with sbix table (like Apple Color Emoji).
+
+
+
+==============================================================
 HarfTeX 0.3.1 2019-07-18
 ==============================================================
 
