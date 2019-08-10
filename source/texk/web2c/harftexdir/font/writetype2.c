@@ -115,6 +115,7 @@ boolean writetype2(PDF pdf, fd_entry * fd)
     int file_opened = 0;
     boolean ret;
     sfnt *sfont;
+    long i = 0;
     dir_tab = NULL;
     glyph_tab = NULL;
     /*tex |fd_cur| is global inside |writettf.c| */
@@ -147,6 +148,12 @@ boolean writetype2(PDF pdf, fd_entry * fd)
     fd_cur->ff_found = true;
 
     sfont = sfnt_open(ttf_buffer, ttf_size);
+    if (sfont->type == SFNT_TYPE_TTC) {
+        if (fd->fm->index >= 0)
+            i = fd->fm->index;
+        else
+            i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
+    }
 
     if (is_subsetted(fd_cur->fm))
         report_start_file(filetype_subset,cur_file_name);
@@ -154,7 +161,7 @@ boolean writetype2(PDF pdf, fd_entry * fd)
         report_start_file(filetype_font,cur_file_name);
 
     if (sfont->type == SFNT_TYPE_TTC)
-        otc_read_tabdir(fd->fm->index);
+        otc_read_tabdir(i);
     else
         ttf_read_tabdir();
     sfnt_close(sfont);
@@ -261,7 +268,10 @@ boolean make_tt_subset(PDF pdf, fd_entry * fd, unsigned char *buff, int buflen)
     cidtogidmap = NULL;
     sfont = sfnt_open(buff, buflen);
     if (sfont->type == SFNT_TYPE_TTC) {
-        i = fd->fm->index;
+        if (fd->fm->index >= 0)
+            i = fd->fm->index;
+        else
+            i = ff_get_ttc_index(fd->fm->ff_name, fd->fm->ps_name);
         error = sfnt_read_table_directory(sfont, ttc_read_offset(sfont, (int) i, fd));
     } else {
         error = sfnt_read_table_directory(sfont, 0);
