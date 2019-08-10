@@ -35,9 +35,17 @@
 #include <ustring.h>
 #include "ttf.h"
 #include "psfont.h"
+#ifdef LUA_FF_LIB
+#  undef __Mac
+#endif
+#if __Mac
+#  include <ctype.h>
+#  include </Developer/Headers/FlatCarbon/Files.h>
+#else
 #  include <utype.h>
 #  undef __Mac
 #  define __Mac 0
+#endif
 
 const int mac_dpi = 72;
 /* I had always assumed that the mac still believed in 72dpi screens, but I */
@@ -1225,6 +1233,10 @@ static SplineFont *IsResourceInFile(char *filename, int flags,
 
     sf = IsResourceFork(f, 0, filename, flags, openflags, into, map);
     fclose(f);
+#if __Mac
+    if (sf == NULL)
+        sf = HasResourceFork(filename, flags, openflags, into, map);
+#endif
     return (sf);
 }
 

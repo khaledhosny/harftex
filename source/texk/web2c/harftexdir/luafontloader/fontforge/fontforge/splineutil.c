@@ -4008,7 +4008,11 @@ return;
     GlyphVariantsFree(sc->horiz_variants);
     GlyphVariantsFree(sc->vert_variants);
     MathKernFree(sc->mathkern);
+#if defined(_NO_PYTHON)
     free( sc->python_persistent );	/* It's a string of pickled data which we leave as a string */
+#else
+    PyFF_FreeSC(sc);
+#endif
 }
 
 void SplineCharFree(SplineChar *sc) {
@@ -4314,7 +4318,11 @@ return;
     OtfNameListFree(sf->fontstyle_name);
     MarkClassFree(sf->mark_class_cnt,sf->mark_classes,sf->mark_class_names);
     free( sf->gasp );
+#if defined(_NO_PYTHON)
     free( sf->python_persistent );	/* It's a string of pickled data which we leave as a string */
+#else
+    PyFF_FreeSF(sf);
+#endif
     BaseFree(sf->horiz_base);
     BaseFree(sf->vert_base);
     /* issue 863 */

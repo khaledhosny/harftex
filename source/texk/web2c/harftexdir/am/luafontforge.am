@@ -8,6 +8,7 @@
 EXTRA_LIBRARIES += libhff.a
 
 libhff_a_CPPFLAGS = $(AM_CPPFLAGS) \
+	-DLUA_FF_LIB=1 -D_NO_PYTHON=1 -DX_DISPLAY_MISSING=1 -DUSE_OUR_MEMORY=1 \
 	-I$(srcdir)/w2c \
 	-I$(srcdir)/harftexdir \
 	-I$(srcdir)/harftexdir/luafontloader/fontforge/unilib \

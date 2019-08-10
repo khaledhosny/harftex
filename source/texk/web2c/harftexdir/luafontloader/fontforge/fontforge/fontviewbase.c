@@ -83,6 +83,9 @@ static FontViewBase *_FontViewBaseCreate(SplineFont *sf) {
     }
     fv->selected = gcalloc(fv->map->enccount,sizeof(char));
 
+#ifndef _NO_PYTHON
+    PyFF_InitFontHook(fv);
+#endif
 return( fv );
 }
 
@@ -135,6 +138,9 @@ static void FontViewBase_Free(FontViewBase *fv) {
     free(fv->fontvars);
 #endif
     free(fv->selected);
+#ifndef _NO_PYTHON
+    PyFF_FreeFV(fv);
+#endif
     free(fv);
 }
 

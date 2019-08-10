@@ -42,6 +42,7 @@ void galloc_set_trap(void (*newtrap)(void)) {
     trap = newtrap;
 }
 
+#ifdef USE_OUR_MEMORY
 void *galloc(long size) {
     void *ret;
     /* Avoid malloc(0) as malloc is allowed to return NULL.
@@ -71,6 +72,7 @@ return( ret );
 void gfree(void *old) {
     free(old);
 }
+#endif /* USE_OUR_MEMORY */
 
 void NoMoreMemMessage(void) {
 /* Output an 'Out of memory' message, then continue */

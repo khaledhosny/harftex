@@ -5137,6 +5137,7 @@ libharftex_a_preflags = $(AM_CPPFLAGS) $(ZLIB_INCLUDES) \
 	-I$(srcdir)/luatexdir/unilib \
 	-I$(srcdir)/luatexdir/luapplib/util \
 	-I$(srcdir)/luatexdir/luafontloader/fontforge/inc \
+	-DLUA_FF_LIB=1 \
 	-I$(srcdir)/luatexdir/luafontloader/fontforge/fontforge \
 	-DSYNCTEX_ENGINE_H='<synctex-luatex.h>' -I$(srcdir)/synctexdir
 libharftex_a_CPPFLAGS = $(libharftex_a_preflags) $(LUA_INCLUDES)
@@ -5274,6 +5275,7 @@ libluaharfbuzz_a_SOURCES = \
 	harftexdir/luaharfbuzz/src/luaharfbuzz/unicode.c
 
 libhff_a_CPPFLAGS = $(AM_CPPFLAGS) \
+	-DLUA_FF_LIB=1 -D_NO_PYTHON=1 -DX_DISPLAY_MISSING=1 -DUSE_OUR_MEMORY=1 \
 	-I$(srcdir)/w2c \
 	-I$(srcdir)/harftexdir \
 	-I$(srcdir)/harftexdir/luafontloader/fontforge/unilib \

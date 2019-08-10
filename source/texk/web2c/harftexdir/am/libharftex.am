@@ -17,7 +17,7 @@ libharftex_a_preflags += -I$(srcdir)/luatexdir
 libharftex_a_preflags += -I$(srcdir)/luatexdir/unilib
 libharftex_a_preflags += -I$(srcdir)/luatexdir/luapplib/util
 libharftex_a_preflags += -I$(srcdir)/luatexdir/luafontloader/fontforge/inc
-libharftex_a_preflags += -I$(srcdir)/luatexdir/luafontloader/fontforge/fontforge
+libharftex_a_preflags += -DLUA_FF_LIB=1 -I$(srcdir)/luatexdir/luafontloader/fontforge/fontforge
 libharftex_a_preflags += -DSYNCTEX_ENGINE_H='<synctex-luatex.h>' -I$(srcdir)/synctexdir
 
 libharftex_a_CPPFLAGS = $(libharftex_a_preflags) $(LUA_INCLUDES)

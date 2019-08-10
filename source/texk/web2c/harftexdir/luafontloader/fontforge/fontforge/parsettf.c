@@ -37,8 +37,10 @@ extern const char *ttfstandardnames[];
 extern int ask_user_for_cmap;
 extern char *SaveTablesPref;
 
+#ifdef LUA_FF_LIB
 SplineFont *_SFReadTTFInfo(FILE *ttf, int flags,enum openflags openflags, char *filename,struct fontdict *fd);
 void THPatchSplineChar(SplineChar *sc);
+#endif
 
 int THtest_duplicate_glyph_names = 0;
 int THread_ttf_glyph_data  = 0;
@@ -2097,11 +2099,13 @@ return( sc );
     fseek(ttf,info->glyph_start+start,SEEK_SET);
     path_cnt = (short) getushort(ttf);
 
+#ifdef LUA_FF_LIB
     sc->xmin = getushort(ttf);
     sc->ymin = getushort(ttf);
     sc->xmax = getushort(ttf);
     sc->ymax = getushort(ttf);
     sc->lsidebearing = sc->xmin;
+#endif
     if (THread_ttf_glyph_data) {
       if ( path_cnt>=0 )
 	readttfsimpleglyph(ttf,info,sc,path_cnt);
@@ -4906,7 +4910,11 @@ static void readttfos2metrics(FILE *ttf,struct ttfinfo *info) {
 
     fseek(ttf,info->os2_start,SEEK_SET);
     info->os2_version = getushort(ttf);
+#ifdef LUA_FF_LIB
     info->pfminfo.avgwidth = getushort(ttf);
+#else
+    /* avgwidth */ getushort(ttf);
+#endif
     info->pfminfo.weight = getushort(ttf);
     info->pfminfo.width = getushort(ttf);
     info->pfminfo.fstype = getushort(ttf);
@@ -4941,8 +4949,13 @@ static void readttfos2metrics(FILE *ttf,struct ttfinfo *info) {
 	info->use_typo_metrics = (sel&128)?1:0;
 	info->weight_width_slope_only = (sel&256)?1:0;
     }
+#ifdef LUA_FF_LIB
     info->pfminfo.firstchar = getushort(ttf);
     info->pfminfo.lastchar = getushort(ttf);
+#else
+    /* firstchar */ getushort(ttf);
+    /* lastchar */ getushort(ttf);
+#endif
     info->pfminfo.os2_typoascent = getushort(ttf);
     info->pfminfo.os2_typodescent = (short) getushort(ttf);
     if ( info->pfminfo.os2_typoascent-info->pfminfo.os2_typodescent == info->emsize ) {
@@ -4962,12 +4975,14 @@ static void readttfos2metrics(FILE *ttf,struct ttfinfo *info) {
 	info->pfminfo.codepages[1] = getlong(ttf);
 	info->pfminfo.hascodepages = true;
     }
+#ifdef LUA_FF_LIB
     if ( info->os2_version>=3 ) { /* TH just in case */
       info->pfminfo.os2_xheight     = getushort(ttf); /* four new fields */
       info->pfminfo.os2_capheight   = getushort(ttf);
       info->pfminfo.os2_defaultchar = getushort(ttf);
       info->pfminfo.os2_breakchar   = getushort(ttf);
     }
+#endif
     if ( info->os2_version==0 ) {
 	LogError("Windows will reject fonts with an OS/2 version number of 0\n");
 	info->bad_os2_version = true;
@@ -5724,7 +5739,9 @@ static SplineFont *SFFillFromTTF(struct ttfinfo *info) {
 
     sf = SplineFontEmpty();
     sf->display_size = -default_fv_font_size;
+#ifdef LUA_FF_LIB
     sf->units_per_em = info->emsize;
+#endif
     sf->display_antialias = default_fv_antialias;
     sf->fontname = info->fontname;
     sf->fullname = info->fullname;
@@ -5990,6 +6007,8 @@ return( NULL );
 return( sf );
 }
 
+#ifdef LUA_FF_LIB
+
 static int readttfinfo(FILE *ttf, struct ttfinfo *info, char *filename) {
 
     if ( !readttfheader(ttf,info,filename,&info->chosenname)) {
@@ -6126,6 +6145,7 @@ return( NULL );
     fclose(ttf);
 return( sf );
 }
+#endif
 
 SplineFont *_CFFParse(FILE *temp,int len, char *fontsetname) {
     struct ttfinfo info;
