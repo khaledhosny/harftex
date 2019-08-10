@@ -91,7 +91,9 @@ libhff_a_SOURCES = \
 	harftexdir/luafontloader/fontforge/unilib/cjk.c \
 	harftexdir/luafontloader/fontforge/unilib/gwwiconv.c \
 	harftexdir/luafontloader/fontforge/unilib/gwwiconv.h \
+	harftexdir/luafontloader/fontforge/unilib/ucharmap.c \
 	harftexdir/luafontloader/fontforge/unilib/unibasics.h \
+	harftexdir/luafontloader/fontforge/unilib/usprintf.c \
 	harftexdir/luafontloader/fontforge/unilib/ustring.c \
 	harftexdir/luafontloader/fontforge/unilib/ustring.h \
 	harftexdir/luafontloader/fontforge/unilib/utype.c \
