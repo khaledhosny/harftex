@@ -1,3 +1,5 @@
+***Use LuaTeX HarfBuzz variant, luahbtex, instead.***
+
 [![Build Status](https://travis-ci.org/khaledhosny/harftex.svg?branch=master)](https://travis-ci.org/khaledhosny/harftex)
 
 HarfTeX
